@@ -16,6 +16,16 @@ const showSuccess = ref(false)
 const handleSubmit = async () => {
   isSubmitting.value = true
   
+  // In a real app, you would send this to your backend
+  // For now, we'll log the form data with the support email
+  console.log('Form submission to support@pomkatsu.com:', {
+    to: 'support@pomkatsu.com',
+    from: formData.value.email,
+    name: formData.value.name,
+    company: formData.value.company,
+    message: formData.value.message
+  })
+  
   // Simulate form submission
   setTimeout(() => {
     isSubmitting.value = false
@@ -45,26 +55,26 @@ const closeModal = () => {
 <template>
   <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <!-- Background backdrop -->
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="closeModal"></div>
+    <div class="fixed inset-0 bg-primary bg-opacity-50 transition-opacity" @click="closeModal"></div>
 
     <!-- Modal panel -->
     <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-      <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+      <div class="relative transform overflow-hidden rounded-lg bg-secondary text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
         <!-- Close button -->
         <button
           v-if="!isSubmitting"
           @click="closeModal"
-          class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors"
+          class="absolute right-4 top-4 text-primary/50 hover:text-primary transition-colors"
         >
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+        <div class="bg-secondary px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
           <div class="sm:flex sm:items-start">
             <div class="mt-3 w-full text-center sm:ml-4 sm:mt-0 sm:text-left">
-              <h3 class="text-2xl font-bold leading-6 text-gray-900 mb-6" id="modal-title">
+              <h3 class="text-2xl font-bold leading-6 text-primary mb-6" id="modal-title">
                 Get in Touch
               </h3>
 
@@ -83,7 +93,7 @@ const closeModal = () => {
                 <div class="space-y-4">
                   <!-- Name -->
                   <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                    <label for="name" class="block text-sm font-medium text-primary mb-1">
                       Name *
                     </label>
                     <input
@@ -92,13 +102,13 @@ const closeModal = () => {
                       type="text"
                       required
                       :disabled="isSubmitting"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pomkatsu-500 focus:border-pomkatsu-500 disabled:bg-gray-100"
+                      class="w-full px-3 py-2 border border-primary/20 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary disabled:bg-secondary-dark"
                     />
                   </div>
 
                   <!-- Email -->
                   <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                    <label for="email" class="block text-sm font-medium text-primary mb-1">
                       Email *
                     </label>
                     <input
@@ -107,13 +117,13 @@ const closeModal = () => {
                       type="email"
                       required
                       :disabled="isSubmitting"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pomkatsu-500 focus:border-pomkatsu-500 disabled:bg-gray-100"
+                      class="w-full px-3 py-2 border border-primary/20 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary disabled:bg-secondary-dark"
                     />
                   </div>
 
                   <!-- Company -->
                   <div>
-                    <label for="company" class="block text-sm font-medium text-gray-700 mb-1">
+                    <label for="company" class="block text-sm font-medium text-primary mb-1">
                       Company (Optional)
                     </label>
                     <input
@@ -121,13 +131,13 @@ const closeModal = () => {
                       v-model="formData.company"
                       type="text"
                       :disabled="isSubmitting"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pomkatsu-500 focus:border-pomkatsu-500 disabled:bg-gray-100"
+                      class="w-full px-3 py-2 border border-primary/20 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary disabled:bg-secondary-dark"
                     />
                   </div>
 
                   <!-- Message -->
                   <div>
-                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">
+                    <label for="message" class="block text-sm font-medium text-primary mb-1">
                       Project Description *
                     </label>
                     <textarea
@@ -136,7 +146,7 @@ const closeModal = () => {
                       rows="4"
                       required
                       :disabled="isSubmitting"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pomkatsu-500 focus:border-pomkatsu-500 disabled:bg-gray-100"
+                      class="w-full px-3 py-2 border border-primary/20 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary disabled:bg-secondary-dark"
                       placeholder="Tell us about your project idea..."
                     ></textarea>
                   </div>
@@ -148,14 +158,14 @@ const closeModal = () => {
                     type="button"
                     @click="closeModal"
                     :disabled="isSubmitting"
-                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pomkatsu-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    class="px-4 py-2 text-sm font-medium text-primary bg-white border border-primary/20 rounded-lg hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     :disabled="isSubmitting"
-                    class="px-4 py-2 text-sm font-medium text-white bg-pomkatsu-600 border border-transparent rounded-lg hover:bg-pomkatsu-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pomkatsu-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                    class="px-4 py-2 text-sm font-medium text-secondary bg-primary border border-transparent rounded-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
                   >
                     <svg v-if="isSubmitting" class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
                       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

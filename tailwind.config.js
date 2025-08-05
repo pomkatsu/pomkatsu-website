@@ -7,6 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
+        'primary': {
+          DEFAULT: '#46301C',
+          light: '#5A3E26',
+          dark: '#2E1F12',
+        },
+        'secondary': {
+          DEFAULT: '#FCF1DC',
+          light: '#FFF8ED',
+          dark: '#F5E5C8',
+        },
         'pomkatsu': {
           50: '#fff1f2',
           100: '#ffe4e6',
