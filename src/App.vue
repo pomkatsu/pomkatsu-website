@@ -44,8 +44,8 @@ const closeContactForm = () => {
 
         <!-- Apps Section -->
         <div class="mt-10 sm:mt-16 max-w-2xl mx-auto">
-          <h2 class="text-xl font-bold text-primary">Our Apps</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <h2 class="text-xl font-bold text-primary text-center">Our Apps</h2>
+          <div class="grid grid-cols-1 place-items-center mt-4">
             <div class="rounded-lg p-3 hover:bg-white/20 transition-colors duration-200 cursor-pointer">
               <img src="/dt-logo.png" alt="EasyTranslate Logo" class="w-20 h-20 mx-auto object-contain" />
               <p class="text-base font-medium text-primary text-center">EasyTranslate</p>
