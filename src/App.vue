@@ -39,18 +39,16 @@ const closeContactForm = () => {
       <div class="text-center max-w-4xl mx-auto">
         <!-- Logo -->
         <div class="mb-12">
-          <img src="/pomkatsu-logo.png" alt="Pomkatsu Logo" class="w-96 h-96 mx-auto object-contain" />
+          <img src="/pomkatsu-logo.png" alt="Pomkatsu Logo" class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto object-contain" />
         </div>
 
         <!-- Apps Section -->
-        <div class="mt-16 max-w-2xl mx-auto">
-          <div class="bg-white/40 rounded-xl p-4 border border-primary/30">
-            <h2 class="text-xl font-bold text-primary mb-3">Our Apps</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              <div class="bg-secondary-light/30 rounded-lg p-3 hover:shadow-sm transition-shadow duration-200 cursor-pointer">
-                <img src="/dt-logo.png" alt="EasyTranslate Logo" class="w-20 h-20 mx-auto object-contain" />
-                <p class="text-base font-medium text-primary text-center">EasyTranslate</p>
-              </div>
+        <div class="mt-10 sm:mt-16 max-w-2xl mx-auto">
+          <h2 class="text-xl font-bold text-primary">Our Apps</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="rounded-lg p-3 hover:bg-white/20 transition-colors duration-200 cursor-pointer">
+              <img src="/dt-logo.png" alt="EasyTranslate Logo" class="w-20 h-20 mx-auto object-contain" />
+              <p class="text-base font-medium text-primary text-center">EasyTranslate</p>
             </div>
           </div>
         </div>
