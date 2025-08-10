@@ -28,6 +28,15 @@ export default {
           700: '#be123c',
           800: '#9f1239',
           900: '#881337',
+        },
+        'legal': {
+          'text': '#5A3E26',
+          'heading': '#46301C',
+          'muted': '#6B7280',
+          'border': '#F5E5C8',
+          'warning': '#be123c',
+          'warning-light': '#fecdd3',
+          'warning-dark': '#881337',
         }
       },
       fontFamily: {
