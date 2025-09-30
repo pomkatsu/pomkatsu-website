@@ -6,6 +6,7 @@ import CookiePolicy from '../views/CookiePolicy.vue'
 import DMCA from '../views/DMCA.vue'
 import AcceptableUse from '../views/AcceptableUse.vue'
 import EULA from '../views/EULA.vue'
+import EasyTranslateAI from '../views/apps/EasyTranslateAI.vue'
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/eula',
     name: 'EULA',
     component: EULA
+  },
+  {
+    path: '/apps/easytranslate',
+    name: 'EasyTranslateAI',
+    component: EasyTranslateAI
   }
 ]
 

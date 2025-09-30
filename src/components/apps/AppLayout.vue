@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import ContactForm from '../components/ContactForm.vue'
+import ContactForm from '../ContactForm.vue'
 
 const showContactForm = ref(false)
 
@@ -14,19 +14,19 @@ const closeContactForm = () => {
 </script>
 
 <template>
-  <div class="h-screen bg-secondary flex flex-col overflow-hidden">
+  <div class="min-h-screen bg-secondary flex flex-col">
     <!-- Navigation -->
-    <nav class="w-full bg-secondary z-40 flex-shrink-0">
+    <nav class="w-full bg-secondary z-40 border-b border-secondary-dark">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <router-link to="/" class="text-2xl font-bold text-primary hover:text-primary-light transition-colors">
+            <router-link to="/" class="text-2xl font-bold text-primary hover:text-primary-light transition-colors duration-200">
               Pomkatsu
             </router-link>
           </div>
           <button
             @click="openContactForm"
-            class="px-6 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-light transition-colors"
+            class="px-6 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-light transition-colors duration-200"
           >
             Contact Us
           </button>
@@ -34,68 +34,55 @@ const closeContactForm = () => {
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="flex-1 flex flex-col items-center justify-center px-4 overflow-y-auto">
-      <div class="text-center max-w-4xl mx-auto">
-        <!-- Logo -->
-        <div class="mb-8">
-          <img src="/pomkatsu-logo.png" alt="Pomkatsu Logo" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 mx-auto object-contain" />
-        </div>
-
-        <!-- Apps Section -->
-        <div class="max-w-2xl mx-auto">
-          <h2 class="text-xl font-bold text-primary text-center">Our Apps</h2>
-          <div class="grid grid-cols-1 place-items-center mt-4">
-            <router-link
-              to="/apps/easytranslate"
-              class="rounded-lg p-3 border-2 border-transparent hover:border-primary-dark hover:bg-white/20 transition-all duration-200 cursor-pointer"
-            >
-              <img src="/app-logos/easytranslate/easytranslateai.png" alt="EasyTranslate AI Logo" class="w-20 h-20 mx-auto object-contain rounded-lg" />
-              <p class="text-base font-medium text-primary text-center">EasyTranslate AI</p>
-            </router-link>
-          </div>
-        </div>
-
-      </div>
+    <!-- Main Content -->
+    <main class="flex-1">
+      <slot></slot>
     </main>
 
     <!-- Footer with Legal Links -->
-    <footer class="bg-primary-dark text-secondary-light py-6 flex-shrink-0">
+    <footer class="bg-primary-dark text-secondary-light py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
-          <router-link 
-            to="/privacy" 
+          <router-link
+            to="/privacy"
             class="footer-link hover:text-secondary transition-colors"
           >
             Privacy Policy
           </router-link>
           <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/terms" 
+          <router-link
+            to="/terms"
             class="footer-link hover:text-secondary transition-colors"
           >
             Terms of Service
           </router-link>
           <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/cookies" 
+          <router-link
+            to="/cookies"
             class="footer-link hover:text-secondary transition-colors"
           >
             Cookie Policy
           </router-link>
           <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/dmca" 
+          <router-link
+            to="/dmca"
             class="footer-link hover:text-secondary transition-colors"
           >
             DMCA
           </router-link>
           <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/aup" 
+          <router-link
+            to="/aup"
             class="footer-link hover:text-secondary transition-colors"
           >
             Acceptable Use
+          </router-link>
+          <span class="text-secondary/50">|</span>
+          <router-link
+            to="/eula"
+            class="footer-link hover:text-secondary transition-colors"
+          >
+            EULA
           </router-link>
         </div>
         <div class="text-center mt-6 text-secondary/70 text-xs">
@@ -105,7 +92,7 @@ const closeContactForm = () => {
     </footer>
 
     <!-- Contact Form Modal -->
-    <ContactForm 
+    <ContactForm
       v-if="showContactForm"
       @close="closeContactForm"
     />
