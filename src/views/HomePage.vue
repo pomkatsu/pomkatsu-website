@@ -50,7 +50,7 @@ const closeContactForm = () => {
               to="/apps/easytranslate"
               class="rounded-lg p-3 border-2 border-transparent hover:border-primary-dark hover:bg-white/20 transition-all duration-200 cursor-pointer"
             >
-              <img src="/app-logos/easytranslate/easytranslateai.png" alt="EasyTranslate AI Logo" class="w-20 h-20 mx-auto object-contain rounded-lg" />
+              <img src="/app-logos/easytranslate/easytranslateai.png" alt="EasyTranslate AI Logo" class="w-20 h-20 mx-auto object-contain rounded-lg mb-3" />
               <p class="text-base font-medium text-primary text-center">EasyTranslate AI</p>
             </router-link>
           </div>

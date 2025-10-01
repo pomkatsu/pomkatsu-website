@@ -9,7 +9,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
     <!-- Hero Section with static mockup -->
     <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-16 items-center">
           <!-- Text Content -->
           <div class="text-center lg:text-left order-2 lg:order-1">
             <!-- App Logo & Name -->
@@ -33,11 +33,26 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
             </p>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center sm:items-stretch">
               <AppStoreButtons
                 app-store-url="#"
                 play-store-url="#"
               />
+              <a
+                href="https://easytranslate.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 px-6 py-3 bg-primary text-secondary rounded-xl hover:bg-primary-light transition-all duration-200 font-semibold group min-w-[160px]"
+                style="text-decoration: none;"
+              >
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <div class="text-left">
+                  <div class="text-xs opacity-90">Try the</div>
+                  <div class="text-base font-bold leading-tight">Web Version</div>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -58,7 +73,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
     <!-- Screenshots Gallery -->
     <section class="py-12 px-4 sm:px-6 lg:px-8 bg-secondary mb-12">
       <div class="max-w-7xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-bold text-primary text-center mb-8 animate-fade-in">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12 animate-fade-in">
           See it in action
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -199,11 +214,26 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
         <p class="text-lg text-primary-light mb-8">
           Download EasyTranslate AI today and experience the future of document translation.
         </p>
-        <div class="flex justify-center">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-stretch">
           <AppStoreButtons
             app-store-url="#"
             play-store-url="#"
           />
+          <a
+            href="https://easytranslate.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-6 py-3 bg-primary text-secondary rounded-xl hover:bg-primary-light transition-all duration-200 font-semibold group min-w-[160px]"
+            style="text-decoration: none;"
+          >
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-xs opacity-90">Try the</div>
+              <div class="text-base font-bold leading-tight">Web Version</div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
