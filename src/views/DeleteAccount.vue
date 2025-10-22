@@ -5,14 +5,14 @@
         <h1 class="text-3xl font-bold text-gray-900 mb-6">Delete Your Account</h1>
 
         <div class="prose max-w-none">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-4">How to Delete Your EasyTranslate Account</h2>
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">How to Delete Your Pomkatsu App Account</h2>
 
           <p class="text-gray-700 mb-4">
-            To delete your account and all associated data, please follow these steps:
+            To delete your account and all associated data from any Pomkatsu app (EasyTranslate, etc.), please follow these steps:
           </p>
 
           <ol class="list-decimal list-inside space-y-2 text-gray-700 mb-6">
-            <li>Open the EasyTranslate app on your device</li>
+            <li>Open the app on your device</li>
             <li>Navigate to <strong>Settings</strong></li>
             <li>Scroll to the bottom of the page</li>
             <li>Tap <strong>"Delete Account"</strong></li>
@@ -54,7 +54,10 @@
               <strong>Email:</strong> <a href="mailto:support@pomkatsu.com" class="text-amber-600 hover:text-amber-700">support@pomkatsu.com</a>
             </p>
             <p class="text-gray-700 mt-2">
-              <strong>Subject:</strong> Delete My EasyTranslate Account
+              <strong>Subject:</strong> Delete My [App Name] Account
+            </p>
+            <p class="text-sm text-gray-600 mt-1">
+              (Example: "Delete My EasyTranslate Account")
             </p>
           </div>
 
