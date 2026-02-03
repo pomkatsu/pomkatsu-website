@@ -39,23 +39,24 @@ defineProps({
       </div>
     </a>
 
-    <!-- Google Play Store Button -->
-    <a
-      v-if="showPlayStore"
-      :href="playStoreUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center gap-3 px-6 py-3 bg-primary text-secondary rounded-xl hover:bg-primary-light transition-all duration-200 font-semibold group"
-    >
-      <!-- Google Play Logo SVG -->
-      <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-      </svg>
-      <div class="text-left">
-        <div class="text-xs opacity-90">Get it on</div>
-        <div class="text-base font-bold leading-tight">Google Play</div>
+    <!-- Google Play Store Button (Coming Soon) -->
+    <div v-if="showPlayStore" class="relative">
+      <div
+        class="inline-flex items-center gap-3 px-6 py-3 bg-primary/40 text-secondary/50 rounded-xl min-w-[160px] pointer-events-none"
+      >
+        <!-- Google Play Logo SVG -->
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+        </svg>
+        <div class="text-left">
+          <div class="text-xs opacity-80">Get it on</div>
+          <div class="text-base font-bold leading-tight">Google Play</div>
+        </div>
       </div>
-    </a>
+      <span class="absolute -top-2 -right-2 bg-primary text-secondary text-xs font-bold px-2 py-0.5 rounded-full">
+        Coming Soon
+      </span>
+    </div>
   </div>
 </template>
 

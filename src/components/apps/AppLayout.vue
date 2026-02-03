@@ -1,8 +1,22 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import ContactForm from '../ContactForm.vue'
 
 const showContactForm = ref(false)
+const scrolled = ref(false)
+
+const onScroll = () => {
+  scrolled.value = window.scrollY > 20
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+})
 
 const openContactForm = () => {
   showContactForm.value = true
@@ -16,7 +30,10 @@ const closeContactForm = () => {
 <template>
   <div class="min-h-screen bg-secondary flex flex-col">
     <!-- Navigation -->
-    <nav class="w-full bg-secondary z-40 border-b border-secondary-dark">
+    <nav
+      class="fixed w-full z-40 border-b transition-[background-color,border-color,backdrop-filter] duration-300"
+      :class="scrolled ? 'bg-secondary/80 backdrop-blur-md border-secondary-dark' : 'bg-transparent border-transparent backdrop-blur-none'"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
@@ -35,7 +52,7 @@ const closeContactForm = () => {
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-1">
+    <main class="flex-1 pt-16">
       <slot></slot>
     </main>
 

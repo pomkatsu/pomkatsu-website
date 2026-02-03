@@ -8,6 +8,7 @@ import AcceptableUse from '../views/AcceptableUse.vue'
 import EULA from '../views/EULA.vue'
 import DeleteAccount from '../views/DeleteAccount.vue'
 import EasyTranslateAI from '../views/apps/EasyTranslateAI.vue'
+import Astral from '../views/apps/Astral.vue'
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: '/apps/easytranslate',
     name: 'EasyTranslateAI',
     component: EasyTranslateAI
+  },
+  {
+    path: '/apps/astral',
+    name: 'Astral',
+    component: Astral
   }
 ]
 

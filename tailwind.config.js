@@ -29,6 +29,17 @@ export default {
           800: '#9f1239',
           900: '#881337',
         },
+        'astral': {
+          'deep': '#330963',
+          'cosmic': '#9B59B6',
+          'bg': '#3A007C',
+          'header': '#542987',
+          'card': '#572F7F',
+          'topic': '#552589',
+          'light': '#8144C5',
+          'gold': '#EFDB5E',
+          'destructive': '#E84393',
+        },
         'legal': {
           'text': '#5A3E26',
           'heading': '#46301C',

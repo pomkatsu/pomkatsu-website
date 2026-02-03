@@ -262,8 +262,12 @@ section:nth-of-type(3) .animate-fade-in {
   animation-delay: 0s;
 }
 
-/* Fade-in animation for features and screenshots */
-.grid > div {
+/* Fade-in animation for screenshots and features (skip hero section) */
+section:nth-of-type(2) .grid > div {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+section:nth-of-type(3) .grid > div {
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
 }

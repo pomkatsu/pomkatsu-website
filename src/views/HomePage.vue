@@ -14,7 +14,7 @@ const closeContactForm = () => {
 </script>
 
 <template>
-  <div class="h-screen bg-secondary flex flex-col overflow-hidden">
+  <div class="min-h-screen bg-secondary flex flex-col">
     <!-- Navigation -->
     <nav class="w-full bg-secondary z-40 flex-shrink-0">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,24 +35,63 @@ const closeContactForm = () => {
     </nav>
 
     <!-- Hero Section -->
-    <main class="flex-1 flex flex-col items-center justify-center px-4 overflow-y-auto">
+    <main class="flex-1 flex flex-col items-center justify-center px-4 py-8 sm:py-12">
       <div class="text-center max-w-4xl mx-auto">
         <!-- Logo -->
-        <div class="mb-8">
-          <img src="/pomkatsu-logo.png" alt="Pomkatsu Logo" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 mx-auto object-contain" />
+        <div class="mb-6">
+          <img src="/pomkatsu-logo.png" alt="Pomkatsu Logo" class="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto object-contain" />
         </div>
 
-        <!-- Apps Section -->
-        <div class="max-w-2xl mx-auto">
-          <h2 class="text-xl font-bold text-primary text-center">Our Apps</h2>
-          <div class="grid grid-cols-1 place-items-center mt-4">
-            <router-link
-              to="/apps/easytranslate"
-              class="rounded-lg p-3 border-2 border-transparent hover:border-primary-dark hover:bg-white/20 transition-all duration-200 cursor-pointer"
-            >
-              <img src="/app-logos/easytranslate/easytranslateai.png" alt="EasyTranslate AI Logo" class="w-20 h-20 mx-auto object-contain rounded-lg mb-3" />
-              <p class="text-base font-medium text-primary text-center">EasyTranslate AI</p>
-            </router-link>
+        <!-- Products -->
+        <div class="max-w-3xl mx-auto text-left">
+          <!-- Mobile Apps -->
+          <div>
+            <h3 class="text-sm font-semibold text-primary-light/70 uppercase tracking-wider mb-3">Mobile Apps</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <router-link
+                to="/apps/easytranslate"
+                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
+              >
+                <img src="/app-logos/easytranslate/easytranslateai.png" alt="EasyTranslate AI Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
+                <div>
+                  <p class="text-lg font-bold text-primary">EasyTranslate AI</p>
+                  <p class="text-sm text-primary-light leading-snug">Translate documents instantly in 100+ languages</p>
+                </div>
+              </router-link>
+              <router-link
+                to="/apps/astral"
+                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
+              >
+                <img src="/app-logos/astral/astral-icon-square.png" alt="Astral Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
+                <div>
+                  <p class="text-lg font-bold text-primary">Astral</p>
+                  <p class="text-sm text-primary-light leading-snug">Tarot readings, horoscopes, and cosmic guidance</p>
+                </div>
+              </router-link>
+            </div>
+          </div>
+
+          <!-- SaaS -->
+          <div class="mt-8">
+            <h3 class="text-sm font-semibold text-primary-light/70 uppercase tracking-wider mb-3">SaaS</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 cursor-default"
+              >
+                <div class="w-16 h-16 rounded-xl flex-shrink-0 bg-primary/10 border border-primary/15 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-primary/40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <p class="text-lg font-bold text-primary">BCP Flow</p>
+                    <span class="text-xs font-semibold text-primary-light/60 bg-primary/10 px-2 py-0.5 rounded-full">Coming Soon</span>
+                  </div>
+                  <p class="text-sm text-primary-light leading-snug">Business continuity planning with team management and exports</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
