@@ -15,7 +15,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
             <!-- App Logo & Name -->
             <div class="flex items-center gap-4 justify-center lg:justify-start mb-8">
               <img
-                src="/app-logos/easytranslate/easytranslateai.png"
+                src="/app-logos/easytranslate/easytranslateai.webp"
                 alt="EasyTranslate AI Logo"
                 class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shadow-lg"
               />
@@ -60,7 +60,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
           <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
             <div class="w-full max-w-2xl overflow-visible">
               <img
-                src="/app-logos/easytranslate/hero-render-light.png"
+                src="/app-logos/easytranslate/hero-render-light.webp"
                 alt="EasyTranslate AI Preview"
                 class="w-full h-auto scale-150"
               />
@@ -80,7 +80,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
           <!-- Screenshot 1 -->
           <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <img
-              src="/app-logos/easytranslate/home-page-light.png"
+              src="/app-logos/easytranslate/home-page-light.webp"
               alt="Home Screen"
               class="w-full h-auto object-cover"
             />
@@ -92,7 +92,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
           <!-- Screenshot 2 -->
           <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <img
-              src="/app-logos/easytranslate/history-page-light.png"
+              src="/app-logos/easytranslate/history-page-light.webp"
               alt="Translation History"
               class="w-full h-auto object-cover"
             />
@@ -104,7 +104,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
           <!-- Screenshot 3 -->
           <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <img
-              src="/app-logos/easytranslate/preview-csv-light.png"
+              src="/app-logos/easytranslate/preview-csv-light.webp"
               alt="CSV Preview"
               class="w-full h-auto object-cover"
             />
@@ -116,7 +116,7 @@ import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
           <!-- Screenshot 4 -->
           <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <img
-              src="/app-logos/easytranslate/preview-menu-light.png"
+              src="/app-logos/easytranslate/preview-menu-light.webp"
               alt="Export Menu"
               class="w-full h-auto object-cover"
             />

@@ -19,14 +19,14 @@ onUnmounted(() => {
 })
 
 const topics = [
-  { name: 'Ask Me Anything', description: 'Open-ended cosmic guidance on any topic', image: '/app-logos/astral/ask-me-anything-card-bg.png' },
-  { name: 'Love Match', description: 'Explore romantic compatibility and connections', image: '/app-logos/astral/love-match-card-bg.png' },
-  { name: 'Dream Decoder', description: 'Uncover the meaning behind your dreams', image: '/app-logos/astral/dream-decoder-card-bg.png' },
-  { name: 'Friend Vibes', description: 'Understand your friendships through the stars', image: '/app-logos/astral/friend-vibes-card-bg.png' },
-  { name: 'Cosmic Events', description: 'Stay aligned with planetary movements', image: '/app-logos/astral/cosmic-events-card-bg.png' },
-  { name: 'Astro Travel', description: 'Discover destinations written in your stars', image: '/app-logos/astral/astro-travel-card-bg.png' },
-  { name: 'Career Compass', description: 'Navigate your professional path with cosmic insight', image: '/app-logos/astral/career-compass-card-bg.png' },
-  { name: 'Soul Growth', description: 'Deepen your spiritual journey and self-awareness', image: '/app-logos/astral/soul-growth-card-bg.png' },
+  { name: 'Ask Me Anything', description: 'Open-ended cosmic guidance on any topic', image: '/app-logos/astral/ask-me-anything-card-bg.webp' },
+  { name: 'Love Match', description: 'Explore romantic compatibility and connections', image: '/app-logos/astral/love-match-card-bg.webp' },
+  { name: 'Dream Decoder', description: 'Uncover the meaning behind your dreams', image: '/app-logos/astral/dream-decoder-card-bg.webp' },
+  { name: 'Friend Vibes', description: 'Understand your friendships through the stars', image: '/app-logos/astral/friend-vibes-card-bg.webp' },
+  { name: 'Cosmic Events', description: 'Stay aligned with planetary movements', image: '/app-logos/astral/cosmic-events-card-bg.webp' },
+  { name: 'Astro Travel', description: 'Discover destinations written in your stars', image: '/app-logos/astral/astro-travel-card-bg.webp' },
+  { name: 'Career Compass', description: 'Navigate your professional path with cosmic insight', image: '/app-logos/astral/career-compass-card-bg.webp' },
+  { name: 'Soul Growth', description: 'Deepen your spiritual journey and self-awareness', image: '/app-logos/astral/soul-growth-card-bg.webp' },
 ]
 </script>
 
@@ -35,7 +35,7 @@ const topics = [
     <!-- Full-page background -->
     <div class="fixed inset-0 -z-10">
       <img
-        src="/app-logos/astral/background.png"
+        src="/app-logos/astral/background.webp"
         alt=""
         class="w-full h-full object-cover"
       />
