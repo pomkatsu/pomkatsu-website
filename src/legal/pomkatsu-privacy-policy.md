@@ -1,9 +1,9 @@
 # Privacy Policy
 
 **Pomkatsu LLC**  
-**Effective Date: August 10, 2025**  
-**Last Updated: August 10, 2025**  
-**Version: 1.0**
+**Effective Date: August 10, 2025**
+**Last Updated: February 15, 2026**
+**Version: 1.1**
 
 ## Introduction
 
@@ -28,6 +28,7 @@ Please read this Privacy Policy carefully. By using our Services, you agree to t
 - **Contact Information**: When you contact support@pomkatsu.com
 - **User Content**: Documents you upload for translation, translations created
 - **Payment Information**: Processed by third-party payment processors (we do not store credit card details)
+- **Voice and Audio Data**: When you use voice input features (such as voice logging in FoodTally), we access your device microphone to capture audio for on-device speech recognition. Audio is processed in real-time to convert speech to text and is not stored, recorded, or transmitted to our servers. Only the resulting text transcription is used by the app.
 - **Communications**: Messages, feedback, and correspondence with us
 
 **Information Collected Automatically:**
@@ -71,11 +72,11 @@ We collect information through the following methods:
 We use collected information for the following purposes:
 
 ### Service Delivery (Contractual Basis)
-- Provide, maintain, and improve our translation services
-- Process documents for translation
+- Provide, maintain, and improve our Services (including translation, food logging, and health tracking features)
+- Process voice input through on-device speech recognition to enable hands-free features such as voice food logging
 - Manage your account and authenticate users
 - Process transactions and send confirmations
-- Save your preferences and translation history
+- Save your preferences and usage history
 
 ### Communications (Consent/Legitimate Interest)
 - Send technical notices, updates, and security alerts
@@ -112,6 +113,14 @@ We use collected information for the following purposes:
   - Revoking access when no longer needed
 - **Revocation**: You can revoke public links at any time through the app, immediately preventing further access
 - **No Liability for Shared Content**: We are not responsible for any disclosure, modification, or deletion of documents that you make publicly available
+
+## Device Permissions
+
+Our apps may request access to certain device features. You can manage these permissions through your device settings at any time.
+
+- **Microphone (android.permission.RECORD_AUDIO / NSMicrophoneUsageDescription)**: Used for voice input features such as voice-based food logging. Audio is processed on-device for speech recognition and is not recorded, stored, or transmitted to our servers. You can deny or revoke microphone access at any time; voice features will be unavailable but all other app functionality remains unaffected.
+- **Speech Recognition (NSSpeechRecognitionUsageDescription)**: Used alongside microphone access to convert your speech to text on-device.
+- **Camera**: If available, used for features such as scanning food labels or taking photos. Images are processed as described in our data collection practices.
 
 ## Sharing Your Information
 
