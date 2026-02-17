@@ -75,22 +75,18 @@ const closeContactForm = () => {
           <div class="mt-8">
             <h3 class="text-sm font-semibold text-primary-light/70 uppercase tracking-wider mb-3">SaaS</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div
-                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 cursor-default"
+              <a
+                href="https://bcpflow.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
               >
-                <div class="w-16 h-16 rounded-xl flex-shrink-0 bg-primary/10 border border-primary/15 flex items-center justify-center">
-                  <svg class="w-8 h-8 text-primary/40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
+                <img src="/app-logos/bcpflow/bcpflow-logo.svg" alt="BCP Flow Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
                 <div>
-                  <div class="flex items-center gap-2">
-                    <p class="text-lg font-bold text-primary">BCP Flow</p>
-                    <span class="text-xs font-semibold text-primary-light/60 bg-primary/10 px-2 py-0.5 rounded-full">Coming Soon</span>
-                  </div>
+                  <p class="text-lg font-bold text-primary">BCP Flow</p>
                   <p class="text-sm text-primary-light leading-snug">Business continuity planning with team management and exports</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
