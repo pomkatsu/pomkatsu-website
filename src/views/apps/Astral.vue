@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, reactive, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import ContactForm from '../../components/ContactForm.vue'
 
 const showContactForm = ref(false)
@@ -11,11 +11,15 @@ const onScroll = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('keydown', onLightboxKeydown)
+  window.addEventListener('resize', updateAllScrollStates)
   onScroll()
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('keydown', onLightboxKeydown)
+  window.removeEventListener('resize', updateAllScrollStates)
 })
 
 const topics = [
@@ -28,6 +32,162 @@ const topics = [
   { name: 'Career Compass', description: 'Navigate your professional path with cosmic insight', image: '/app-logos/astral/career-compass-card-bg.webp' },
   { name: 'Soul Growth', description: 'Deepen your spiritual journey and self-awareness', image: '/app-logos/astral/soul-growth-card-bg.webp' },
 ]
+
+const carouselImages = [
+  { src: '/app-logos/astral/screenshots/home_page.webp', alt: 'Astral Home Screen' },
+  { src: '/app-logos/astral/screenshots/soulmate_main.webp', alt: 'AI Soulmate Generator' },
+  { src: '/app-logos/astral/screenshots/taort_main.webp', alt: 'Tarot Guidance' },
+  { src: '/app-logos/astral/screenshots/horoscope_main.webp', alt: 'Horoscope Reading' },
+  { src: '/app-logos/astral/screenshots/soulmate_6.webp', alt: 'Soulmate Portrait' },
+  { src: '/app-logos/astral/screenshots/tarot_card_picker.webp', alt: 'Tarot Card Picker' },
+  { src: '/app-logos/astral/screenshots/pet_horoscope_main.webp', alt: 'Pet Horoscope' },
+  { src: '/app-logos/astral/screenshots/love_chat.webp', alt: 'Cosmic AI Chat' },
+]
+
+const activeTab = ref('tarot')
+
+const featureTabs = [
+  {
+    id: 'tarot',
+    name: 'Tarot Readings',
+    icon: 'tarot',
+    description: 'Multiple spread types including Daily, 3-Card, and Celtic Cross. Ask custom questions and receive AI-powered interpretations with the full 78-card Rider-Waite deck.',
+    screenshots: [
+      { src: '/app-logos/astral/screenshots/taort_main.webp', alt: 'Tarot main screen' },
+      { src: '/app-logos/astral/screenshots/tarot_card_picker.webp', alt: 'Choose your spread' },
+      { src: '/app-logos/astral/screenshots/tarot_result.webp', alt: 'Tarot reading result' },
+    ],
+  },
+  {
+    id: 'soulmate',
+    name: 'AI Soulmate',
+    icon: 'soulmate',
+    description: 'Discover your cosmic match with AI-generated portraits in 5 art styles — Realistic, Sketch, Anime, Ethereal, and Vintage — influenced by your zodiac sign.',
+    screenshots: [
+      { src: '/app-logos/astral/screenshots/soulmate_main.webp', alt: 'Soulmate generator' },
+      { src: '/app-logos/astral/screenshots/soulmate_1.webp', alt: 'Soulmate portrait - Realistic' },
+      { src: '/app-logos/astral/screenshots/soulmate_2.webp', alt: 'Soulmate portrait - Sketch' },
+      { src: '/app-logos/astral/screenshots/soulmate_3.webp', alt: 'Soulmate portrait - Anime' },
+      { src: '/app-logos/astral/screenshots/soulmate_4.webp', alt: 'Soulmate portrait - Ethereal' },
+      { src: '/app-logos/astral/screenshots/soulmate_5.webp', alt: 'Soulmate portrait - Vintage' },
+    ],
+  },
+  {
+    id: 'horoscopes',
+    name: 'Zodiac & Horoscopes',
+    icon: 'horoscopes',
+    description: 'Personal readings based on your birth chart, pet horoscopes, and compatibility analysis to understand your cosmic connections.',
+    screenshots: [
+      { src: '/app-logos/astral/screenshots/horoscope_main.webp', alt: 'Horoscope main screen' },
+      { src: '/app-logos/astral/screenshots/horoscope_reading.webp', alt: 'Horoscope reading' },
+      { src: '/app-logos/astral/screenshots/pet_horoscope_main.webp', alt: 'Pet horoscope' },
+      { src: '/app-logos/astral/screenshots/pet_horoscope.webp', alt: 'Pet horoscope reading' },
+    ],
+  },
+  {
+    id: 'chat',
+    name: 'Cosmic AI Chat',
+    icon: 'chat',
+    description: '8 guided conversation topics covering love, career, dreams, and more — powered by astrology-aware AI for personalized cosmic guidance.',
+    screenshots: [
+      { src: '/app-logos/astral/screenshots/welcome.webp', alt: 'Welcome onboarding' },
+      { src: '/app-logos/astral/screenshots/love_chat.webp', alt: 'Love Match chat' },
+      { src: '/app-logos/astral/screenshots/love_chat_2.webp', alt: 'Cosmic AI conversation' },
+    ],
+  },
+]
+
+// Lightbox state
+const lightboxOpen = ref(false)
+const lightboxImages = ref([])
+const lightboxIndex = ref(0)
+
+function openLightbox(images, index) {
+  lightboxImages.value = images
+  lightboxIndex.value = index
+  lightboxOpen.value = true
+}
+
+function closeLightbox() {
+  lightboxOpen.value = false
+}
+
+function lightboxPrev() {
+  lightboxIndex.value = (lightboxIndex.value - 1 + lightboxImages.value.length) % lightboxImages.value.length
+}
+
+function lightboxNext() {
+  lightboxIndex.value = (lightboxIndex.value + 1) % lightboxImages.value.length
+}
+
+function onLightboxKeydown(e) {
+  if (!lightboxOpen.value) return
+  if (e.key === 'Escape') closeLightbox()
+  else if (e.key === 'ArrowLeft') lightboxPrev()
+  else if (e.key === 'ArrowRight') lightboxNext()
+}
+
+// Screenshot carousel scroll state
+const scrollRefs = {}
+const canScrollLeft = reactive({})
+const canScrollRight = reactive({})
+function setScrollRef(tabId, el) {
+  if (!el) return
+  if (scrollRefs[tabId] === el) return
+  scrollRefs[tabId] = el
+  el.addEventListener('scroll', () => updateScrollState(tabId), { passive: true })
+  nextTick(() => updateScrollState(tabId))
+}
+
+function updateScrollState(tabId) {
+  const el = scrollRefs[tabId]
+  if (!el) return
+  canScrollLeft[tabId] = el.scrollLeft > 2
+  canScrollRight[tabId] = el.scrollLeft + el.clientWidth < el.scrollWidth - 2
+}
+
+function scrollCarousel(tabId, direction) {
+  const el = scrollRefs[tabId]
+  if (!el) return
+  const firstChild = el.querySelector('.screenshot-card')
+  const step = firstChild ? firstChild.offsetWidth + 16 : 200
+  el.scrollBy({ left: direction * step, behavior: 'smooth' })
+}
+
+function updateAllScrollStates() {
+  for (const tabId of Object.keys(scrollRefs)) {
+    updateScrollState(tabId)
+  }
+}
+
+// Drag-to-scroll for screenshot rows
+function initDragScroll(el) {
+  let isDown = false
+  let startX = 0
+  let scrollLeft = 0
+
+  el.addEventListener('mousedown', (e) => {
+    isDown = true
+    el.classList.add('cursor-grabbing')
+    startX = e.pageX - el.offsetLeft
+    scrollLeft = el.scrollLeft
+  })
+  el.addEventListener('mouseleave', () => { isDown = false; el.classList.remove('cursor-grabbing') })
+  el.addEventListener('mouseup', () => { isDown = false; el.classList.remove('cursor-grabbing') })
+  el.addEventListener('mousemove', (e) => {
+    if (!isDown) return
+    e.preventDefault()
+    const x = e.pageX - el.offsetLeft
+    el.scrollLeft = scrollLeft - (x - startX)
+  })
+}
+
+function setupDragScrollers() {
+  document.querySelectorAll('.tab-screenshots').forEach(initDragScroll)
+}
+
+watch(activeTab, () => { nextTick(() => { setupDragScrollers(); updateAllScrollStates() }) })
+onMounted(setupDragScrollers)
 </script>
 
 <template>
@@ -123,29 +283,35 @@ const topics = [
     <!-- Section divider -->
     <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
 
-    <!-- Screenshots Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
+    <!-- Screenshots Carousel -->
+    <section class="py-16 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
           See It in Action
         </h2>
         <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
           A glimpse into the Astral experience
         </p>
+      </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div class="carousel-track">
+        <div class="carousel-inner">
           <div
-            v-for="n in 4"
-            :key="n"
-            class="screenshot-placeholder relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center"
+            v-for="(img, i) in carouselImages"
+            :key="'a-' + i"
+            class="carousel-item cursor-pointer"
+            @click="openLightbox(carouselImages, i)"
           >
-            <div class="absolute inset-0 bg-gradient-to-b from-astral-card/60 to-astral-deep/60"></div>
-            <div class="relative z-10 text-center px-4">
-              <svg class="w-12 h-12 mx-auto mb-3 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-              <p class="text-white/40 text-sm font-medium">Screenshot coming soon</p>
-            </div>
+            <img :src="img.src" :alt="img.alt" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
+          </div>
+          <div
+            v-for="(img, i) in carouselImages"
+            :key="'b-' + i"
+            class="carousel-item cursor-pointer"
+            aria-hidden="true"
+            @click="openLightbox(carouselImages, i % carouselImages.length)"
+          >
+            <img :src="img.src" :alt="img.alt" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
           </div>
         </div>
       </div>
@@ -154,7 +320,7 @@ const topics = [
     <!-- Section divider -->
     <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
 
-    <!-- Features Section -->
+    <!-- Features Tabbed Section -->
     <section class="py-16 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
@@ -164,65 +330,103 @@ const topics = [
           Discover the features that make Astral your ultimate astrology companion
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
-          <!-- Tarot Readings -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm p-6 rounded-2xl feature-card hover:bg-white/10 transition-colors duration-300">
-            <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <rect x="4" y="2" width="16" height="20" rx="2" />
-                <path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5L12 6z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold mb-2">Tarot Readings</h3>
-            <p class="text-white/60 text-sm leading-relaxed">Multiple spread types including Daily, 3-Card, and Celtic Cross. Ask custom questions and receive AI-powered interpretations with the full 78-card Rider-Waite deck.</p>
-          </div>
+        <!-- Tab buttons -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+          <button
+            v-for="tab in featureTabs"
+            :key="tab.id"
+            @click="activeTab = tab.id"
+            class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+            :class="activeTab === tab.id
+              ? 'bg-astral-cosmic text-white'
+              : 'bg-white/5 border border-white/15 text-white/60 hover:bg-white/10 hover:text-white/80'"
+          >
+            {{ tab.name }}
+          </button>
+        </div>
 
-          <!-- AI Soulmate Generator -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm p-6 rounded-2xl feature-card hover:bg-white/10 transition-colors duration-300">
-            <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12 4 12 4C12 4 12.76 3 14.5 3C17.58 3 20 5.42 20 8.5C20 13.5 12 21 12 21Z" />
-                <circle cx="9" cy="9" r="1" />
-                <circle cx="15" cy="9" r="1" />
-                <path d="M9.5 13C9.5 13 10.5 14.5 12 14.5C13.5 14.5 14.5 13 14.5 13" />
-              </svg>
+        <!-- Tab content -->
+        <template v-for="tab in featureTabs" :key="tab.id">
+        <div v-show="activeTab === tab.id">
+          <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-10 items-center">
+            <!-- Left: Description -->
+            <div class="flex flex-col justify-center max-w-xs">
+              <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-xl flex items-center justify-center mb-5">
+                <!-- Tarot icon -->
+                <svg v-if="tab.icon === 'tarot'" class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <rect x="4" y="2" width="16" height="20" rx="2" />
+                  <path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5L12 6z" />
+                </svg>
+                <!-- Soulmate icon -->
+                <svg v-else-if="tab.icon === 'soulmate'" class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12 4 12 4C12 4 12.76 3 14.5 3C17.58 3 20 5.42 20 8.5C20 13.5 12 21 12 21Z" />
+                  <circle cx="9" cy="9" r="1" />
+                  <circle cx="15" cy="9" r="1" />
+                  <path d="M9.5 13C9.5 13 10.5 14.5 12 14.5C13.5 14.5 14.5 13 14.5 13" />
+                </svg>
+                <!-- Horoscopes icon -->
+                <svg v-else-if="tab.icon === 'horoscopes'" class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="12" r="4" />
+                  <line x1="12" y1="3" x2="12" y2="5" />
+                  <line x1="12" y1="19" x2="12" y2="21" />
+                  <line x1="3" y1="12" x2="5" y2="12" />
+                  <line x1="19" y1="12" x2="21" y2="12" />
+                </svg>
+                <!-- Chat icon -->
+                <svg v-else class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-3">{{ tab.name }}</h3>
+              <p class="text-white/60 text-base leading-relaxed">{{ tab.description }}</p>
             </div>
-            <h3 class="text-lg font-bold mb-2">AI Soulmate Generator</h3>
-            <p class="text-white/60 text-sm leading-relaxed">Discover your cosmic match with AI-generated portraits in 5 art styles — Realistic, Sketch, Anime, Ethereal, and Vintage — influenced by your zodiac sign.</p>
-          </div>
 
-          <!-- Zodiac & Horoscopes -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm p-6 rounded-2xl feature-card hover:bg-white/10 transition-colors duration-300">
-            <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" />
-                <circle cx="12" cy="12" r="4" />
-                <line x1="12" y1="3" x2="12" y2="5" />
-                <line x1="12" y1="19" x2="12" y2="21" />
-                <line x1="3" y1="12" x2="5" y2="12" />
-                <line x1="19" y1="12" x2="21" y2="12" />
-                <line x1="5.6" y1="5.6" x2="7" y2="7" />
-                <line x1="17" y1="17" x2="18.4" y2="18.4" />
-                <line x1="5.6" y1="18.4" x2="7" y2="17" />
-                <line x1="17" y1="7" x2="18.4" y2="5.6" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold mb-2">Zodiac & Horoscopes</h3>
-            <p class="text-white/60 text-sm leading-relaxed">Personal readings based on your birth chart, pet horoscopes, and compatibility analysis to understand your cosmic connections.</p>
-          </div>
+            <!-- Right: Screenshots carousel -->
+            <div class="relative min-w-0">
+              <!-- Left fade + arrow -->
+              <div v-show="canScrollLeft[tab.id]" class="absolute left-0 top-0 bottom-2 z-10 flex items-center transition-opacity duration-200">
+                <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#1a0040] to-transparent pointer-events-none"></div>
+                <button
+                  @click="scrollCarousel(tab.id, -1)"
+                  class="relative ml-2 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                  aria-label="Scroll left"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              </div>
 
-          <!-- Cosmic AI Chat -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm p-6 rounded-2xl feature-card hover:bg-white/10 transition-colors duration-300">
-            <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-                <path d="M9 12l1.5 1.5 3-3" opacity="0.6" />
-              </svg>
+              <!-- Scrollable image row -->
+              <div :ref="el => setScrollRef(tab.id, el)" class="tab-screenshots flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 cursor-grab">
+                <div
+                  v-for="(ss, i) in tab.screenshots"
+                  :key="i"
+                  class="screenshot-card w-40 sm:w-64 flex-shrink-0 rounded-xl overflow-hidden aspect-[9/16] snap-start cursor-pointer"
+                  @click="openLightbox(tab.screenshots, i)"
+                >
+                  <img :src="ss.src" :alt="ss.alt" class="w-full h-full object-cover" loading="lazy" draggable="false" />
+                </div>
+              </div>
+
+              <!-- Right fade + arrow -->
+              <div v-show="canScrollRight[tab.id]" class="absolute right-0 top-0 bottom-2 z-10 flex items-center transition-opacity duration-200">
+                <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#1a0040] to-transparent pointer-events-none"></div>
+                <button
+                  @click="scrollCarousel(tab.id, 1)"
+                  class="relative mr-2 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors ml-auto"
+                  aria-label="Scroll right"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <h3 class="text-lg font-bold mb-2">Cosmic AI Chat</h3>
-            <p class="text-white/60 text-sm leading-relaxed">8 guided conversation topics covering love, career, dreams, and more — powered by astrology-aware AI for personalized cosmic guidance.</p>
           </div>
         </div>
+        </template>
       </div>
     </section>
 
@@ -248,7 +452,7 @@ const topics = [
             <img
               :src="topic.image"
               :alt="topic.name"
-              class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+              class="w-full h-full object-contain rounded-xl transition-transform duration-500 group-hover:scale-105 p-2"
             />
             <!-- Hover glow ring -->
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl ring-1 ring-astral-cosmic/50 shadow-[0_0_15px_rgba(155,89,182,0.3)]"></div>
@@ -340,6 +544,65 @@ const topics = [
       v-if="showContactForm"
       @close="showContactForm = false"
     />
+
+    <!-- Lightbox -->
+    <Teleport to="body">
+      <div
+        v-if="lightboxOpen"
+        class="fixed inset-0 z-[100] flex items-center justify-center"
+        @click.self="closeLightbox"
+      >
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/90" @click="closeLightbox"></div>
+
+        <!-- Close button -->
+        <button
+          @click="closeLightbox"
+          class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Close lightbox"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Previous arrow -->
+        <button
+          v-if="lightboxImages.length > 1"
+          @click="lightboxPrev"
+          class="absolute left-3 sm:left-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Previous image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <!-- Image -->
+        <img
+          :src="lightboxImages[lightboxIndex]?.src"
+          :alt="lightboxImages[lightboxIndex]?.alt"
+          class="relative z-[1] max-h-[85vh] max-w-[90vw] object-contain rounded-xl"
+        />
+
+        <!-- Next arrow -->
+        <button
+          v-if="lightboxImages.length > 1"
+          @click="lightboxNext"
+          class="absolute right-3 sm:right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Next image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <!-- Counter -->
+        <div v-if="lightboxImages.length > 1" class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 text-sm">
+          {{ lightboxIndex + 1 }} / {{ lightboxImages.length }}
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -392,15 +655,61 @@ const topics = [
 .topic-card:nth-child(7) { animation-delay: 0.35s; }
 .topic-card:nth-child(8) { animation-delay: 0.4s; }
 
-/* Screenshot placeholders stagger */
-.screenshot-placeholder {
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 0;
+/* Carousel */
+.carousel-track {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
-.screenshot-placeholder:nth-child(1) { animation-delay: 0.15s; }
-.screenshot-placeholder:nth-child(2) { animation-delay: 0.25s; }
-.screenshot-placeholder:nth-child(3) { animation-delay: 0.35s; }
-.screenshot-placeholder:nth-child(4) { animation-delay: 0.45s; }
+
+.carousel-inner {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.carousel-item {
+  width: 200px;
+  aspect-ratio: 9/16;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .carousel-item {
+    width: 240px;
+  }
+  .carousel-inner {
+    gap: 1.25rem;
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.carousel-track:hover .carousel-inner {
+  animation-play-state: paused;
+}
+
+/* Tab screenshots horizontal scroll */
+.tab-screenshots {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+.tab-screenshots::-webkit-scrollbar {
+  display: none;
+}
+.tab-screenshots img {
+  user-select: none;
+  pointer-events: none;
+}
+
 
 /* Footer link underline animation */
 .astral-footer-link {

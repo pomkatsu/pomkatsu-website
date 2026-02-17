@@ -1,14 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
-import PrivacyPolicy from '../views/PrivacyPolicy.vue'
-import TermsOfService from '../views/TermsOfService.vue'
-import CookiePolicy from '../views/CookiePolicy.vue'
-import DMCA from '../views/DMCA.vue'
-import AcceptableUse from '../views/AcceptableUse.vue'
-import EULA from '../views/EULA.vue'
-import DeleteAccount from '../views/DeleteAccount.vue'
-import EasyTranslateAI from '../views/apps/EasyTranslateAI.vue'
-import Astral from '../views/apps/Astral.vue'
 
 const routes = [
   {
@@ -19,47 +10,47 @@ const routes = [
   {
     path: '/privacy',
     name: 'Privacy',
-    component: PrivacyPolicy
+    component: () => import('../views/PrivacyPolicy.vue')
   },
   {
     path: '/terms',
     name: 'Terms',
-    component: TermsOfService
+    component: () => import('../views/TermsOfService.vue')
   },
   {
     path: '/cookies',
     name: 'Cookies',
-    component: CookiePolicy
+    component: () => import('../views/CookiePolicy.vue')
   },
   {
     path: '/dmca',
     name: 'DMCA',
-    component: DMCA
+    component: () => import('../views/DMCA.vue')
   },
   {
     path: '/aup',
     name: 'AcceptableUse',
-    component: AcceptableUse
+    component: () => import('../views/AcceptableUse.vue')
   },
   {
     path: '/eula',
     name: 'EULA',
-    component: EULA
+    component: () => import('../views/EULA.vue')
   },
   {
     path: '/delete-account',
     name: 'DeleteAccount',
-    component: DeleteAccount
+    component: () => import('../views/DeleteAccount.vue')
   },
   {
     path: '/apps/easytranslate',
     name: 'EasyTranslateAI',
-    component: EasyTranslateAI
+    component: () => import('../views/apps/EasyTranslateAI.vue')
   },
   {
     path: '/apps/astral',
     name: 'Astral',
-    component: Astral
+    component: () => import('../views/apps/Astral.vue')
   }
 ]
 
