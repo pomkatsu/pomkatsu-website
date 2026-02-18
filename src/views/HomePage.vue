@@ -36,18 +36,18 @@ const closeContactForm = () => {
 
     <!-- Hero Section -->
     <main class="flex-1 flex flex-col items-center justify-center px-4 py-8 sm:py-12">
-      <div class="text-center max-w-4xl mx-auto">
+      <div class="text-center max-w-[1080px] mx-auto">
         <!-- Logo -->
         <div class="mb-6">
           <img src="/pomkatsu-logo.webp" alt="Pomkatsu Logo" class="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto object-contain" fetchpriority="high" />
         </div>
 
         <!-- Products -->
-        <div class="max-w-3xl mx-auto text-left">
+        <div class="max-w-[1080px] mx-auto text-left">
           <!-- Mobile Apps -->
           <div>
             <h3 class="text-sm font-semibold text-primary-light/70 uppercase tracking-wider mb-3">Mobile Apps</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <router-link
                 to="/apps/easytranslate"
                 class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
@@ -68,6 +68,16 @@ const closeContactForm = () => {
                   <p class="text-sm text-primary-light leading-snug">Tarot readings, horoscopes, and cosmic guidance</p>
                 </div>
               </router-link>
+              <router-link
+                to="/apps/foodtally"
+                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
+              >
+                <img src="/app-logos/foodtally/logo-tally.webp" alt="FoodTally Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
+                <div>
+                  <p class="text-lg font-bold text-primary">FoodTally</p>
+                  <p class="text-sm text-primary-light leading-snug">AI-powered calorie tracking with voice, text, and photo</p>
+                </div>
+              </router-link>
             </div>
           </div>
 
@@ -85,6 +95,18 @@ const closeContactForm = () => {
                 <div>
                   <p class="text-lg font-bold text-primary">BCP Flow</p>
                   <p class="text-sm text-primary-light leading-snug">Business continuity planning with team management and exports</p>
+                </div>
+              </a>
+              <a
+                href="https://bentobook.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
+              >
+                <img src="/app-logos/bentobook-logo.webp" alt="BentoBook Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
+                <div>
+                  <p class="text-lg font-bold text-primary">BentoBook</p>
+                  <p class="text-sm text-primary-light leading-snug">Trading journal to track, analyze, and improve your trades</p>
                 </div>
               </a>
             </div>
