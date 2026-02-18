@@ -51,6 +51,11 @@ const routes = [
     path: '/apps/astral',
     name: 'Astral',
     component: () => import('../views/apps/Astral.vue')
+  },
+  {
+    path: '/apps/foodtally',
+    name: 'FoodTally',
+    component: () => import('../views/apps/FoodTally.vue')
   }
 ]
 
