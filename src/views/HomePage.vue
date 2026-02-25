@@ -91,8 +91,10 @@ const closeContactForm = () => {
                   <p class="text-sm text-primary-light leading-snug">Translate documents instantly in 100+ languages</p>
                 </div>
               </router-link>
-              <router-link
-                to="/apps/astral"
+              <a
+                href="https://astralapp.love"
+                target="_blank"
+                rel="noopener"
                 class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
               >
                 <img src="/app-logos/astral/astral-icon-square.webp" alt="Astral Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
@@ -100,7 +102,7 @@ const closeContactForm = () => {
                   <p class="text-lg font-bold text-primary">Astral</p>
                   <p class="text-sm text-primary-light leading-snug">Tarot readings, horoscopes, and cosmic guidance</p>
                 </div>
-              </router-link>
+              </a>
               <router-link
                 to="/apps/foodtally"
                 class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"

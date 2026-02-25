@@ -69,10 +69,13 @@ function buildRoutes() {
       name: 'EasyTranslateAI',
       component: () => import('../views/apps/EasyTranslateAI.vue')
     },
+    // Astral has its own domain (astralapp.love) — redirect old URL
     {
       path: '/apps/astral',
-      name: 'Astral',
-      component: () => import('../views/apps/Astral.vue')
+      beforeEnter() {
+        window.location.href = 'https://astralapp.love'
+      },
+      component: () => import('../views/HomePage.vue')
     },
     {
       path: '/apps/foodtally',
