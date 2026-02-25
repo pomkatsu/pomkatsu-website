@@ -2,6 +2,14 @@
   command = "npm run build"
   publish = "dist"
 
+[[edge_functions]]
+  function = "inject-meta"
+  path = "/*"
+
+[[edge_functions]]
+  function = "robots"
+  path = "/robots.txt"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

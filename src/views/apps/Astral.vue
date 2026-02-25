@@ -1,6 +1,45 @@
 <script setup>
 import { ref, reactive, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import ContactForm from '../../components/ContactForm.vue'
+import { getDomainConfig } from '../../config/domains'
+
+const domainConfig = getDomainConfig()
+const isAppDomain = !!domainConfig
+
+useSeoMeta({
+  title: 'Astral — AI Astrology, Tarot & Soulmate Portraits',
+  description: 'Your personal astrology companion. Tarot readings, AI soulmate portraits, zodiac insights, and cosmic guidance all in one app.',
+  ogTitle: 'Astral — AI Astrology, Tarot & Soulmate Portraits',
+  ogDescription: 'Discover your AI soulmate, pull tarot cards, and get personalized cosmic guidance.',
+  ogImage: '/app-logos/astral/og-image.png',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Astral',
+      operatingSystem: 'iOS, Android',
+      applicationCategory: 'LifestyleApplication',
+      description: 'AI-powered astrology and tarot app with soulmate portraits, 47 tarot spreads, personalized horoscopes, and cosmic AI chat.',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'Pomkatsu',
+        url: 'https://pomkatsu.com',
+      },
+    }),
+  }],
+})
 
 const showContactForm = ref(false)
 const scrolled = ref(false)
@@ -210,7 +249,7 @@ onMounted(setupDragScrollers)
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <router-link to="/" class="text-2xl font-bold text-white hover:text-astral-gold transition-colors">
-            Pomkatsu
+            {{ isAppDomain ? 'Astral' : 'Pomkatsu' }}
           </router-link>
           <button
             @click="showContactForm = true"

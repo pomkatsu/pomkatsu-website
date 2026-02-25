@@ -1,12 +1,22 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useSeoMeta } from '@unhead/vue'
 import ContactForm from './ContactForm.vue'
+import { getDomainConfig } from '../config/domains'
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true
   }
+})
+
+const domainConfig = getDomainConfig()
+const isAppDomain = !!domainConfig
+const navLogo = domainConfig?.navLogo || 'Pomkatsu'
+
+useSeoMeta({
+  title: () => `${props.title} — ${navLogo}`,
 })
 
 const showContactForm = ref(false)
@@ -47,19 +57,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-secondary">
+  <div :class="['min-h-screen', isAppDomain ? 'bg-astral-deep text-white' : 'bg-secondary']">
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 bg-secondary z-40">
+    <nav :class="['fixed w-full top-0 z-40', isAppDomain ? 'bg-astral-header' : 'bg-secondary']">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <router-link to="/" class="text-2xl font-bold text-primary hover:text-primary-light transition-colors duration-200">
-              Pomkatsu
+            <router-link to="/" :class="['text-2xl font-bold transition-colors duration-200', isAppDomain ? 'text-white hover:text-astral-gold' : 'text-primary hover:text-primary-light']">
+              {{ navLogo }}
             </router-link>
           </div>
           <button
             @click="openContactForm"
-            class="px-6 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-light transition-colors duration-200"
+            :class="['px-6 py-2 rounded-lg transition-colors duration-200', isAppDomain ? 'bg-astral-deep text-white hover:bg-astral-cosmic' : 'bg-primary text-secondary hover:bg-primary-light']"
           >
             Contact Us
           </button>
@@ -72,23 +82,23 @@ onMounted(() => {
     <main class="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <!-- Mobile Back Button (always visible on mobile) -->
-        <router-link 
-          to="/" 
-          class="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-all duration-300 mb-6 group animate-fadeIn xl:hidden"
+        <router-link
+          to="/"
+          :class="['inline-flex items-center gap-2 transition-all duration-300 mb-6 group animate-fadeIn xl:hidden', isAppDomain ? 'text-white/70 hover:text-white' : 'text-primary hover:text-primary-light']"
         >
-          <svg 
-            class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" 
-            fill="none" 
-            stroke="currentColor" 
+          <svg
+            class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1"
+            fill="none"
+            stroke="currentColor"
             viewBox="0 0 24 24"
           >
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           <span class="font-medium">Back to Home</span>
         </router-link>
-        
-        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-8 animate-fadeInUp">{{ title }}</h1>
-        <div class="prose prose-lg max-w-none text-primary-dark animate-fadeInContent">
+
+        <h1 :class="['text-3xl md:text-4xl font-bold mb-8 animate-fadeInUp', isAppDomain ? 'text-white' : 'text-primary']">{{ title }}</h1>
+        <div :class="['prose prose-lg max-w-none animate-fadeInContent', isAppDomain ? 'text-white/80 prose-headings:text-white prose-strong:text-white prose-a:text-astral-gold' : 'text-primary-dark']">
           <slot></slot>
         </div>
       </div>
@@ -98,7 +108,7 @@ onMounted(() => {
     <button
       v-if="showScrollTop"
       @click="scrollToTop"
-      class="fixed bottom-8 right-8 z-30 p-3 bg-primary text-secondary rounded-full shadow-lg hover:bg-primary-light hover:scale-110 transition-all duration-300 animate-bounceIn"
+      :class="['fixed bottom-8 right-8 z-30 p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 animate-bounceIn', isAppDomain ? 'bg-astral-cosmic text-white hover:bg-astral-light' : 'bg-primary text-secondary hover:bg-primary-light']"
       aria-label="Scroll to top"
     >
       <svg 
@@ -112,53 +122,53 @@ onMounted(() => {
     </button>
 
     <!-- Footer with Legal Links -->
-    <footer class="bg-primary-dark text-secondary-light py-8">
+    <footer :class="['py-8 border-t', isAppDomain ? 'bg-astral-deep/60 border-white/10' : 'bg-primary-dark text-secondary-light']">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
-          <router-link 
-            to="/privacy" 
-            :class="['footer-link', { 'footer-link-active': $route.path === '/privacy' }]"
+          <router-link
+            to="/privacy"
+            :class="[isAppDomain ? 'astral-footer-link' : 'footer-link', { [isAppDomain ? 'astral-footer-link-active' : 'footer-link-active']: $route.path === '/privacy' }]"
           >
             Privacy Policy
           </router-link>
-          <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/terms" 
-            :class="['footer-link', { 'footer-link-active': $route.path === '/terms' }]"
+          <span :class="isAppDomain ? 'text-white/30' : 'text-secondary/50'">|</span>
+          <router-link
+            to="/terms"
+            :class="[isAppDomain ? 'astral-footer-link' : 'footer-link', { [isAppDomain ? 'astral-footer-link-active' : 'footer-link-active']: $route.path === '/terms' }]"
           >
             Terms of Service
           </router-link>
-          <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/cookies" 
-            :class="['footer-link', { 'footer-link-active': $route.path === '/cookies' }]"
+          <span :class="isAppDomain ? 'text-white/30' : 'text-secondary/50'">|</span>
+          <router-link
+            to="/cookies"
+            :class="[isAppDomain ? 'astral-footer-link' : 'footer-link', { [isAppDomain ? 'astral-footer-link-active' : 'footer-link-active']: $route.path === '/cookies' }]"
           >
             Cookie Policy
           </router-link>
-          <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/dmca" 
-            :class="['footer-link', { 'footer-link-active': $route.path === '/dmca' }]"
+          <span :class="isAppDomain ? 'text-white/30' : 'text-secondary/50'">|</span>
+          <router-link
+            to="/dmca"
+            :class="[isAppDomain ? 'astral-footer-link' : 'footer-link', { [isAppDomain ? 'astral-footer-link-active' : 'footer-link-active']: $route.path === '/dmca' }]"
           >
             DMCA
           </router-link>
-          <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/aup" 
-            :class="['footer-link', { 'footer-link-active': $route.path === '/aup' }]"
+          <span :class="isAppDomain ? 'text-white/30' : 'text-secondary/50'">|</span>
+          <router-link
+            to="/aup"
+            :class="[isAppDomain ? 'astral-footer-link' : 'footer-link', { [isAppDomain ? 'astral-footer-link-active' : 'footer-link-active']: $route.path === '/aup' }]"
           >
             Acceptable Use
           </router-link>
-          <span class="text-secondary/50">|</span>
-          <router-link 
-            to="/eula" 
-            :class="['footer-link', { 'footer-link-active': $route.path === '/eula' }]"
+          <span :class="isAppDomain ? 'text-white/30' : 'text-secondary/50'">|</span>
+          <router-link
+            to="/eula"
+            :class="[isAppDomain ? 'astral-footer-link' : 'footer-link', { [isAppDomain ? 'astral-footer-link-active' : 'footer-link-active']: $route.path === '/eula' }]"
           >
             EULA
           </router-link>
         </div>
-        <div class="text-center mt-6 text-secondary/70 text-xs">
-          © 2025 Pomkatsu. All rights reserved.
+        <div :class="['text-center mt-6 text-xs', isAppDomain ? 'text-white/40' : 'text-secondary/70']">
+          &copy; 2025 Pomkatsu. All rights reserved.
         </div>
       </div>
     </footer>
@@ -278,6 +288,39 @@ onMounted(() => {
 }
 
 .footer-link-active::after {
+  width: 100%;
+}
+
+/* Astral domain footer links */
+.astral-footer-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s ease;
+}
+
+.astral-footer-link:hover {
+  color: white;
+}
+
+.astral-footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.astral-footer-link:hover::after {
+  width: 100%;
+}
+
+.astral-footer-link-active {
+  color: white;
+}
+
+.astral-footer-link-active::after {
   width: 100%;
 }
 </style>

@@ -1,6 +1,39 @@
 <script setup>
 import { ref } from 'vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import ContactForm from '../components/ContactForm.vue'
+
+useSeoMeta({
+  title: 'Pomkatsu — Mobile App Development',
+  description: 'Pomkatsu builds innovative mobile apps for iOS and Android. Explore our apps: Astral, EasyTranslate AI, and FoodTally.',
+  ogTitle: 'Pomkatsu — Mobile App Development',
+  ogDescription: 'Innovative mobile apps for iOS and Android.',
+  ogImage: '/og-image.png',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Pomkatsu',
+      url: 'https://pomkatsu.com',
+      logo: 'https://pomkatsu.com/pomkatsu-logo.webp',
+      description: 'Mobile app development company building innovative apps for iOS and Android.',
+    }),
+  }, {
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Pomkatsu',
+      url: 'https://pomkatsu.com',
+    }),
+  }],
+})
 
 const showContactForm = ref(false)
 

@@ -1,6 +1,41 @@
 <script setup>
 import { ref } from 'vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import AppLayout from '../../components/apps/AppLayout.vue'
+
+useSeoMeta({
+  title: 'FoodTally — Simple Macro & Calorie Tracking',
+  description: 'Track calories, protein, carbs, and fat with a visual calorie ring. Weight tracking, saved meals, streaks, and personalized goals.',
+  ogTitle: 'FoodTally — Simple Macro & Calorie Tracking',
+  ogDescription: 'Track your macros and calories the simple way. Visual rings, saved meals, and streaks.',
+  ogImage: '/app-logos/foodtally/og-image.png',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'FoodTally',
+      operatingSystem: 'iOS, Android',
+      applicationCategory: 'HealthApplication',
+      description: 'Simple macro and calorie tracking with visual calorie rings, weight tracking, saved meals, streaks, and personalized goals.',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'Pomkatsu',
+        url: 'https://pomkatsu.com',
+      },
+    }),
+  }],
+})
 
 const activeFeature = ref(0)
 const features = [

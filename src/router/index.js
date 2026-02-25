@@ -1,12 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '../views/HomePage.vue'
+import { getDomainConfig } from '../config/domains'
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: HomePage
-  },
+const legalRoutes = [
   {
     path: '/privacy',
     name: 'Privacy',
@@ -41,27 +36,55 @@ const routes = [
     path: '/delete-account',
     name: 'DeleteAccount',
     component: () => import('../views/DeleteAccount.vue')
-  },
-  {
-    path: '/apps/easytranslate',
-    name: 'EasyTranslateAI',
-    component: () => import('../views/apps/EasyTranslateAI.vue')
-  },
-  {
-    path: '/apps/astral',
-    name: 'Astral',
-    component: () => import('../views/apps/Astral.vue')
-  },
-  {
-    path: '/apps/foodtally',
-    name: 'FoodTally',
-    component: () => import('../views/apps/FoodTally.vue')
   }
 ]
 
+function buildRoutes() {
+  const domainConfig = getDomainConfig()
+
+  if (domainConfig) {
+    // App-specific domain: / shows the app landing page
+    return [
+      {
+        path: '/',
+        name: 'Home',
+        component: domainConfig.homeComponent
+      },
+      ...legalRoutes,
+      // Catch-all redirect to / for app domains
+      { path: '/:pathMatch(.*)*', redirect: '/' }
+    ]
+  }
+
+  // Default pomkatsu.com routes
+  return [
+    {
+      path: '/',
+      name: 'Home',
+      component: () => import('../views/HomePage.vue')
+    },
+    ...legalRoutes,
+    {
+      path: '/apps/easytranslate',
+      name: 'EasyTranslateAI',
+      component: () => import('../views/apps/EasyTranslateAI.vue')
+    },
+    {
+      path: '/apps/astral',
+      name: 'Astral',
+      component: () => import('../views/apps/Astral.vue')
+    },
+    {
+      path: '/apps/foodtally',
+      name: 'FoodTally',
+      component: () => import('../views/apps/FoodTally.vue')
+    }
+  ]
+}
+
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes: buildRoutes(),
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition

@@ -1,7 +1,42 @@
 <script setup>
+import { useHead, useSeoMeta } from '@unhead/vue'
 import AppLayout from '../../components/apps/AppLayout.vue'
 import AppHero from '../../components/apps/AppHero.vue'
 import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
+
+useSeoMeta({
+  title: 'EasyTranslate AI — Instant Document Translation',
+  description: 'Translate documents instantly with AI. Support for multiple languages, formats, and real-time translation powered by advanced AI.',
+  ogTitle: 'EasyTranslate AI — Instant Document Translation',
+  ogDescription: 'Translate documents instantly with AI-powered accuracy.',
+  ogImage: '/app-logos/easytranslate/og-image.png',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'EasyTranslate AI',
+      operatingSystem: 'iOS, Android',
+      applicationCategory: 'UtilitiesApplication',
+      description: 'AI-powered document translation app with support for multiple languages and formats.',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'Pomkatsu',
+        url: 'https://pomkatsu.com',
+      },
+    }),
+  }],
+})
 </script>
 
 <template>
