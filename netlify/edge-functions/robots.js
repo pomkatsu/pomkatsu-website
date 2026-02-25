@@ -9,7 +9,7 @@ Sitemap: https://astralapp.love/sitemap.xml`,
 }
 
 export default async (request, context) => {
-  const host = new URL(request.url).hostname
+  const host = new URL(request.url).hostname.replace(/^www\./, '')
   const robots = domainRobots[host]
 
   if (robots) {

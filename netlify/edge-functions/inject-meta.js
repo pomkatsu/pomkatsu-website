@@ -21,7 +21,7 @@ export default async (request, context) => {
     return response
   }
 
-  const host = new URL(request.url).hostname
+  const host = new URL(request.url).hostname.replace(/^www\./, '')
   const meta = domainMeta[host]
 
   // No override needed for pomkatsu.com (pre-rendered HTML is already correct)

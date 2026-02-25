@@ -24,7 +24,7 @@ const domainConfigs = {
 }
 
 export function getDomainConfig() {
-  const host = window.location.hostname
+  const host = window.location.hostname.replace(/^www\./, '')
   return domainConfigs[host] || null
 }
 
