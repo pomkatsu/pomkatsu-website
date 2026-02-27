@@ -528,12 +528,12 @@ import TableOfContents from '../components/TableOfContents.vue'
   max-width: 100%;
   font-size: 1rem;
   line-height: 1.75;
-  color: #46301C; /* primary */
+  color: var(--legal-text); /* primary */
 }
 
 .legal-header {
   background: transparent;
-  border: 1px solid #F5E5C8; /* secondary-dark */
+  border: 1px solid var(--legal-border); /* secondary-dark */
   border-radius: 12px;
   padding: 2rem;
   margin-bottom: 2rem;
@@ -541,7 +541,7 @@ import TableOfContents from '../components/TableOfContents.vue'
 
 .company-info {
   font-size: 1.25rem;
-  color: #2E1F12; /* primary-dark */
+  color: var(--legal-text-strong); /* primary-dark */
   margin-bottom: 1rem;
 }
 
@@ -549,24 +549,24 @@ import TableOfContents from '../components/TableOfContents.vue'
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary); /* primary-light */
   font-size: 0.875rem;
 }
 
 /* Typography */
 .legal-content h2 {
-  color: #46301C; /* primary */
+  color: var(--legal-text); /* primary */
   font-size: 1.75rem;
   font-weight: 700;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #F5E5C8; /* secondary-dark */
+  border-bottom: 2px solid var(--legal-border); /* secondary-dark */
   scroll-margin-top: 80px;
 }
 
 .legal-content h3 {
-  color: #46301C; /* primary */
+  color: var(--legal-text); /* primary */
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2rem;
@@ -574,7 +574,7 @@ import TableOfContents from '../components/TableOfContents.vue'
 }
 
 .legal-content h4 {
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary); /* primary-light */
   font-size: 1.125rem;
   font-weight: 600;
   margin-top: 1.5rem;
@@ -583,7 +583,7 @@ import TableOfContents from '../components/TableOfContents.vue'
 
 .legal-content p {
   margin-bottom: 1rem;
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary); /* primary-light */
 }
 
 /* Lists */
@@ -599,7 +599,7 @@ import TableOfContents from '../components/TableOfContents.vue'
   position: relative;
   padding-left: 1.75rem;
   margin-bottom: 0.5rem;
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary); /* primary-light */
 }
 
 .styled-list li::before,
@@ -607,7 +607,7 @@ import TableOfContents from '../components/TableOfContents.vue'
   content: "•";
   position: absolute;
   left: 0.5rem;
-  color: #46301C; /* primary */
+  color: var(--legal-text); /* primary */
   font-weight: bold;
 }
 
@@ -623,15 +623,15 @@ import TableOfContents from '../components/TableOfContents.vue'
 .info-box,
 .highlight-box,
 .process-box {
-  background: #FFF8ED; /* secondary-light */
-  border-left: 4px solid #5A3E26; /* primary-light */
+  background: var(--legal-bg-box); /* secondary-light */
+  border-left: 4px solid var(--legal-border-accent); /* primary-light */
   border-radius: 8px;
   padding: 1.5rem;
   margin: 1.5rem 0;
 }
 
 .warning-box {
-  background: #FFF8ED; /* secondary-light */
+  background: var(--legal-bg-box); /* secondary-light */
   border-left: 4px solid #be123c; /* pomkatsu-700 */
   border-radius: 8px;
   padding: 1.5rem;
@@ -639,8 +639,8 @@ import TableOfContents from '../components/TableOfContents.vue'
 }
 
 .disclaimer-box {
-  background: #FCF1DC; /* secondary */
-  border: 2px dashed #5A3E26; /* primary-light */
+  background: var(--legal-bg-surface); /* secondary */
+  border: 2px dashed var(--legal-border-accent); /* primary-light */
   border-radius: 8px;
   padding: 1.5rem;
   margin: 1.5rem 0;
@@ -649,7 +649,7 @@ import TableOfContents from '../components/TableOfContents.vue'
 
 .disclaimer-box p,
 .disclaimer-box li {
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary); /* primary-light */
 }
 
 /* Contact Section */
@@ -658,35 +658,35 @@ import TableOfContents from '../components/TableOfContents.vue'
 }
 
 .contact-card {
-  background: #FFF8ED; /* secondary-light */
-  border: 1px solid #F5E5C8; /* secondary-dark */
+  background: var(--legal-bg-box); /* secondary-light */
+  border: 1px solid var(--legal-border); /* secondary-dark */
   border-radius: 8px;
   padding: 1.5rem;
   margin: 1rem 0;
-  box-shadow: 0 1px 2px rgba(70, 48, 28, 0.05);
+  box-shadow: 0 1px 2px var(--legal-shadow);
 }
 
 .contact-card h4 {
-  color: #46301C; /* primary */
+  color: var(--legal-text); /* primary */
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
 .contact-card p {
   margin: 0.25rem 0;
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary); /* primary-light */
 }
 
 /* Links */
 .legal-link {
-  color: #46301C; /* primary */
+  color: var(--legal-link); /* primary */
   text-decoration: none;
-  border-bottom: 1px dotted #5A3E26;
+  border-bottom: 1px dotted var(--legal-link-border);
   transition: all 0.2s ease;
 }
 
 .legal-link:hover {
-  color: #2E1F12; /* primary-dark */
+  color: var(--legal-link-hover); /* primary-dark */
   border-bottom-style: solid;
 }
 

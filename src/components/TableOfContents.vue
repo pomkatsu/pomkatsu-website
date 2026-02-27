@@ -211,11 +211,11 @@ const scrollToSection = (id) => {
   gap: 0.5rem;
   margin-bottom: 1rem;
   padding: 0.625rem 0.875rem;
-  background: rgba(252, 241, 220, 0.9); /* semi-transparent secondary */
+  background: var(--legal-bg-surface-alpha);
   backdrop-filter: blur(8px);
-  border: 1px solid #F5E5C8; /* secondary-dark */
+  border: 1px solid var(--legal-border);
   border-radius: 8px;
-  color: #46301C; /* primary */
+  color: var(--legal-text);
   font-weight: 500;
   font-size: 0.875rem;
   transition: all 0.2s ease;
@@ -223,9 +223,9 @@ const scrollToSection = (id) => {
 }
 
 .back-button-sticky:hover {
-  background: #FCF1DC; /* secondary */
-  color: #2E1F12; /* primary-dark */
-  border-color: #5A3E26; /* primary-light */
+  background: var(--legal-bg-surface);
+  color: var(--legal-text-strong);
+  border-color: var(--legal-border-accent);
 }
 
 .back-button-sticky:hover svg {
@@ -244,17 +244,17 @@ const scrollToSection = (id) => {
 }
 
 .toc-content {
-  background: rgba(252, 241, 220, 0.5); /* Semi-transparent cream */
+  background: var(--legal-bg-surface-alpha);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   padding: 1.5rem;
-  border: 1px solid #F5E5C8;
+  border: 1px solid var(--legal-border);
 }
 
 .toc-title {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
@@ -274,7 +274,7 @@ const scrollToSection = (id) => {
   padding: 0.625rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.4;
-  color: #5A3E26; /* primary-light */
+  color: var(--legal-text-secondary);
   border: none;
   border-left: 2px solid transparent;
   transition: all 0.2s ease;
@@ -296,9 +296,9 @@ const scrollToSection = (id) => {
 }
 
 .toc-link:hover {
-  color: #46301C; /* primary */
-  background-color: rgba(252, 241, 220, 0.6);
-  border-left-color: #5A3E26;
+  color: var(--legal-text);
+  background-color: var(--legal-bg-surface-hover);
+  border-left-color: var(--legal-border-accent);
 }
 
 .toc-link:hover .toc-number {
@@ -306,9 +306,9 @@ const scrollToSection = (id) => {
 }
 
 .toc-link.active {
-  color: #2E1F12; /* primary-dark */
-  background-color: #F5E5C8; /* secondary-dark */
-  border-left-color: #46301C;
+  color: var(--legal-text-strong);
+  background-color: var(--legal-bg-surface-active);
+  border-left-color: var(--legal-text);
   font-weight: 500;
 }
 
@@ -327,7 +327,7 @@ const scrollToSection = (id) => {
 }
 
 .toc-sidebar::-webkit-scrollbar-thumb {
-  background: #5A3E26;
+  background: var(--legal-scrollbar);
   border-radius: 3px;
   opacity: 0.5;
 }

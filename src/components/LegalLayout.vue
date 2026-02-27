@@ -15,6 +15,47 @@ const domainConfig = getDomainConfig()
 const isAppDomain = !!domainConfig
 const navLogo = domainConfig?.navLogo || 'Pomkatsu'
 
+// CSS custom properties for legal page theming — one source of truth
+const themeVars = isAppDomain ? {
+  '--legal-text': 'rgba(255, 255, 255, 0.9)',
+  '--legal-text-secondary': 'rgba(255, 255, 255, 0.7)',
+  '--legal-text-strong': '#ffffff',
+  '--legal-bg-box': 'rgba(255, 255, 255, 0.06)',
+  '--legal-bg-surface': 'rgba(255, 255, 255, 0.04)',
+  '--legal-bg-surface-alpha': 'rgba(255, 255, 255, 0.06)',
+  '--legal-bg-surface-hover': 'rgba(255, 255, 255, 0.08)',
+  '--legal-bg-surface-active': 'rgba(255, 255, 255, 0.12)',
+  '--legal-border': 'rgba(255, 255, 255, 0.12)',
+  '--legal-border-accent': 'rgba(155, 89, 182, 0.6)',
+  '--legal-link': '#EFDB5E',
+  '--legal-link-hover': '#f5e88a',
+  '--legal-link-border': 'rgba(239, 219, 94, 0.5)',
+  '--legal-shadow': 'rgba(0, 0, 0, 0.2)',
+  '--legal-scrollbar': 'rgba(255, 255, 255, 0.3)',
+  '--legal-warning-bg': 'rgba(190, 18, 60, 0.15)',
+  '--legal-warning-text': '#fca5a5',
+  '--legal-warning-heading': '#fca5a5',
+} : {
+  '--legal-text': '#46301C',
+  '--legal-text-secondary': '#5A3E26',
+  '--legal-text-strong': '#2E1F12',
+  '--legal-bg-box': '#FFF8ED',
+  '--legal-bg-surface': '#FCF1DC',
+  '--legal-bg-surface-alpha': 'rgba(252, 241, 220, 0.5)',
+  '--legal-bg-surface-hover': 'rgba(252, 241, 220, 0.6)',
+  '--legal-bg-surface-active': '#F5E5C8',
+  '--legal-border': '#F5E5C8',
+  '--legal-border-accent': '#5A3E26',
+  '--legal-link': '#46301C',
+  '--legal-link-hover': '#2E1F12',
+  '--legal-link-border': '#5A3E26',
+  '--legal-shadow': 'rgba(70, 48, 28, 0.05)',
+  '--legal-scrollbar': '#5A3E26',
+  '--legal-warning-bg': '#fecdd3',
+  '--legal-warning-text': '#2E1F12',
+  '--legal-warning-heading': '#881337',
+}
+
 useSeoMeta({
   title: () => `${props.title} — ${navLogo}`,
 })
@@ -57,7 +98,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="['min-h-screen', isAppDomain ? 'bg-astral-deep text-white' : 'bg-secondary']">
+  <div :class="['min-h-screen', isAppDomain ? 'bg-astral-deep text-white' : 'bg-secondary']" :style="themeVars">
     <!-- Navigation -->
     <nav :class="['fixed w-full top-0 z-40', isAppDomain ? 'bg-astral-header' : 'bg-secondary']">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
