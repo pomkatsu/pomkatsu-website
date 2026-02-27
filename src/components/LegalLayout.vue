@@ -215,8 +215,9 @@ onMounted(() => {
     </footer>
 
     <!-- Contact Form Modal -->
-    <ContactForm 
+    <ContactForm
       v-if="showContactForm"
+      :variant="isAppDomain ? 'astral' : 'default'"
       @close="closeContactForm"
     />
   </div>

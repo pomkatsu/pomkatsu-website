@@ -1,6 +1,6 @@
-# Multi-Domain Legal Page Theming
+# Multi-Domain Theming
 
-Legal pages (Terms, Privacy, DMCA, etc.) are shared across all app domains (pomkatsu.com, astralapp.love, etc.). Each domain needs its own color scheme so text is readable on its background.
+Pages shared across app domains (pomkatsu.com, astralapp.love, etc.) need domain-aware styling so text is readable on each domain's background.
 
 ## How It Works
 
@@ -69,15 +69,31 @@ const themeVars = domainConfig?.id === 'new-app'
 
 3. No changes needed in any other file — the CSS variables cascade automatically.
 
+## Other Domain-Aware Pages
+
+### DeleteAccount.vue
+
+Uses **Tailwind conditional classes** with `isAppDomain` (no CSS variables — the page has no `<style>` block). Also dynamically uses `appName` from domain config.
+
+Pattern: `:class="isAppDomain ? 'bg-astral-deep' : 'bg-gradient-to-br from-amber-50 to-orange-50'"`
+
+### ContactForm.vue
+
+Uses a **variant prop** system (`'default'` | `'mono'` | `'astral'`). LegalLayout passes `:variant="isAppDomain ? 'astral' : 'default'"`.
+
+Astral variant uses: `bg-astral-deep`, `border-white/10`, `text-white`, `bg-white/5`, `focus:ring-astral-cosmic`, `bg-astral-cosmic`.
+
 ## Files Overview
 
 | File | Role |
 |------|------|
-| `src/components/LegalLayout.vue` | Theme source — defines all `--legal-*` variables |
-| `src/components/TableOfContents.vue` | Shared sidebar — uses variables |
-| `src/views/TermsOfService.vue` | Legal page — uses variables |
-| `src/views/PrivacyPolicy.vue` | Legal page — uses variables |
-| `src/views/DMCA.vue` | Legal page — uses variables |
-| `src/views/CookiePolicy.vue` | Legal page — uses variables |
-| `src/views/AcceptableUse.vue` | Legal page — uses variables |
-| `src/views/EULA.vue` | Legal page — uses variables |
+| `src/components/LegalLayout.vue` | Theme source — defines all `--legal-*` variables, passes variant to ContactForm |
+| `src/components/TableOfContents.vue` | Shared sidebar — uses CSS variables |
+| `src/components/ContactForm.vue` | Contact modal — uses variant prop (`default`/`mono`/`astral`) |
+| `src/views/TermsOfService.vue` | Legal page — uses CSS variables |
+| `src/views/PrivacyPolicy.vue` | Legal page — uses CSS variables |
+| `src/views/DMCA.vue` | Legal page — uses CSS variables |
+| `src/views/CookiePolicy.vue` | Legal page — uses CSS variables |
+| `src/views/AcceptableUse.vue` | Legal page — uses CSS variables |
+| `src/views/EULA.vue` | Legal page — uses CSS variables |
+| `src/views/DeleteAccount.vue` | Account deletion — uses Tailwind conditionals |
