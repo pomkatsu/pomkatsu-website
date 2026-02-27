@@ -29,8 +29,8 @@
 
           <ul :class="['list-disc list-inside space-y-2 mb-6', isAppDomain ? 'text-white/70' : 'text-gray-700']">
             <li>Your email and profile information</li>
-            <li>All translation history</li>
-            <li>All uploaded documents and files</li>
+            <li>App content (chat history, readings, translations, food logs, etc.)</li>
+            <li>AI-generated content (images, portraits, reports)</li>
             <li>Usage statistics and preferences</li>
             <li>Subscription information</li>
           </ul>

@@ -1,8 +1,8 @@
 # End User License Agreement (EULA)
 
 **Pomkatsu LLC**  
-**Effective Date: August 10, 2025**  
-**Last Updated: August 10, 2025**
+**Effective Date: August 10, 2025**
+**Last Updated: February 24, 2026**
 
 ## Important - Read Carefully
 
@@ -49,12 +49,16 @@ The Software may include third-party components subject to separate license term
   - Input content ownership (you must have rights to input material)
   - Third-party rights (AI output may not be unique)
   - Our right to improve our services using anonymous usage data
+- AI features include, but are not limited to: translations, astrology readings, tarot interpretations, soulmate portrait generation, AI chat conversations, horoscope reports, and other AI-powered content across all Pomkatsu apps
 
 ### AI Limitations
 - AI-generated content may contain errors or biases
 - No warranty of accuracy, completeness, or fitness for purpose
 - You are responsible for reviewing and verifying AI outputs
 - Not suitable for legal, medical, or professional advice
+
+### Entertainment Disclaimer
+AI-powered astrology, tarot, and spiritual content in Astral is provided for entertainment purposes only and should not be considered professional, medical, psychological, or financial advice.
 
 ### Prohibited AI Uses
 - Training competing AI models with our outputs

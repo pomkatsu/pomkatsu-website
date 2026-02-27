@@ -61,72 +61,73 @@ onUnmounted(() => {
 
 // Soulmate portrait cards for carousel (alternating styles & genders)
 const soulmateCards = [
-  { src: '/app-logos/astral/soulmate_cards/ethereal_female_1.png', style: 'Ethereal' },
-  { src: '/app-logos/astral/soulmate_cards/realistic_male_1.png', style: 'Realistic' },
-  { src: '/app-logos/astral/soulmate_cards/anime_female_2.png', style: 'Anime' },
-  { src: '/app-logos/astral/soulmate_cards/sketch_male_1.png', style: 'Sketch' },
-  { src: '/app-logos/astral/soulmate_cards/vintage_female_1.png', style: 'Vintage' },
-  { src: '/app-logos/astral/soulmate_cards/cyberpunk_male_1.png', style: 'Cyberpunk' },
-  { src: '/app-logos/astral/soulmate_cards/realistic_female_1.png', style: 'Realistic' },
-  { src: '/app-logos/astral/soulmate_cards/ethereal_male_1.png', style: 'Ethereal' },
-  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.png', style: 'Cyberpunk' },
-  { src: '/app-logos/astral/soulmate_cards/anime_male_1.png', style: 'Anime' },
-  { src: '/app-logos/astral/soulmate_cards/vintage_male_1.png', style: 'Vintage' },
-  { src: '/app-logos/astral/soulmate_cards/sketch_female_1.png', style: 'Sketch' },
-  { src: '/app-logos/astral/soulmate_cards/realistic_male_2.png', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_female_1.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_male_1.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/anime_female_1.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_male_1.webp', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_female_1.webp', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_male_1.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_female_1.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_male_1.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/anime_male_1.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_female_1.webp', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_male_1.webp', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_female_2.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_male_2.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/anime_female_2.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_male_2.webp', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_female_2.webp', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_male_2.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_female_2.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_male_2.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_2.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/anime_male_2.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_female_2.webp', style: 'Sketch' },
 ]
 
 // Art style showcase (one female portrait per style)
 const artStyles = [
-  { name: 'Ethereal', description: 'Dreamlike & luminous', src: '/app-logos/astral/soulmate_cards/ethereal_female_1.png' },
-  { name: 'Realistic', description: 'Lifelike & detailed', src: '/app-logos/astral/soulmate_cards/realistic_female_1.png' },
-  { name: 'Anime', description: 'Bold & expressive', src: '/app-logos/astral/soulmate_cards/anime_female_2.png' },
-  { name: 'Sketch', description: 'Hand-drawn & intimate', src: '/app-logos/astral/soulmate_cards/sketch_female_1.png' },
-  { name: 'Vintage', description: 'Classic & timeless', src: '/app-logos/astral/soulmate_cards/vintage_female_1.png' },
-  { name: 'Cyberpunk', description: 'Futuristic & electric', src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.png' },
+  { name: 'Ethereal', description: 'Dreamlike & luminous', src: '/app-logos/astral/soulmate_cards/ethereal_female_1.webp' },
+  { name: 'Realistic', description: 'Lifelike & detailed', src: '/app-logos/astral/soulmate_cards/realistic_female_1.webp' },
+  { name: 'Anime', description: 'Bold & expressive', src: '/app-logos/astral/soulmate_cards/anime_female_1.webp' },
+  { name: 'Sketch', description: 'Hand-drawn & intimate', src: '/app-logos/astral/soulmate_cards/sketch_female_1.webp' },
+  { name: 'Vintage', description: 'Classic & timeless', src: '/app-logos/astral/soulmate_cards/vintage_female_1.webp' },
+  { name: 'Cyberpunk', description: 'Futuristic & electric', src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.webp' },
 ]
 
 // Features grid (3 items — soulmate is the hero, not here)
 const features = [
   {
     name: 'Tarot Readings',
-    description: 'Multiple spread types including Daily, 3-Card, and Celtic Cross. Ask custom questions and receive AI-powered interpretations with the full 78-card Rider-Waite deck.',
-    screenshot: '/app-logos/astral/screenshots/tarot_result.webp',
+    description: 'Draw from the full 78-card Rider-Waite deck. Multiple spread types including Celtic Cross, 3-Card, and custom questions with AI-powered interpretations.',
   },
   {
     name: 'Zodiac & Horoscopes',
     description: 'Personal readings based on your birth chart, pet horoscopes, and compatibility analysis to understand your cosmic connections.',
-    screenshot: '/app-logos/astral/screenshots/horoscope_main.webp',
   },
   {
     name: 'Cosmic AI Chat',
     description: '8 guided conversation topics covering love, career, dreams, and more — powered by astrology-aware AI for personalized cosmic guidance.',
-    screenshot: '/app-logos/astral/screenshots/love_chat.webp',
   },
 ]
 
 // Soulmate detail spotlight (decorative mock data)
 const soulmateSpotlight = {
-  screenshot: '/app-logos/astral/screenshots/soulmate_1.webp',
-  name: 'Luna Vesper',
-  sign: 'Pisces',
-  compatibility: 94,
+  image: '/app-logos/astral/soulmate_cards/realistic_male_1.webp',
+  name: 'Marcus Ashford',
+  sign: 'Scorpio',
+  signSymbol: '♏',
+  style: 'Realistic',
+  compatibility: 87,
   element: 'Water',
-  modality: 'Mutable',
-  planet: 'Neptune',
-  personality: 'A dreamy artist with deep emotional intelligence and an intuitive understanding of the cosmos. She finds beauty in hidden places and speaks the language of the stars.',
+  planet: 'Pluto',
+  modality: 'Fixed',
+  personality: 'A deeply intuitive soul with magnetic intensity and unwavering loyalty. He sees beneath the surface and forms connections that transcend the ordinary.',
+  aspirations: 'Driven to uncover hidden truths and build something lasting, channeling his passion into creative pursuits and meaningful relationships.',
+  likes: ['stargazing', 'philosophy', 'rock climbing', 'jazz', 'mystery novels'],
+  dislikes: ['dishonesty', 'small talk', 'superficiality'],
 }
-
-const topics = [
-  { name: 'Ask Me Anything', description: 'Open-ended cosmic guidance on any topic', image: '/app-logos/astral/ask-me-anything-card-bg.webp' },
-  { name: 'Love Match', description: 'Explore romantic compatibility and connections', image: '/app-logos/astral/love-match-card-bg.webp' },
-  { name: 'Dream Decoder', description: 'Uncover the meaning behind your dreams', image: '/app-logos/astral/dream-decoder-card-bg.webp' },
-  { name: 'Friend Vibes', description: 'Understand your friendships through the stars', image: '/app-logos/astral/friend-vibes-card-bg.webp' },
-  { name: 'Cosmic Events', description: 'Stay aligned with planetary movements', image: '/app-logos/astral/cosmic-events-card-bg.webp' },
-  { name: 'Astro Travel', description: 'Discover destinations written in your stars', image: '/app-logos/astral/astro-travel-card-bg.webp' },
-  { name: 'Career Compass', description: 'Navigate your professional path with cosmic insight', image: '/app-logos/astral/career-compass-card-bg.webp' },
-  { name: 'Soul Growth', description: 'Deepen your spiritual journey and self-awareness', image: '/app-logos/astral/soul-growth-card-bg.webp' },
-]
 
 // Lightbox state
 const lightboxOpen = ref(false)
@@ -322,31 +323,62 @@ function onLightboxKeydown(e) {
           Every soulmate comes with a unique bio, zodiac profile, and compatibility score
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
-          <!-- Left: App screenshot -->
-          <div class="flex justify-center">
-            <div class="w-64 sm:w-72 rounded-2xl overflow-hidden shadow-2xl shadow-astral-cosmic/20 border border-white/10">
-              <img :src="soulmateSpotlight.screenshot" alt="Soulmate result screen" class="w-full h-auto" loading="lazy" />
+        <div class="flex flex-col md:flex-row items-center md:items-center justify-center max-w-5xl mx-auto">
+          <!-- Left: Soulmate Card -->
+          <div class="flex-shrink-0 z-10">
+            <div class="relative w-72 sm:w-80 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-astral-cosmic/20 border border-white/10">
+              <img :src="soulmateSpotlight.image" :alt="soulmateSpotlight.name" class="w-full h-full object-cover" loading="lazy" />
+              <!-- Bottom overlay -->
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-astral-deep/90 via-astral-deep/40 to-transparent p-4 pt-16">
+                <!-- Sign + Compatibility -->
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex items-center gap-2">
+                    <img src="/app-logos/astral/zodiac/Scorpio.svg" alt="Scorpio" class="w-5 h-5" />
+                    <span class="text-white font-semibold">{{ soulmateSpotlight.sign }}</span>
+                  </div>
+                  <span class="text-lg font-bold text-astral-gold">{{ soulmateSpotlight.compatibility }}%</span>
+                </div>
+                <!-- Progress bar -->
+                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-2">
+                  <div class="h-full bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full" :style="{ width: soulmateSpotlight.compatibility + '%' }"></div>
+                </div>
+                <!-- Style label -->
+                <p class="text-center text-white/50 text-xs uppercase tracking-wider">{{ soulmateSpotlight.style }} Style</p>
+              </div>
             </div>
           </div>
 
-          <!-- Right: Mock compatibility card -->
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
-            <!-- Name and sign -->
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-full flex items-center justify-center text-lg">
-                ♓
-              </div>
+          <!-- Right: Soulmate Bio (overlaps portrait on desktop) -->
+          <div class="bg-astral-card/80 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col -mt-8 md:mt-0 md:-ml-6 md:pl-10">
+            <!-- Header: thumbnail + name + sign + chips -->
+            <div class="flex items-start gap-4 mb-5">
+              <img :src="soulmateSpotlight.image" :alt="soulmateSpotlight.name" class="w-16 h-16 rounded-xl object-cover border border-white/10" loading="lazy" />
               <div>
-                <h3 class="text-xl font-bold text-white">{{ soulmateSpotlight.name }}</h3>
-                <p class="text-sm text-astral-gold">{{ soulmateSpotlight.sign }}</p>
+                <h3 class="text-xl font-bold text-white">Soulmate Bio</h3>
+                <div class="flex items-center gap-2 mt-0.5">
+                  <img src="/app-logos/astral/zodiac/Scorpio.svg" alt="Scorpio" class="w-4 h-4" />
+                  <span class="text-sm font-semibold text-white/90">{{ soulmateSpotlight.sign }}</span>
+                  <span class="text-white/30">&middot;</span>
+                  <span class="text-xs text-white/50 uppercase tracking-wider">{{ soulmateSpotlight.style }} Style</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  <span class="px-2.5 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                    {{ soulmateSpotlight.element }}
+                  </span>
+                  <span class="px-2.5 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                    {{ soulmateSpotlight.planet }}
+                  </span>
+                  <span class="px-2.5 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                    {{ soulmateSpotlight.modality }}
+                  </span>
+                </div>
               </div>
             </div>
 
-            <!-- Compatibility score -->
+            <!-- Compatibility -->
             <div class="mb-5">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-sm text-white/60">Compatibility</span>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-white text-xs uppercase tracking-wider font-semibold">Compatibility</span>
                 <span class="text-lg font-bold text-astral-gold">{{ soulmateSpotlight.compatibility }}%</span>
               </div>
               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
@@ -354,23 +386,41 @@ function onLightboxKeydown(e) {
               </div>
             </div>
 
-            <!-- Element / Modality / Planet chips -->
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
-                {{ soulmateSpotlight.element }}
-              </span>
-              <span class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
-                {{ soulmateSpotlight.modality }}
-              </span>
-              <span class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
-                {{ soulmateSpotlight.planet }}
-              </span>
+            <!-- Personality -->
+            <div class="mb-4">
+              <h4 class="text-white text-xs uppercase tracking-wider font-semibold mb-1.5">Personality</h4>
+              <p class="text-sm text-white/60 leading-relaxed italic">{{ soulmateSpotlight.personality }}</p>
             </div>
 
-            <!-- Personality snippet -->
-            <p class="text-sm text-white/60 leading-relaxed italic">
-              "{{ soulmateSpotlight.personality }}"
-            </p>
+            <!-- Aspirations -->
+            <div class="mb-4">
+              <h4 class="text-white text-xs uppercase tracking-wider font-semibold mb-1.5">Aspirations</h4>
+              <p class="text-sm text-white/60 leading-relaxed italic">{{ soulmateSpotlight.aspirations }}</p>
+            </div>
+
+            <!-- Likes -->
+            <div class="mb-4">
+              <h4 class="text-white text-xs uppercase tracking-wider font-semibold mb-2">Likes</h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="like in soulmateSpotlight.likes"
+                  :key="like"
+                  class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-sm text-white/80"
+                >{{ like }}</span>
+              </div>
+            </div>
+
+            <!-- Dislikes -->
+            <div>
+              <h4 class="text-astral-destructive text-xs uppercase tracking-wider font-semibold mb-2">Dislikes</h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="dislike in soulmateSpotlight.dislikes"
+                  :key="dislike"
+                  class="px-3 py-1 bg-astral-destructive/10 border border-astral-destructive/30 rounded-full text-sm text-white/80"
+                >{{ dislike }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -390,52 +440,113 @@ function onLightboxKeydown(e) {
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <div
-            v-for="feature in features"
-            :key="feature.name"
-            class="feature-card bg-white/5 border border-white/10 rounded-2xl overflow-hidden group"
-          >
-            <!-- Screenshot -->
-            <div class="aspect-[9/16] max-h-72 overflow-hidden">
-              <img :src="feature.screenshot" :alt="feature.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+
+          <!-- Card 1: Tarot Readings -->
+          <div class="feature-card bg-astral-card/60 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <!-- Illustration area -->
+            <div class="relative h-52 flex items-center justify-center">
+              <!-- Glow -->
+              <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(155,89,182,0.25)_0%,_rgba(239,219,94,0.1)_40%,_transparent_70%)]"></div>
+              <!-- Card fan -->
+              <div class="relative flex items-center justify-center" style="width: 180px; height: 160px;">
+                <!-- Left card (back, tilted left) -->
+                <img
+                  src="/app-logos/astral/tarot/card_back.svg"
+                  alt="Tarot card back"
+                  class="absolute w-20 rounded-lg drop-shadow-lg"
+                  style="transform: rotate(-15deg) translateX(-28px); z-index: 1;"
+                  loading="lazy"
+                />
+                <!-- Center card (The Star) -->
+                <img
+                  src="/app-logos/astral/tarot/the_star.webp"
+                  alt="The Star tarot card"
+                  class="absolute w-20 rounded-lg drop-shadow-xl"
+                  style="z-index: 3;"
+                  loading="lazy"
+                />
+                <!-- Right card (back, tilted right) -->
+                <img
+                  src="/app-logos/astral/tarot/card_back.svg"
+                  alt="Tarot card back"
+                  class="absolute w-20 rounded-lg drop-shadow-lg"
+                  style="transform: rotate(15deg) translateX(28px); z-index: 2;"
+                  loading="lazy"
+                />
+              </div>
             </div>
             <!-- Text -->
-            <div class="p-5">
-              <h3 class="text-lg font-bold mb-2 text-white">{{ feature.name }}</h3>
-              <p class="text-sm text-white/60 leading-relaxed">{{ feature.description }}</p>
+            <div class="px-5 pb-5 text-center">
+              <h3 class="text-lg font-bold mb-2 text-white">Tarot Readings</h3>
+              <p class="text-sm text-white/60 leading-relaxed mb-4">Draw from the full 78-card Rider-Waite deck. Multiple spread types including Celtic Cross, 3-Card, and custom questions with AI-powered interpretations.</p>
+              <div class="h-0.5 bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full"></div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Section divider -->
-    <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
-
-    <!-- Topics Grid -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
-          Cosmic Conversations
-        </h2>
-        <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
-          8 AI-guided topics for every dimension of your journey
-        </p>
-
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          <div
-            v-for="topic in topics"
-            :key="topic.name"
-            class="topic-card relative overflow-hidden rounded-xl group cursor-default aspect-square"
-          >
-            <img
-              :src="topic.image"
-              :alt="topic.name"
-              class="w-full h-full object-contain rounded-xl transition-transform duration-500 group-hover:scale-105 p-2"
-            />
-            <!-- Hover glow ring -->
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl ring-1 ring-astral-cosmic/50 shadow-[0_0_15px_rgba(155,89,182,0.3)]"></div>
+          <!-- Card 2: Zodiac & Horoscopes -->
+          <div class="feature-card bg-astral-card/60 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <!-- Illustration area -->
+            <div class="relative h-52 flex items-center justify-center">
+              <!-- Glow -->
+              <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(155,89,182,0.3)_0%,_transparent_70%)]"></div>
+              <!-- Zodiac illustration -->
+              <img
+                src="/app-logos/astral/zodiac/header_aries.png"
+                alt="Aries"
+                class="relative w-36 drop-shadow-xl"
+                loading="lazy"
+              />
+            </div>
+            <!-- Text -->
+            <div class="px-5 pb-5 text-center">
+              <h3 class="text-lg font-bold mb-2 text-white">Zodiac & Horoscopes</h3>
+              <p class="text-sm text-white/60 leading-relaxed mb-4">Personal readings based on your birth chart, pet horoscopes, and compatibility analysis to understand your cosmic connections.</p>
+              <div class="h-0.5 bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full"></div>
+            </div>
           </div>
+
+          <!-- Card 3: Cosmic AI Chat -->
+          <div class="feature-card bg-astral-card/60 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <!-- Illustration area -->
+            <div class="relative h-52 flex items-center justify-center">
+              <!-- Glow -->
+              <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(155,89,182,0.2)_0%,_transparent_70%)]"></div>
+              <!-- 2x2 mini-grid of topic cards -->
+              <div class="relative grid grid-cols-2 gap-2" style="width: 160px;">
+                <img
+                  src="/app-logos/astral/love-match-card-bg.webp"
+                  alt="Love Match"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+                <img
+                  src="/app-logos/astral/dream-decoder-card-bg.webp"
+                  alt="Dream Decoder"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+                <img
+                  src="/app-logos/astral/ask-me-anything-card-bg.webp"
+                  alt="Ask Me Anything"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+                <img
+                  src="/app-logos/astral/career-compass-card-bg.webp"
+                  alt="Career Compass"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <!-- Text -->
+            <div class="px-5 pb-5 text-center">
+              <h3 class="text-lg font-bold mb-2 text-white">Cosmic AI Chat</h3>
+              <p class="text-sm text-white/60 leading-relaxed mb-4">8 guided conversation topics covering love, career, dreams, and more — powered by astrology-aware AI for personalized cosmic guidance.</p>
+              <div class="h-0.5 bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full"></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -618,20 +729,6 @@ function onLightboxKeydown(e) {
 .feature-card:nth-child(1) { animation-delay: 0.1s; }
 .feature-card:nth-child(2) { animation-delay: 0.2s; }
 .feature-card:nth-child(3) { animation-delay: 0.3s; }
-
-/* Topic cards stagger */
-.topic-card {
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 0;
-}
-.topic-card:nth-child(1) { animation-delay: 0.05s; }
-.topic-card:nth-child(2) { animation-delay: 0.1s; }
-.topic-card:nth-child(3) { animation-delay: 0.15s; }
-.topic-card:nth-child(4) { animation-delay: 0.2s; }
-.topic-card:nth-child(5) { animation-delay: 0.25s; }
-.topic-card:nth-child(6) { animation-delay: 0.3s; }
-.topic-card:nth-child(7) { animation-delay: 0.35s; }
-.topic-card:nth-child(8) { animation-delay: 0.4s; }
 
 /* Carousel */
 .carousel-track {

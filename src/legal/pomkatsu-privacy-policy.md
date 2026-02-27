@@ -2,8 +2,8 @@
 
 **Pomkatsu LLC**  
 **Effective Date: August 10, 2025**
-**Last Updated: February 15, 2026**
-**Version: 1.1**
+**Last Updated: February 24, 2026**
+**Version: 1.2**
 
 ## Introduction
 
@@ -27,6 +27,11 @@ Please read this Privacy Policy carefully. By using our Services, you agree to t
 - **Profile Information**: Avatar, preferences, language settings
 - **Contact Information**: When you contact support@pomkatsu.com
 - **User Content**: Documents you upload for translation, translations created
+- **Birth Data**: Birth date, birth time, and birth location (for astrology features in Astral)
+- **Chat Conversations**: Messages exchanged with AI entities in Astral
+- **Tarot and Zodiac Data**: Tarot reading history and preferences, zodiac sign selections and readings
+- **Soulmate Data**: Soulmate preferences and AI-generated portrait data in Astral
+- **Pet Information**: Pet names, birth dates, and species (for pet horoscopes in Astral)
 - **Payment Information**: Processed by third-party payment processors (we do not store credit card details)
 - **Voice and Audio Data**: When you use voice input features (such as voice logging in FoodTally), we access your device microphone to capture audio for on-device speech recognition. Audio is processed in real-time to convert speech to text and is not stored, recorded, or transmitted to our servers. Only the resulting text transcription is used by the app.
 - **Communications**: Messages, feedback, and correspondence with us
@@ -130,6 +135,9 @@ We may share your information in the following circumstances:
 We share data with service providers who assist us in operating our Services:
 - **Cloud Storage**: Firebase/Google Cloud Platform for document storage
 - **Translation Services**: Third-party translation APIs for document processing
+- **AI Services**: OpenAI for AI-powered chat, readings, and content generation in Astral
+- **Image Storage**: Cloudflare Images for image storage and delivery for soulmate portraits in Astral
+- **Subscription Management**: RevenueCat for subscription management and purchase processing
 - **Payment Processors**: Stripe, PayPal, Apple Pay, Google Pay for payment processing
 - **Analytics**: Google Analytics, Firebase Analytics for usage insights
 - **Communication**: Email service providers for transactional emails
@@ -150,10 +158,13 @@ To protect and defend our rights or property, investigate fraud, or protect agai
 ### With Your Consent
 We may share your information for any other purpose with your explicit consent.
 
+### AI Data Processing
+For AI-powered features in Astral, your birth data, chat messages, and preferences are sent to OpenAI for processing. This data is used to generate personalized readings and responses. OpenAI processes this data according to their data usage policies.
+
 ### What We Don't Do
 - We do NOT sell your personal information to third parties
 - We do NOT share your documents with other users without your permission
-- We do NOT use your documents for training AI models or other purposes beyond providing translation services
+- We do NOT use your documents for training AI models or other purposes beyond providing our Services
 
 ## Data Retention
 
