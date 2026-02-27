@@ -86,16 +86,6 @@ const soulmateCards = [
   { src: '/app-logos/astral/soulmate_cards/sketch_female_2.webp', style: 'Sketch' },
 ]
 
-// Art style showcase (one female portrait per style)
-const artStyles = [
-  { name: 'Ethereal', description: 'Dreamlike & luminous', src: '/app-logos/astral/soulmate_cards/ethereal_female_1.webp' },
-  { name: 'Realistic', description: 'Lifelike & detailed', src: '/app-logos/astral/soulmate_cards/realistic_female_1.webp' },
-  { name: 'Anime', description: 'Bold & expressive', src: '/app-logos/astral/soulmate_cards/anime_female_1.webp' },
-  { name: 'Sketch', description: 'Hand-drawn & intimate', src: '/app-logos/astral/soulmate_cards/sketch_female_1.webp' },
-  { name: 'Vintage', description: 'Classic & timeless', src: '/app-logos/astral/soulmate_cards/vintage_female_1.webp' },
-  { name: 'Cyberpunk', description: 'Futuristic & electric', src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.webp' },
-]
-
 // Features grid (3 items — soulmate is the hero, not here)
 const features = [
   {
@@ -298,16 +288,6 @@ function onLightboxKeydown(e) {
         </div>
       </div>
 
-      <!-- Style legend -->
-      <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-8 px-4">
-        <span
-          v-for="style in artStyles"
-          :key="style.name"
-          class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs sm:text-sm text-white/70"
-        >
-          <span class="font-semibold text-white/90">{{ style.name }}</span> — {{ style.description }}
-        </span>
-      </div>
     </section>
 
     <!-- Section divider -->
