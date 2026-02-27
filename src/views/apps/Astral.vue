@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import ContactForm from '../../components/ContactForm.vue'
 import { getDomainConfig } from '../../config/domains'
@@ -8,10 +8,10 @@ const domainConfig = getDomainConfig()
 const isAppDomain = !!domainConfig
 
 useSeoMeta({
-  title: 'Astral — AI Astrology, Tarot & Soulmate Portraits',
-  description: 'Your personal astrology companion. Tarot readings, AI soulmate portraits, zodiac insights, and cosmic guidance all in one app.',
-  ogTitle: 'Astral — AI Astrology, Tarot & Soulmate Portraits',
-  ogDescription: 'Discover your AI soulmate, pull tarot cards, and get personalized cosmic guidance.',
+  title: 'Astral — AI Soulmate Portraits & Astrology Companion',
+  description: 'Discover your cosmic soulmate with AI-generated portraits in 6 unique art styles. Plus tarot readings, zodiac insights, and personalized cosmic guidance.',
+  ogTitle: 'Astral — AI Soulmate Portraits & Astrology Companion',
+  ogDescription: 'Discover your cosmic soulmate with AI-generated portraits in 6 unique art styles, shaped by your zodiac energy.',
   ogImage: '/app-logos/astral/og-image.png',
   ogType: 'website',
   twitterCard: 'summary_large_image',
@@ -26,7 +26,7 @@ useHead({
       name: 'Astral',
       operatingSystem: 'iOS, Android',
       applicationCategory: 'LifestyleApplication',
-      description: 'AI-powered astrology and tarot app with soulmate portraits, 47 tarot spreads, personalized horoscopes, and cosmic AI chat.',
+      description: 'AI-powered astrology and tarot app with soulmate portraits in 6 art styles, 47 tarot spreads, personalized horoscopes, and cosmic AI chat.',
       offers: {
         '@type': 'Offer',
         price: '0',
@@ -51,15 +51,71 @@ const onScroll = () => {
 onMounted(() => {
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('keydown', onLightboxKeydown)
-  window.addEventListener('resize', updateAllScrollStates)
   onScroll()
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('keydown', onLightboxKeydown)
-  window.removeEventListener('resize', updateAllScrollStates)
 })
+
+// Soulmate portrait cards for carousel (alternating styles & genders)
+const soulmateCards = [
+  { src: '/app-logos/astral/soulmate_cards/ethereal_female_1.png', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_male_1.png', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/anime_female_2.png', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_male_1.png', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_female_1.png', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_male_1.png', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_female_1.png', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_male_1.png', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.png', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/anime_male_1.png', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_male_1.png', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_female_1.png', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_male_2.png', style: 'Realistic' },
+]
+
+// Art style showcase (one female portrait per style)
+const artStyles = [
+  { name: 'Ethereal', description: 'Dreamlike & luminous', src: '/app-logos/astral/soulmate_cards/ethereal_female_1.png' },
+  { name: 'Realistic', description: 'Lifelike & detailed', src: '/app-logos/astral/soulmate_cards/realistic_female_1.png' },
+  { name: 'Anime', description: 'Bold & expressive', src: '/app-logos/astral/soulmate_cards/anime_female_2.png' },
+  { name: 'Sketch', description: 'Hand-drawn & intimate', src: '/app-logos/astral/soulmate_cards/sketch_female_1.png' },
+  { name: 'Vintage', description: 'Classic & timeless', src: '/app-logos/astral/soulmate_cards/vintage_female_1.png' },
+  { name: 'Cyberpunk', description: 'Futuristic & electric', src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.png' },
+]
+
+// Features grid (3 items — soulmate is the hero, not here)
+const features = [
+  {
+    name: 'Tarot Readings',
+    description: 'Multiple spread types including Daily, 3-Card, and Celtic Cross. Ask custom questions and receive AI-powered interpretations with the full 78-card Rider-Waite deck.',
+    screenshot: '/app-logos/astral/screenshots/tarot_result.webp',
+  },
+  {
+    name: 'Zodiac & Horoscopes',
+    description: 'Personal readings based on your birth chart, pet horoscopes, and compatibility analysis to understand your cosmic connections.',
+    screenshot: '/app-logos/astral/screenshots/horoscope_main.webp',
+  },
+  {
+    name: 'Cosmic AI Chat',
+    description: '8 guided conversation topics covering love, career, dreams, and more — powered by astrology-aware AI for personalized cosmic guidance.',
+    screenshot: '/app-logos/astral/screenshots/love_chat.webp',
+  },
+]
+
+// Soulmate detail spotlight (decorative mock data)
+const soulmateSpotlight = {
+  screenshot: '/app-logos/astral/screenshots/soulmate_1.webp',
+  name: 'Luna Vesper',
+  sign: 'Pisces',
+  compatibility: 94,
+  element: 'Water',
+  modality: 'Mutable',
+  planet: 'Neptune',
+  personality: 'A dreamy artist with deep emotional intelligence and an intuitive understanding of the cosmos. She finds beauty in hidden places and speaks the language of the stars.',
+}
 
 const topics = [
   { name: 'Ask Me Anything', description: 'Open-ended cosmic guidance on any topic', image: '/app-logos/astral/ask-me-anything-card-bg.webp' },
@@ -70,70 +126,6 @@ const topics = [
   { name: 'Astro Travel', description: 'Discover destinations written in your stars', image: '/app-logos/astral/astro-travel-card-bg.webp' },
   { name: 'Career Compass', description: 'Navigate your professional path with cosmic insight', image: '/app-logos/astral/career-compass-card-bg.webp' },
   { name: 'Soul Growth', description: 'Deepen your spiritual journey and self-awareness', image: '/app-logos/astral/soul-growth-card-bg.webp' },
-]
-
-const carouselImages = [
-  { src: '/app-logos/astral/screenshots/home_page.webp', alt: 'Astral Home Screen' },
-  { src: '/app-logos/astral/screenshots/soulmate_main.webp', alt: 'AI Soulmate Generator' },
-  { src: '/app-logos/astral/screenshots/taort_main.webp', alt: 'Tarot Guidance' },
-  { src: '/app-logos/astral/screenshots/horoscope_main.webp', alt: 'Horoscope Reading' },
-  { src: '/app-logos/astral/screenshots/soulmate_6.webp', alt: 'Soulmate Portrait' },
-  { src: '/app-logos/astral/screenshots/tarot_card_picker.webp', alt: 'Tarot Card Picker' },
-  { src: '/app-logos/astral/screenshots/pet_horoscope_main.webp', alt: 'Pet Horoscope' },
-  { src: '/app-logos/astral/screenshots/love_chat.webp', alt: 'Cosmic AI Chat' },
-]
-
-const activeTab = ref('tarot')
-
-const featureTabs = [
-  {
-    id: 'tarot',
-    name: 'Tarot Readings',
-    icon: 'tarot',
-    description: 'Multiple spread types including Daily, 3-Card, and Celtic Cross. Ask custom questions and receive AI-powered interpretations with the full 78-card Rider-Waite deck.',
-    screenshots: [
-      { src: '/app-logos/astral/screenshots/taort_main.webp', alt: 'Tarot main screen' },
-      { src: '/app-logos/astral/screenshots/tarot_card_picker.webp', alt: 'Choose your spread' },
-      { src: '/app-logos/astral/screenshots/tarot_result.webp', alt: 'Tarot reading result' },
-    ],
-  },
-  {
-    id: 'soulmate',
-    name: 'AI Soulmate',
-    icon: 'soulmate',
-    description: 'Discover your cosmic match with AI-generated portraits in 5 art styles — Realistic, Sketch, Anime, Ethereal, and Vintage — influenced by your zodiac sign.',
-    screenshots: [
-      { src: '/app-logos/astral/screenshots/soulmate_main.webp', alt: 'Soulmate generator' },
-      { src: '/app-logos/astral/screenshots/soulmate_1.webp', alt: 'Soulmate portrait - Realistic' },
-      { src: '/app-logos/astral/screenshots/soulmate_2.webp', alt: 'Soulmate portrait - Sketch' },
-      { src: '/app-logos/astral/screenshots/soulmate_3.webp', alt: 'Soulmate portrait - Anime' },
-      { src: '/app-logos/astral/screenshots/soulmate_4.webp', alt: 'Soulmate portrait - Ethereal' },
-      { src: '/app-logos/astral/screenshots/soulmate_5.webp', alt: 'Soulmate portrait - Vintage' },
-    ],
-  },
-  {
-    id: 'horoscopes',
-    name: 'Zodiac & Horoscopes',
-    icon: 'horoscopes',
-    description: 'Personal readings based on your birth chart, pet horoscopes, and compatibility analysis to understand your cosmic connections.',
-    screenshots: [
-      { src: '/app-logos/astral/screenshots/horoscope_main.webp', alt: 'Horoscope main screen' },
-      { src: '/app-logos/astral/screenshots/horoscope_reading.webp', alt: 'Horoscope reading' },
-      { src: '/app-logos/astral/screenshots/pet_horoscope_main.webp', alt: 'Pet horoscope' },
-      { src: '/app-logos/astral/screenshots/pet_horoscope.webp', alt: 'Pet horoscope reading' },
-    ],
-  },
-  {
-    id: 'chat',
-    name: 'Cosmic AI Chat',
-    icon: 'chat',
-    description: '8 guided conversation topics covering love, career, dreams, and more — powered by astrology-aware AI for personalized cosmic guidance.',
-    screenshots: [
-      { src: '/app-logos/astral/screenshots/welcome.webp', alt: 'Welcome onboarding' },
-      { src: '/app-logos/astral/screenshots/love_chat.webp', alt: 'Love Match chat' },
-      { src: '/app-logos/astral/screenshots/love_chat_2.webp', alt: 'Cosmic AI conversation' },
-    ],
-  },
 ]
 
 // Lightbox state
@@ -165,68 +157,6 @@ function onLightboxKeydown(e) {
   else if (e.key === 'ArrowLeft') lightboxPrev()
   else if (e.key === 'ArrowRight') lightboxNext()
 }
-
-// Screenshot carousel scroll state
-const scrollRefs = {}
-const canScrollLeft = reactive({})
-const canScrollRight = reactive({})
-function setScrollRef(tabId, el) {
-  if (!el) return
-  if (scrollRefs[tabId] === el) return
-  scrollRefs[tabId] = el
-  el.addEventListener('scroll', () => updateScrollState(tabId), { passive: true })
-  nextTick(() => updateScrollState(tabId))
-}
-
-function updateScrollState(tabId) {
-  const el = scrollRefs[tabId]
-  if (!el) return
-  canScrollLeft[tabId] = el.scrollLeft > 2
-  canScrollRight[tabId] = el.scrollLeft + el.clientWidth < el.scrollWidth - 2
-}
-
-function scrollCarousel(tabId, direction) {
-  const el = scrollRefs[tabId]
-  if (!el) return
-  const firstChild = el.querySelector('.screenshot-card')
-  const step = firstChild ? firstChild.offsetWidth + 16 : 200
-  el.scrollBy({ left: direction * step, behavior: 'smooth' })
-}
-
-function updateAllScrollStates() {
-  for (const tabId of Object.keys(scrollRefs)) {
-    updateScrollState(tabId)
-  }
-}
-
-// Drag-to-scroll for screenshot rows
-function initDragScroll(el) {
-  let isDown = false
-  let startX = 0
-  let scrollLeft = 0
-
-  el.addEventListener('mousedown', (e) => {
-    isDown = true
-    el.classList.add('cursor-grabbing')
-    startX = e.pageX - el.offsetLeft
-    scrollLeft = el.scrollLeft
-  })
-  el.addEventListener('mouseleave', () => { isDown = false; el.classList.remove('cursor-grabbing') })
-  el.addEventListener('mouseup', () => { isDown = false; el.classList.remove('cursor-grabbing') })
-  el.addEventListener('mousemove', (e) => {
-    if (!isDown) return
-    e.preventDefault()
-    const x = e.pageX - el.offsetLeft
-    el.scrollLeft = scrollLeft - (x - startX)
-  })
-}
-
-function setupDragScrollers() {
-  document.querySelectorAll('.tab-screenshots').forEach(initDragScroll)
-}
-
-watch(activeTab, () => { nextTick(() => { setupDragScrollers(); updateAllScrollStates() }) })
-onMounted(setupDragScrollers)
 </script>
 
 <template>
@@ -261,25 +191,28 @@ onMounted(setupDragScrollers)
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section — Soulmate-First -->
     <section class="pt-28 pb-16 md:pt-32 md:pb-20 px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-4xl mx-auto">
-        <!-- Avatar illustration -->
+        <!-- Brand label -->
+        <p class="text-sm text-white/50 mb-3 tracking-wide uppercase">Astral</p>
+
+        <!-- Avatar illustration (smaller) -->
         <div class="mb-4 animate-float">
           <img
             src="/app-logos/astral/avatar.svg"
             alt="Astral Avatar"
-            class="w-28 h-28 sm:w-36 sm:h-36 mx-auto"
+            class="w-20 h-20 sm:w-24 sm:h-24 mx-auto"
           />
         </div>
 
-        <h1 class="text-4xl sm:text-5xl font-bold mb-3">Astral</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold mb-3">Discover Your Cosmic Soulmate</h1>
 
-        <p class="text-xl sm:text-2xl font-semibold mb-3 text-white/90">
-          Let the stars guide your journey
+        <p class="text-xl sm:text-2xl font-semibold mb-3 text-astral-gold">
+          AI-generated portraits in 6 unique styles
         </p>
         <p class="text-base sm:text-lg text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Your personal astrology companion — tarot readings, AI-generated soulmate portraits, zodiac insights, and cosmic guidance all in one app.
+          Your zodiac sign shapes who the stars have written for you. See them rendered in Ethereal, Realistic, Anime, Sketch, Vintage, and Cyberpunk styles.
         </p>
 
         <!-- Store buttons -->
@@ -322,35 +255,122 @@ onMounted(setupDragScrollers)
     <!-- Section divider -->
     <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
 
-    <!-- Screenshots Carousel -->
+    <!-- Soulmate Portrait Carousel + Style Legend -->
     <section class="py-16 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
-          See It in Action
+          6 Art Styles. One Cosmic Connection.
         </h2>
         <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
-          A glimpse into the Astral experience
+          AI-generated portraits shaped by your zodiac energy
         </p>
       </div>
 
       <div class="carousel-track">
         <div class="carousel-inner">
           <div
-            v-for="(img, i) in carouselImages"
+            v-for="(card, i) in soulmateCards"
             :key="'a-' + i"
             class="carousel-item cursor-pointer"
-            @click="openLightbox(carouselImages, i)"
+            @click="openLightbox(soulmateCards, i % soulmateCards.length)"
           >
-            <img :src="img.src" :alt="img.alt" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
+            <div class="relative w-full h-full">
+              <img :src="card.src" :alt="card.style + ' soulmate portrait'" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl px-3 py-2">
+                <span class="text-xs sm:text-sm font-semibold text-white/90">{{ card.style }}</span>
+              </div>
+            </div>
           </div>
           <div
-            v-for="(img, i) in carouselImages"
+            v-for="(card, i) in soulmateCards"
             :key="'b-' + i"
-            class="carousel-item cursor-pointer"
+            class="carousel-item"
             aria-hidden="true"
-            @click="openLightbox(carouselImages, i % carouselImages.length)"
           >
-            <img :src="img.src" :alt="img.alt" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
+            <div class="relative w-full h-full">
+              <img :src="card.src" :alt="card.style + ' soulmate portrait'" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl px-3 py-2">
+                <span class="text-xs sm:text-sm font-semibold text-white/90">{{ card.style }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Style legend -->
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-8 px-4">
+        <span
+          v-for="style in artStyles"
+          :key="style.name"
+          class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs sm:text-sm text-white/70"
+        >
+          <span class="font-semibold text-white/90">{{ style.name }}</span> — {{ style.description }}
+        </span>
+      </div>
+    </section>
+
+    <!-- Section divider -->
+    <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
+
+    <!-- Soulmate Detail Spotlight -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
+          See What the Stars Reveal
+        </h2>
+        <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
+          Every soulmate comes with a unique bio, zodiac profile, and compatibility score
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
+          <!-- Left: App screenshot -->
+          <div class="flex justify-center">
+            <div class="w-64 sm:w-72 rounded-2xl overflow-hidden shadow-2xl shadow-astral-cosmic/20 border border-white/10">
+              <img :src="soulmateSpotlight.screenshot" alt="Soulmate result screen" class="w-full h-auto" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Right: Mock compatibility card -->
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
+            <!-- Name and sign -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-full flex items-center justify-center text-lg">
+                ♓
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">{{ soulmateSpotlight.name }}</h3>
+                <p class="text-sm text-astral-gold">{{ soulmateSpotlight.sign }}</p>
+              </div>
+            </div>
+
+            <!-- Compatibility score -->
+            <div class="mb-5">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm text-white/60">Compatibility</span>
+                <span class="text-lg font-bold text-astral-gold">{{ soulmateSpotlight.compatibility }}%</span>
+              </div>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full" :style="{ width: soulmateSpotlight.compatibility + '%' }"></div>
+              </div>
+            </div>
+
+            <!-- Element / Modality / Planet chips -->
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                {{ soulmateSpotlight.element }}
+              </span>
+              <span class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                {{ soulmateSpotlight.modality }}
+              </span>
+              <span class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                {{ soulmateSpotlight.planet }}
+              </span>
+            </div>
+
+            <!-- Personality snippet -->
+            <p class="text-sm text-white/60 leading-relaxed italic">
+              "{{ soulmateSpotlight.personality }}"
+            </p>
           </div>
         </div>
       </div>
@@ -359,113 +379,33 @@ onMounted(setupDragScrollers)
     <!-- Section divider -->
     <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
 
-    <!-- Features Tabbed Section -->
+    <!-- Other Features — 3-Card Grid -->
     <section class="py-16 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
-          Explore the Cosmos
+          More Than Soulmates
         </h2>
         <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
-          Discover the features that make Astral your ultimate astrology companion
+          Tarot, horoscopes, and AI-powered cosmic guidance — all in one app
         </p>
 
-        <!-- Tab buttons -->
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
-          <button
-            v-for="tab in featureTabs"
-            :key="tab.id"
-            @click="activeTab = tab.id"
-            class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
-            :class="activeTab === tab.id
-              ? 'bg-astral-cosmic text-white'
-              : 'bg-white/5 border border-white/15 text-white/60 hover:bg-white/10 hover:text-white/80'"
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div
+            v-for="feature in features"
+            :key="feature.name"
+            class="feature-card bg-white/5 border border-white/10 rounded-2xl overflow-hidden group"
           >
-            {{ tab.name }}
-          </button>
-        </div>
-
-        <!-- Tab content -->
-        <template v-for="tab in featureTabs" :key="tab.id">
-        <div v-show="activeTab === tab.id">
-          <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-10 items-center">
-            <!-- Left: Description -->
-            <div class="flex flex-col justify-center max-w-xs">
-              <div class="w-12 h-12 bg-astral-cosmic/30 border border-astral-cosmic/40 rounded-xl flex items-center justify-center mb-5">
-                <!-- Tarot icon -->
-                <svg v-if="tab.icon === 'tarot'" class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <rect x="4" y="2" width="16" height="20" rx="2" />
-                  <path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5L12 14l-3 1.5.5-3.5L7 9.5l3.5-.5L12 6z" />
-                </svg>
-                <!-- Soulmate icon -->
-                <svg v-else-if="tab.icon === 'soulmate'" class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12 4 12 4C12 4 12.76 3 14.5 3C17.58 3 20 5.42 20 8.5C20 13.5 12 21 12 21Z" />
-                  <circle cx="9" cy="9" r="1" />
-                  <circle cx="15" cy="9" r="1" />
-                  <path d="M9.5 13C9.5 13 10.5 14.5 12 14.5C13.5 14.5 14.5 13 14.5 13" />
-                </svg>
-                <!-- Horoscopes icon -->
-                <svg v-else-if="tab.icon === 'horoscopes'" class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" />
-                  <circle cx="12" cy="12" r="4" />
-                  <line x1="12" y1="3" x2="12" y2="5" />
-                  <line x1="12" y1="19" x2="12" y2="21" />
-                  <line x1="3" y1="12" x2="5" y2="12" />
-                  <line x1="19" y1="12" x2="21" y2="12" />
-                </svg>
-                <!-- Chat icon -->
-                <svg v-else class="w-6 h-6 text-astral-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold mb-3">{{ tab.name }}</h3>
-              <p class="text-white/60 text-base leading-relaxed">{{ tab.description }}</p>
+            <!-- Screenshot -->
+            <div class="aspect-[9/16] max-h-72 overflow-hidden">
+              <img :src="feature.screenshot" :alt="feature.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
             </div>
-
-            <!-- Right: Screenshots carousel -->
-            <div class="relative min-w-0">
-              <!-- Left fade + arrow -->
-              <div v-show="canScrollLeft[tab.id]" class="absolute left-0 top-0 bottom-2 z-10 flex items-center transition-opacity duration-200">
-                <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#1a0040] to-transparent pointer-events-none"></div>
-                <button
-                  @click="scrollCarousel(tab.id, -1)"
-                  class="relative ml-2 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-                  aria-label="Scroll left"
-                >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-              </div>
-
-              <!-- Scrollable image row -->
-              <div :ref="el => setScrollRef(tab.id, el)" class="tab-screenshots flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 cursor-grab">
-                <div
-                  v-for="(ss, i) in tab.screenshots"
-                  :key="i"
-                  class="screenshot-card w-40 sm:w-64 flex-shrink-0 rounded-xl overflow-hidden aspect-[9/16] snap-start cursor-pointer"
-                  @click="openLightbox(tab.screenshots, i)"
-                >
-                  <img :src="ss.src" :alt="ss.alt" class="w-full h-full object-cover" loading="lazy" draggable="false" />
-                </div>
-              </div>
-
-              <!-- Right fade + arrow -->
-              <div v-show="canScrollRight[tab.id]" class="absolute right-0 top-0 bottom-2 z-10 flex items-center transition-opacity duration-200">
-                <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#1a0040] to-transparent pointer-events-none"></div>
-                <button
-                  @click="scrollCarousel(tab.id, 1)"
-                  class="relative mr-2 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors ml-auto"
-                  aria-label="Scroll right"
-                >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
+            <!-- Text -->
+            <div class="p-5">
+              <h3 class="text-lg font-bold mb-2 text-white">{{ feature.name }}</h3>
+              <p class="text-sm text-white/60 leading-relaxed">{{ feature.description }}</p>
             </div>
           </div>
         </div>
-        </template>
       </div>
     </section>
 
@@ -479,7 +419,7 @@ onMounted(setupDragScrollers)
           Cosmic Conversations
         </h2>
         <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
-          8 guided AI topics to explore every dimension of your cosmic journey
+          8 AI-guided topics for every dimension of your journey
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -507,10 +447,10 @@ onMounted(setupDragScrollers)
     <section class="py-16 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          Ready to discover what the stars have in store?
+          Ready to meet your cosmic soulmate?
         </h2>
         <p class="text-lg text-white/70 mb-10 max-w-2xl mx-auto">
-          Download Astral today and begin your cosmic journey with personalized readings, AI-powered insights, and celestial guidance.
+          Download Astral and let the stars reveal who you're meant to find — plus tarot, horoscopes, and personalized cosmic guidance.
         </p>
 
         <!-- Store buttons -->
@@ -620,7 +560,7 @@ onMounted(setupDragScrollers)
         <!-- Image -->
         <img
           :src="lightboxImages[lightboxIndex]?.src"
-          :alt="lightboxImages[lightboxIndex]?.alt"
+          :alt="lightboxImages[lightboxIndex]?.name || lightboxImages[lightboxIndex]?.alt || ''"
           class="relative z-[1] max-h-[85vh] max-w-[90vw] object-contain rounded-xl"
         />
 
@@ -678,7 +618,6 @@ onMounted(setupDragScrollers)
 .feature-card:nth-child(1) { animation-delay: 0.1s; }
 .feature-card:nth-child(2) { animation-delay: 0.2s; }
 .feature-card:nth-child(3) { animation-delay: 0.3s; }
-.feature-card:nth-child(4) { animation-delay: 0.4s; }
 
 /* Topic cards stagger */
 .topic-card {
@@ -706,12 +645,12 @@ onMounted(setupDragScrollers)
   display: flex;
   gap: 1rem;
   width: max-content;
-  animation: scroll 40s linear infinite;
+  animation: scroll 45s linear infinite;
 }
 
 .carousel-item {
-  width: 200px;
-  aspect-ratio: 9/16;
+  width: 220px;
+  aspect-ratio: 1/1;
   flex-shrink: 0;
   border-radius: 1rem;
   overflow: hidden;
@@ -719,7 +658,7 @@ onMounted(setupDragScrollers)
 
 @media (min-width: 640px) {
   .carousel-item {
-    width: 240px;
+    width: 260px;
   }
   .carousel-inner {
     gap: 1.25rem;
@@ -734,21 +673,6 @@ onMounted(setupDragScrollers)
 .carousel-track:hover .carousel-inner {
   animation-play-state: paused;
 }
-
-/* Tab screenshots horizontal scroll */
-.tab-screenshots {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-behavior: smooth;
-}
-.tab-screenshots::-webkit-scrollbar {
-  display: none;
-}
-.tab-screenshots img {
-  user-select: none;
-  pointer-events: none;
-}
-
 
 /* Footer link underline animation */
 .astral-footer-link {

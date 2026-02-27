@@ -25,6 +25,8 @@ const domainConfigs = {
 
 export function getDomainConfig() {
   const host = window.location.hostname.replace(/^www\./, '')
+  // In local dev, treat localhost as astralapp.love
+  if (host === 'localhost') return domainConfigs['astralapp.love']
   return domainConfigs[host] || null
 }
 
