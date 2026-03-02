@@ -329,7 +329,7 @@ function onLightboxKeydown(e) {
           </div>
 
           <!-- Right: Soulmate Bio (overlaps portrait on desktop) -->
-          <div class="bg-astral-card/80 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col -mt-8 md:mt-0 md:-ml-6 md:pl-10">
+          <div class="bg-astral-card/80 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col mt-4 md:mt-0 md:-ml-6 md:pl-10">
             <!-- Header: thumbnail + name + sign + chips -->
             <div class="flex items-start gap-4 mb-5">
               <img :src="soulmateSpotlight.image" :alt="soulmateSpotlight.name" class="w-16 h-16 rounded-xl object-cover border border-white/10" loading="lazy" />

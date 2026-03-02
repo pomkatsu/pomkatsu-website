@@ -5,6 +5,8 @@ const domainConfigs = {
     homeComponent: () => import('../views/apps/Astral.vue'),
     navLogo: 'Astral',
     themeColor: '#330963',
+    favicon: '/app-logos/astral/astral-icon.webp',
+    bgColor: '#3A007C',
   },
   // Future domains:
   // 'easytranslate.io': {
