@@ -81,8 +81,10 @@ const closeContactForm = () => {
           <div>
             <h3 class="text-sm font-semibold text-primary-light/70 uppercase tracking-wider mb-3">Mobile Apps</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <router-link
-                to="/apps/easytranslate"
+              <a
+                href="https://easytranslate.io"
+                target="_blank"
+                rel="noopener"
                 class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
               >
                 <img src="/app-logos/easytranslate/easytranslateai.webp" alt="EasyTranslate AI Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
@@ -90,7 +92,7 @@ const closeContactForm = () => {
                   <p class="text-lg font-bold text-primary">EasyTranslate AI</p>
                   <p class="text-sm text-primary-light leading-snug">Translate documents instantly in 100+ languages</p>
                 </div>
-              </router-link>
+              </a>
               <a
                 href="https://astralapp.love"
                 target="_blank"
