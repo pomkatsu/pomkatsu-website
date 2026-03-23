@@ -13,9 +13,9 @@ const domainConfigs = {
     name: 'EasyTranslate AI',
     homeComponent: () => import('../views/apps/EasyTranslateAI.vue'),
     navLogo: 'EasyTranslate',
-    themeColor: '#46301C',
+    themeColor: '#a855f7',
     favicon: '/app-logos/easytranslate/easytranslateai.webp',
-    bgColor: '#FFF8ED',
+    bgColor: '#ffffff',
   },
   // 'foodtally.app': {
   //   appId: 'foodtally',

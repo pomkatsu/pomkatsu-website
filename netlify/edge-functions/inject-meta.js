@@ -12,7 +12,7 @@ const domainMeta = {
     description:
       'Translate documents instantly with AI. Support for multiple languages, formats, and real-time translation powered by advanced AI.',
     ogImage: 'https://easytranslate.io/app-logos/easytranslate/og-image.png',
-    themeColor: '#46301C',
+    themeColor: '#a855f7',
     canonical: 'https://easytranslate.io/',
   },
   // Future domains:

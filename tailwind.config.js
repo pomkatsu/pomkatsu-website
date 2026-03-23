@@ -29,6 +29,17 @@ export default {
           800: '#9f1239',
           900: '#881337',
         },
+        'et': {
+          'purple': '#a855f7',
+          'purple-light': '#c084fc',
+          'purple-dark': '#9333ea',
+          'bg': '#ffffff',
+          'bg-alt': '#fafafa',
+          'bg-muted': '#f4f4f5',
+          'text': '#18181b',
+          'text-light': '#52525b',
+          'border': '#e4e4e7',
+        },
         'astral': {
           'deep': '#330963',
           'cosmic': '#9B59B6',
