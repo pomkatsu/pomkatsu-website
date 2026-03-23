@@ -8,14 +8,15 @@ const domainConfigs = {
     favicon: '/app-logos/astral/astral-icon.webp',
     bgColor: '#3A007C',
   },
-  // Future domains:
-  // 'easytranslate.io': {
-  //   appId: 'easytranslate',
-  //   name: 'EasyTranslate AI',
-  //   homeComponent: () => import('../views/apps/EasyTranslateAI.vue'),
-  //   navLogo: 'EasyTranslate',
-  //   themeColor: '#46301C',
-  // },
+  'easytranslate.io': {
+    appId: 'easytranslate',
+    name: 'EasyTranslate AI',
+    homeComponent: () => import('../views/apps/EasyTranslateAI.vue'),
+    navLogo: 'EasyTranslate',
+    themeColor: '#46301C',
+    favicon: '/app-logos/easytranslate/easytranslateai.webp',
+    bgColor: '#FFF8ED',
+  },
   // 'foodtally.app': {
   //   appId: 'foodtally',
   //   name: 'FoodTally',

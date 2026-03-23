@@ -74,7 +74,7 @@ useHead({
                 play-store-url="#"
               />
               <a
-                href="https://easytranslate.io"
+                href="https://app.easytranslate.io"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-3 px-6 py-3 bg-primary text-secondary rounded-xl hover:bg-primary-light transition-all duration-200 font-semibold group min-w-[160px]"
@@ -255,7 +255,7 @@ useHead({
             play-store-url="#"
           />
           <a
-            href="https://easytranslate.io"
+            href="https://app.easytranslate.io"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-3 px-6 py-3 bg-primary text-secondary rounded-xl hover:bg-primary-light transition-all duration-200 font-semibold group min-w-[160px]"

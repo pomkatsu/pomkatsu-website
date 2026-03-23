@@ -7,8 +7,15 @@ const domainMeta = {
     themeColor: '#330963',
     canonical: 'https://astralapp.love/',
   },
+  'easytranslate.io': {
+    title: 'EasyTranslate AI — Instant Document Translation',
+    description:
+      'Translate documents instantly with AI. Support for multiple languages, formats, and real-time translation powered by advanced AI.',
+    ogImage: 'https://easytranslate.io/app-logos/easytranslate/og-image.png',
+    themeColor: '#46301C',
+    canonical: 'https://easytranslate.io/',
+  },
   // Future domains:
-  // 'easytranslate.io': { ... },
   // 'foodtally.app': { ... },
 }
 

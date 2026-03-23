@@ -3,8 +3,8 @@ const domainRobots = {
 Allow: /
 
 Sitemap: https://astralapp.love/sitemap.xml`,
+  'easytranslate.io': `User-agent: *\nAllow: /\n\nSitemap: https://easytranslate.io/sitemap.xml`,
   // Future domains:
-  // 'easytranslate.io': `User-agent: *\nAllow: /\n\nSitemap: https://easytranslate.io/sitemap.xml`,
   // 'foodtally.app': `User-agent: *\nAllow: /\n\nSitemap: https://foodtally.app/sitemap.xml`,
 }
 

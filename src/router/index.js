@@ -64,10 +64,13 @@ function buildRoutes() {
       component: () => import('../views/HomePage.vue')
     },
     ...legalRoutes,
+    // EasyTranslate has its own domain (easytranslate.io) — redirect old URL
     {
       path: '/apps/easytranslate',
-      name: 'EasyTranslateAI',
-      component: () => import('../views/apps/EasyTranslateAI.vue')
+      beforeEnter() {
+        window.location.href = 'https://easytranslate.io'
+      },
+      component: () => import('../views/HomePage.vue')
     },
     // Astral has its own domain (astralapp.love) — redirect old URL
     {
