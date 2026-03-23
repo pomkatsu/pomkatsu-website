@@ -267,6 +267,7 @@ useHead({
           <AppStoreButtons
             app-store-url="https://apps.apple.com/us/app/easytranslate-ai-pdf-docs/id6751864455"
             play-store-url="#"
+            variant="easytranslate"
           />
           <a
             href="https://app.easytranslate.io"
