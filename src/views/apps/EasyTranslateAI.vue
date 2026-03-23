@@ -1,8 +1,53 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import AppLayout from '../../components/apps/AppLayout.vue'
 import AppHero from '../../components/apps/AppHero.vue'
 import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
+
+// Screenshots data
+const screenshots = [
+  { src: '/app-logos/easytranslate/home-page-light.webp', alt: 'Home Screen', label: 'One-Click Upload & Translate' },
+  { src: '/app-logos/easytranslate/history-page-light.webp', alt: 'Translation History', label: 'History & Organization' },
+  { src: '/app-logos/easytranslate/preview-csv-light.webp', alt: 'CSV Preview', label: 'CSV Preview' },
+  { src: '/app-logos/easytranslate/preview-menu-light.webp', alt: 'Export Menu', label: 'Preview & Export' },
+]
+
+// Lightbox state
+const lightboxOpen = ref(false)
+const lightboxIndex = ref(0)
+
+function openLightbox(index) {
+  lightboxIndex.value = index
+  lightboxOpen.value = true
+}
+
+function closeLightbox() {
+  lightboxOpen.value = false
+}
+
+function lightboxPrev() {
+  lightboxIndex.value = (lightboxIndex.value - 1 + screenshots.length) % screenshots.length
+}
+
+function lightboxNext() {
+  lightboxIndex.value = (lightboxIndex.value + 1) % screenshots.length
+}
+
+function onLightboxKeydown(e) {
+  if (!lightboxOpen.value) return
+  if (e.key === 'Escape') closeLightbox()
+  else if (e.key === 'ArrowLeft') lightboxPrev()
+  else if (e.key === 'ArrowRight') lightboxNext()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', onLightboxKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', onLightboxKeydown)
+})
 
 useSeoMeta({
   title: 'EasyTranslate AI — Instant Document Translation',
@@ -113,51 +158,19 @@ useHead({
           See it in action
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Screenshot 1 -->
-          <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div
+            v-for="(shot, i) in screenshots"
+            :key="i"
+            class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+            @click="openLightbox(i)"
+          >
             <img
-              src="/app-logos/easytranslate/home-page-light.webp"
-              alt="Home Screen"
+              :src="shot.src"
+              :alt="shot.alt"
               class="w-full h-auto object-cover"
             />
             <div class="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-white/60 p-4 border-t border-et-border">
-              <p class="text-et-text font-semibold">One-Click Upload & Translate</p>
-            </div>
-          </div>
-
-          <!-- Screenshot 2 -->
-          <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <img
-              src="/app-logos/easytranslate/history-page-light.webp"
-              alt="Translation History"
-              class="w-full h-auto object-cover"
-            />
-            <div class="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-white/60 p-4 border-t border-et-border">
-              <p class="text-et-text font-semibold">History & Organization</p>
-            </div>
-          </div>
-
-          <!-- Screenshot 3 -->
-          <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <img
-              src="/app-logos/easytranslate/preview-csv-light.webp"
-              alt="CSV Preview"
-              class="w-full h-auto object-cover"
-            />
-            <div class="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-white/60 p-4 border-t border-et-border">
-              <p class="text-et-text font-semibold">CSV Preview</p>
-            </div>
-          </div>
-
-          <!-- Screenshot 4 -->
-          <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <img
-              src="/app-logos/easytranslate/preview-menu-light.webp"
-              alt="Export Menu"
-              class="w-full h-auto object-cover"
-            />
-            <div class="absolute bottom-0 left-0 right-0 backdrop-blur-md bg-white/60 p-4 border-t border-et-border">
-              <p class="text-et-text font-semibold">Preview & Export</p>
+              <p class="text-et-text font-semibold">{{ shot.label }}</p>
             </div>
           </div>
         </div>
@@ -273,6 +286,56 @@ useHead({
         </div>
       </div>
     </section>
+    <!-- Lightbox -->
+    <Teleport to="body">
+      <div
+        v-if="lightboxOpen"
+        class="fixed inset-0 z-[100] flex items-center justify-center"
+        @click.self="closeLightbox"
+      >
+        <div class="absolute inset-0 bg-black/90" @click="closeLightbox"></div>
+
+        <button
+          @click="closeLightbox"
+          class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Close lightbox"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <button
+          @click="lightboxPrev"
+          class="absolute left-3 sm:left-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Previous image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <img
+          :src="screenshots[lightboxIndex].src"
+          :alt="screenshots[lightboxIndex].alt"
+          class="relative z-[1] max-h-[85vh] max-w-[90vw] object-contain rounded-xl"
+        />
+
+        <button
+          @click="lightboxNext"
+          class="absolute right-3 sm:right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Next image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 text-sm">
+          {{ lightboxIndex + 1 }} / {{ screenshots.length }}
+        </div>
+      </div>
+    </Teleport>
   </AppLayout>
 </template>
 
