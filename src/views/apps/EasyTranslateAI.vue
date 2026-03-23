@@ -70,7 +70,7 @@ useHead({
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center sm:items-stretch">
               <AppStoreButtons
-                app-store-url="#"
+                app-store-url="https://apps.apple.com/us/app/easytranslate-ai-pdf-docs/id6751864455"
                 play-store-url="#"
               />
               <a
@@ -251,7 +251,7 @@ useHead({
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-stretch">
           <AppStoreButtons
-            app-store-url="#"
+            app-store-url="https://apps.apple.com/us/app/easytranslate-ai-pdf-docs/id6751864455"
             play-store-url="#"
           />
           <a
