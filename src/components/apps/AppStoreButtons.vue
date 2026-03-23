@@ -15,7 +15,12 @@ defineProps({
   showPlayStore: {
     type: Boolean,
     default: true
-  }
+  },
+  variant: {
+    type: String,
+    default: 'default',
+    validator: (v) => ['default', 'mono', 'easytranslate'].includes(v),
+  },
 })
 </script>
 
@@ -27,7 +32,8 @@ defineProps({
       :href="appStoreUrl"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center gap-3 px-6 py-3 bg-primary text-secondary rounded-xl hover:bg-primary-light transition-all duration-200 font-semibold group"
+      class="store-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-200 font-semibold group"
+      :class="variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
     >
       <!-- Apple Logo SVG -->
       <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -42,7 +48,8 @@ defineProps({
     <!-- Google Play Store Button (Coming Soon) -->
     <div v-if="showPlayStore" class="relative">
       <div
-        class="inline-flex items-center gap-3 px-6 py-3 bg-primary/40 text-secondary/50 rounded-xl min-w-[160px] pointer-events-none"
+        class="inline-flex items-center gap-3 px-6 py-3 rounded-xl min-w-[160px] pointer-events-none"
+        :class="variant === 'easytranslate' ? 'bg-et-text/40 text-white/50' : 'bg-primary/40 text-secondary/50'"
       >
         <!-- Google Play Logo SVG -->
         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -53,7 +60,10 @@ defineProps({
           <div class="text-base font-bold leading-tight">Google Play</div>
         </div>
       </div>
-      <span class="absolute -top-2 -right-2 bg-primary text-secondary text-xs font-bold px-2 py-0.5 rounded-full">
+      <span
+        class="absolute -top-2 -right-2 text-xs font-bold px-2 py-0.5 rounded-full"
+        :class="variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
+      >
         Coming Soon
       </span>
     </div>
@@ -68,6 +78,6 @@ a {
 
 a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(70, 48, 28, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 </style>
