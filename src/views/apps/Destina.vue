@@ -453,7 +453,7 @@ function onLightboxKeydown(e) {
               <div class="relative flex items-center justify-center" style="width: 180px; height: 160px;">
                 <!-- Left portrait -->
                 <img
-                  src="/app-logos/astral/soulmate_cards/ethereal_female_1.webp"
+                  src="/app-logos/astral/soulmate_cards/realistic_female_1.webp"
                   alt="Soulmate portrait"
                   class="absolute w-20 rounded-lg drop-shadow-lg"
                   style="transform: rotate(-8deg) translateX(-24px); z-index: 1;"
