@@ -80,6 +80,14 @@ function buildRoutes() {
       },
       component: () => import('../views/HomePage.vue')
     },
+    // Destina has its own domain (destina.love) — redirect old URL
+    {
+      path: '/apps/destina',
+      beforeEnter() {
+        window.location.href = 'https://destina.love'
+      },
+      component: () => import('../views/HomePage.vue')
+    },
     {
       path: '/apps/foodtally',
       name: 'FoodTally',

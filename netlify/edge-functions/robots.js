@@ -4,6 +4,10 @@ Allow: /
 
 Sitemap: https://astralapp.love/sitemap.xml`,
   'easytranslate.io': `User-agent: *\nAllow: /\n\nSitemap: https://easytranslate.io/sitemap.xml`,
+  'destina.love': `User-agent: *
+Allow: /
+
+Sitemap: https://destina.love/sitemap.xml`,
   // Future domains:
   // 'foodtally.app': `User-agent: *\nAllow: /\n\nSitemap: https://foodtally.app/sitemap.xml`,
 }

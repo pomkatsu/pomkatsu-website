@@ -8,6 +8,15 @@ const domainConfigs = {
     favicon: '/app-logos/astral/astral-icon.webp',
     bgColor: '#3A007C',
   },
+  'destina.love': {
+    appId: 'destina',
+    name: 'Destina',
+    homeComponent: () => import('../views/apps/Destina.vue'),
+    navLogo: 'Destina',
+    themeColor: '#330963',
+    favicon: '/app-logos/astral/astral-icon.webp',
+    bgColor: '#3A007C',
+  },
   'easytranslate.io': {
     appId: 'easytranslate',
     name: 'EasyTranslate AI',
@@ -29,7 +38,7 @@ const domainConfigs = {
 export function getDomainConfig() {
   const host = window.location.hostname.replace(/^www\./, '')
   // In local dev, treat localhost as astralapp.love
-  if (host === 'localhost') return domainConfigs['astralapp.love']
+  if (host === 'localhost') return domainConfigs['destina.love']
   return domainConfigs[host] || null
 }
 

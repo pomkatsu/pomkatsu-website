@@ -15,6 +15,14 @@ const domainMeta = {
     themeColor: '#a855f7',
     canonical: 'https://easytranslate.io/',
   },
+  'destina.love': {
+    title: 'Destina — AI Soulmate Portraits & Personality Insights',
+    description:
+      'Discover your perfect match with AI-generated soulmate portraits in 6 unique art styles. Plus personality insights, compatibility analysis, and AI-powered conversations.',
+    ogImage: 'https://destina.love/app-logos/astral/og-image.png',
+    themeColor: '#330963',
+    canonical: 'https://destina.love/',
+  },
   // Future domains:
   // 'foodtally.app': { ... },
 }

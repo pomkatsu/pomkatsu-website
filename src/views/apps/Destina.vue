@@ -1,0 +1,763 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
+import ContactForm from '../../components/ContactForm.vue'
+import { getDomainConfig } from '../../config/domains'
+
+const domainConfig = getDomainConfig()
+const isAppDomain = !!domainConfig
+
+useSeoMeta({
+  title: 'Destina — AI Soulmate Portraits & Personality Insights',
+  description: 'Discover your perfect match with AI-generated soulmate portraits in 6 unique art styles. Plus personality insights, compatibility analysis, and AI-powered conversations.',
+  ogTitle: 'Destina — AI Soulmate Portraits & Personality Insights',
+  ogDescription: 'Discover your perfect match with AI-generated soulmate portraits in 6 unique art styles.',
+  ogImage: '/app-logos/astral/og-image.png',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Destina',
+      operatingSystem: 'iOS, Android',
+      applicationCategory: 'SocialNetworkingApplication',
+      description: 'AI-powered soulmate generator with portraits in 6 art styles, personality insights, compatibility analysis, and AI conversations.',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'Pomkatsu',
+        url: 'https://pomkatsu.com',
+      },
+    }),
+  }],
+})
+
+const showContactForm = ref(false)
+const scrolled = ref(false)
+
+const onScroll = () => {
+  scrolled.value = window.scrollY > 20
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('keydown', onLightboxKeydown)
+  onScroll()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('keydown', onLightboxKeydown)
+})
+
+// Soulmate portrait cards for carousel (alternating styles & genders)
+const soulmateCards = [
+  { src: '/app-logos/astral/soulmate_cards/ethereal_female_1.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_male_1.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/anime_female_1.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_male_1.webp', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_female_1.webp', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_male_1.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_female_1.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_male_1.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/anime_male_1.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_female_1.webp', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_male_1.webp', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_female_2.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_male_2.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/anime_female_2.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_male_2.webp', style: 'Sketch' },
+  { src: '/app-logos/astral/soulmate_cards/vintage_female_2.webp', style: 'Vintage' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_male_2.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/realistic_female_2.webp', style: 'Realistic' },
+  { src: '/app-logos/astral/soulmate_cards/ethereal_male_2.webp', style: 'Ethereal' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_2.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/anime_male_2.webp', style: 'Anime' },
+  { src: '/app-logos/astral/soulmate_cards/sketch_female_2.webp', style: 'Sketch' },
+]
+
+// Features grid (3 items — soulmate is the hero, not here)
+const features = [
+  {
+    name: 'Personality Insights',
+    description: 'Discover detailed personality profiles based on your birth date and preferences. Understand your traits, strengths, and relationship patterns.',
+  },
+  {
+    name: 'Compatibility Analysis',
+    description: 'See how well you match with your AI-generated soulmate. Detailed breakdowns of shared traits, values, and relationship dynamics.',
+  },
+  {
+    name: 'AI Conversations',
+    description: '8 guided conversation topics covering love, career, dreams, and more — powered by AI for personalized insights and guidance.',
+  },
+]
+
+// Soulmate detail spotlight (decorative mock data)
+const soulmateSpotlight = {
+  image: '/app-logos/astral/soulmate_cards/realistic_male_1.webp',
+  name: 'Marcus Ashford',
+  type: 'The Strategist',
+  typeIcon: '/app-logos/astral/zodiac/Scorpio.svg',
+  style: 'Realistic',
+  compatibility: 87,
+  trait: 'Intuitive',
+  drive: 'Passion',
+  approach: 'Steadfast',
+  personality: 'A deeply intuitive soul with magnetic intensity and unwavering loyalty. He sees beneath the surface and forms connections that transcend the ordinary.',
+  aspirations: 'Driven to uncover hidden truths and build something lasting, channeling his passion into creative pursuits and meaningful relationships.',
+  likes: ['stargazing', 'philosophy', 'rock climbing', 'jazz', 'mystery novels'],
+  dislikes: ['dishonesty', 'small talk', 'superficiality'],
+}
+
+// Lightbox state
+const lightboxOpen = ref(false)
+const lightboxImages = ref([])
+const lightboxIndex = ref(0)
+
+function openLightbox(images, index) {
+  lightboxImages.value = images
+  lightboxIndex.value = index
+  lightboxOpen.value = true
+}
+
+function closeLightbox() {
+  lightboxOpen.value = false
+}
+
+function lightboxPrev() {
+  lightboxIndex.value = (lightboxIndex.value - 1 + lightboxImages.value.length) % lightboxImages.value.length
+}
+
+function lightboxNext() {
+  lightboxIndex.value = (lightboxIndex.value + 1) % lightboxImages.value.length
+}
+
+function onLightboxKeydown(e) {
+  if (!lightboxOpen.value) return
+  if (e.key === 'Escape') closeLightbox()
+  else if (e.key === 'ArrowLeft') lightboxPrev()
+  else if (e.key === 'ArrowRight') lightboxNext()
+}
+</script>
+
+<template>
+  <div class="min-h-screen text-white relative">
+    <!-- Full-page background -->
+    <div class="fixed inset-0 -z-10">
+      <img
+        src="/app-logos/astral/background.webp"
+        alt=""
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-astral-bg/40"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300"
+      :class="scrolled ? 'bg-astral-header/80 backdrop-blur-md border-white/10' : 'bg-transparent border-transparent backdrop-blur-none'"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <router-link to="/" class="text-2xl font-bold text-white hover:text-astral-gold transition-colors">
+            {{ isAppDomain ? 'Destina' : 'Pomkatsu' }}
+          </router-link>
+          <button
+            @click="showContactForm = true"
+            class="px-6 py-2 bg-astral-deep text-white rounded-lg hover:bg-astral-cosmic transition-colors"
+          >
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section — Soulmate-First -->
+    <section class="pt-28 pb-16 md:pt-32 md:pb-20 px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Brand label -->
+        <p class="text-sm text-white/50 mb-3 tracking-wide uppercase">Destina</p>
+
+        <!-- Avatar illustration (smaller) -->
+        <div class="mb-4 animate-float">
+          <img
+            src="/app-logos/astral/avatar.svg"
+            alt="Destina Avatar"
+            class="w-20 h-20 sm:w-24 sm:h-24 mx-auto"
+          />
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-bold mb-3">Discover Your AI-Generated Soulmate</h1>
+
+        <p class="text-xl sm:text-2xl font-semibold mb-3 text-astral-gold">
+          Stunning portraits in 6 unique art styles
+        </p>
+        <p class="text-base sm:text-lg text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Your personality shapes the perfect match AI creates for you. See them rendered in Ethereal, Realistic, Anime, Sketch, Vintage, and Cyberpunk styles.
+        </p>
+
+        <!-- Store buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <!-- App Store button -->
+          <a
+            href="#"
+            class="inline-flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 text-white rounded-xl hover:bg-white/20 transition-all duration-200 font-semibold min-w-[180px]"
+          >
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-xs opacity-80">Download on the</div>
+              <div class="text-base font-bold leading-tight">App Store</div>
+            </div>
+          </a>
+
+          <!-- Google Play button (disabled) -->
+          <div class="relative">
+            <div
+              class="inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 text-white/50 rounded-xl min-w-[180px] pointer-events-none"
+            >
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+              </svg>
+              <div class="text-left">
+                <div class="text-xs opacity-80">Get it on</div>
+                <div class="text-base font-bold leading-tight">Google Play</div>
+              </div>
+            </div>
+            <span class="absolute -top-2 -right-2 bg-astral-cosmic text-white text-xs font-bold px-2 py-0.5 rounded-full">
+              Coming Soon
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section divider -->
+    <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
+
+    <!-- Soulmate Portrait Carousel + Style Legend -->
+    <section class="py-16 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
+          6 Art Styles. One Perfect Match.
+        </h2>
+        <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
+          AI-generated portraits shaped by your unique personality
+        </p>
+      </div>
+
+      <div class="carousel-track">
+        <div class="carousel-inner">
+          <div
+            v-for="(card, i) in soulmateCards"
+            :key="'a-' + i"
+            class="carousel-item cursor-pointer"
+            @click="openLightbox(soulmateCards, i % soulmateCards.length)"
+          >
+            <div class="relative w-full h-full">
+              <img :src="card.src" :alt="card.style + ' soulmate portrait'" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl px-3 py-2">
+                <span class="text-xs sm:text-sm font-semibold text-white/90">{{ card.style }}</span>
+              </div>
+            </div>
+          </div>
+          <div
+            v-for="(card, i) in soulmateCards"
+            :key="'b-' + i"
+            class="carousel-item"
+            aria-hidden="true"
+          >
+            <div class="relative w-full h-full">
+              <img :src="card.src" :alt="card.style + ' soulmate portrait'" class="w-full h-full object-cover rounded-2xl" loading="lazy" />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl px-3 py-2">
+                <span class="text-xs sm:text-sm font-semibold text-white/90">{{ card.style }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section divider -->
+    <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
+
+    <!-- Soulmate Detail Spotlight -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
+          See What AI Reveals
+        </h2>
+        <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
+          Every soulmate comes with a unique bio, personality profile, and compatibility score
+        </p>
+
+        <div class="flex flex-col md:flex-row items-center md:items-center justify-center max-w-5xl mx-auto">
+          <!-- Left: Soulmate Card -->
+          <div class="flex-shrink-0 z-10">
+            <div class="relative w-72 sm:w-80 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-astral-cosmic/20 border border-white/10">
+              <img :src="soulmateSpotlight.image" :alt="soulmateSpotlight.name" class="w-full h-full object-cover" loading="lazy" />
+              <!-- Bottom overlay -->
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-astral-deep/90 via-astral-deep/40 to-transparent p-4 pt-16">
+                <!-- Type + Compatibility -->
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex items-center gap-2">
+                    <img :src="soulmateSpotlight.typeIcon" alt="Personality type" class="w-5 h-5" />
+                    <span class="text-white font-semibold">{{ soulmateSpotlight.type }}</span>
+                  </div>
+                  <span class="text-lg font-bold text-astral-gold">{{ soulmateSpotlight.compatibility }}%</span>
+                </div>
+                <!-- Progress bar -->
+                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-2">
+                  <div class="h-full bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full" :style="{ width: soulmateSpotlight.compatibility + '%' }"></div>
+                </div>
+                <!-- Style label -->
+                <p class="text-center text-white/50 text-xs uppercase tracking-wider">{{ soulmateSpotlight.style }} Style</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Soulmate Bio (overlaps portrait on desktop) -->
+          <div class="bg-astral-card/80 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col mt-4 md:mt-0 md:-ml-6 md:pl-10">
+            <!-- Header: thumbnail + name + type + chips -->
+            <div class="flex items-start gap-4 mb-5">
+              <img :src="soulmateSpotlight.image" :alt="soulmateSpotlight.name" class="w-16 h-16 rounded-xl object-cover border border-white/10" loading="lazy" />
+              <div>
+                <h3 class="text-xl font-bold text-white">Soulmate Bio</h3>
+                <div class="flex items-center gap-2 mt-0.5">
+                  <img :src="soulmateSpotlight.typeIcon" alt="Personality type" class="w-4 h-4" />
+                  <span class="text-sm font-semibold text-white/90">{{ soulmateSpotlight.type }}</span>
+                  <span class="text-white/30">&middot;</span>
+                  <span class="text-xs text-white/50 uppercase tracking-wider">{{ soulmateSpotlight.style }} Style</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  <span class="px-2.5 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                    {{ soulmateSpotlight.trait }}
+                  </span>
+                  <span class="px-2.5 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                    {{ soulmateSpotlight.drive }}
+                  </span>
+                  <span class="px-2.5 py-1 bg-white/10 border border-white/15 rounded-full text-xs font-semibold text-white/80">
+                    {{ soulmateSpotlight.approach }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compatibility -->
+            <div class="mb-5">
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-white text-xs uppercase tracking-wider font-semibold">Compatibility</span>
+                <span class="text-lg font-bold text-astral-gold">{{ soulmateSpotlight.compatibility }}%</span>
+              </div>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full" :style="{ width: soulmateSpotlight.compatibility + '%' }"></div>
+              </div>
+            </div>
+
+            <!-- Personality -->
+            <div class="mb-4">
+              <h4 class="text-white text-xs uppercase tracking-wider font-semibold mb-1.5">Personality</h4>
+              <p class="text-sm text-white/60 leading-relaxed italic">{{ soulmateSpotlight.personality }}</p>
+            </div>
+
+            <!-- Aspirations -->
+            <div class="mb-4">
+              <h4 class="text-white text-xs uppercase tracking-wider font-semibold mb-1.5">Aspirations</h4>
+              <p class="text-sm text-white/60 leading-relaxed italic">{{ soulmateSpotlight.aspirations }}</p>
+            </div>
+
+            <!-- Likes -->
+            <div class="mb-4">
+              <h4 class="text-white text-xs uppercase tracking-wider font-semibold mb-2">Likes</h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="like in soulmateSpotlight.likes"
+                  :key="like"
+                  class="px-3 py-1 bg-white/10 border border-white/15 rounded-full text-sm text-white/80"
+                >{{ like }}</span>
+              </div>
+            </div>
+
+            <!-- Dislikes -->
+            <div>
+              <h4 class="text-astral-destructive text-xs uppercase tracking-wider font-semibold mb-2">Dislikes</h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="dislike in soulmateSpotlight.dislikes"
+                  :key="dislike"
+                  class="px-3 py-1 bg-astral-destructive/10 border border-astral-destructive/30 rounded-full text-sm text-white/80"
+                >{{ dislike }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section divider -->
+    <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
+
+    <!-- Other Features — 3-Card Grid -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 animate-fade-in">
+          More Than Soulmates
+        </h2>
+        <p class="text-center text-white/60 mb-12 max-w-2xl mx-auto text-lg">
+          Personality insights, compatibility analysis, and AI-powered guidance — all in one app
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+          <!-- Card 1: Personality Insights -->
+          <div class="feature-card bg-astral-card/60 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <!-- Illustration area -->
+            <div class="relative h-52 flex items-center justify-center">
+              <!-- Glow -->
+              <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(155,89,182,0.3)_0%,_transparent_70%)]"></div>
+              <!-- Personality illustration -->
+              <img
+                src="/app-logos/astral/zodiac/header_aries.png"
+                alt="Personality profile"
+                class="relative w-36 drop-shadow-xl"
+                loading="lazy"
+              />
+            </div>
+            <!-- Text -->
+            <div class="px-5 pb-5 text-center">
+              <h3 class="text-lg font-bold mb-2 text-white">Personality Insights</h3>
+              <p class="text-sm text-white/60 leading-relaxed mb-4">Discover detailed personality profiles based on your birth date and preferences. Understand your traits, strengths, and relationship patterns.</p>
+              <div class="h-0.5 bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Card 2: Compatibility Analysis -->
+          <div class="feature-card bg-astral-card/60 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <!-- Illustration area -->
+            <div class="relative h-52 flex items-center justify-center">
+              <!-- Glow -->
+              <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(155,89,182,0.25)_0%,_rgba(239,219,94,0.1)_40%,_transparent_70%)]"></div>
+              <!-- Heart/match illustration using soulmate cards -->
+              <div class="relative flex items-center justify-center" style="width: 180px; height: 160px;">
+                <!-- Left portrait -->
+                <img
+                  src="/app-logos/astral/soulmate_cards/ethereal_female_1.webp"
+                  alt="Soulmate portrait"
+                  class="absolute w-20 rounded-lg drop-shadow-lg"
+                  style="transform: rotate(-8deg) translateX(-24px); z-index: 1;"
+                  loading="lazy"
+                />
+                <!-- Right portrait -->
+                <img
+                  src="/app-logos/astral/soulmate_cards/realistic_male_1.webp"
+                  alt="Soulmate portrait"
+                  class="absolute w-20 rounded-lg drop-shadow-xl"
+                  style="transform: rotate(8deg) translateX(24px); z-index: 2;"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <!-- Text -->
+            <div class="px-5 pb-5 text-center">
+              <h3 class="text-lg font-bold mb-2 text-white">Compatibility Analysis</h3>
+              <p class="text-sm text-white/60 leading-relaxed mb-4">See how well you match with your AI-generated soulmate. Detailed breakdowns of shared traits, values, and relationship dynamics.</p>
+              <div class="h-0.5 bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Card 3: AI Conversations -->
+          <div class="feature-card bg-astral-card/60 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <!-- Illustration area -->
+            <div class="relative h-52 flex items-center justify-center">
+              <!-- Glow -->
+              <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(155,89,182,0.2)_0%,_transparent_70%)]"></div>
+              <!-- 2x2 mini-grid of topic cards -->
+              <div class="relative grid grid-cols-2 gap-2" style="width: 160px;">
+                <img
+                  src="/app-logos/astral/love-match-card-bg.webp"
+                  alt="Love Match"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+                <img
+                  src="/app-logos/astral/dream-decoder-card-bg.webp"
+                  alt="Dream Decoder"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+                <img
+                  src="/app-logos/astral/ask-me-anything-card-bg.webp"
+                  alt="Ask Me Anything"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+                <img
+                  src="/app-logos/astral/career-compass-card-bg.webp"
+                  alt="Career Compass"
+                  class="w-full aspect-square object-cover rounded-lg drop-shadow-md"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <!-- Text -->
+            <div class="px-5 pb-5 text-center">
+              <h3 class="text-lg font-bold mb-2 text-white">AI Conversations</h3>
+              <p class="text-sm text-white/60 leading-relaxed mb-4">8 guided conversation topics covering love, career, dreams, and more — powered by AI for personalized insights and guidance.</p>
+              <div class="h-0.5 bg-gradient-to-r from-astral-cosmic to-astral-gold rounded-full"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section divider -->
+    <div class="max-w-4xl mx-auto px-8"><div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div></div>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Ready to discover your perfect match?
+        </h2>
+        <p class="text-lg text-white/70 mb-10 max-w-2xl mx-auto">
+          Download Destina and let AI reveal who you're meant to find — plus personality insights, compatibility analysis, and guided conversations.
+        </p>
+
+        <!-- Store buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="#"
+            class="inline-flex items-center gap-3 px-6 py-3 bg-astral-deep text-white rounded-xl hover:bg-astral-cosmic transition-all duration-200 font-semibold min-w-[180px]"
+          >
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-xs opacity-80">Download on the</div>
+              <div class="text-base font-bold leading-tight">App Store</div>
+            </div>
+          </a>
+
+          <div class="relative">
+            <div
+              class="inline-flex items-center gap-3 px-6 py-3 bg-astral-deep/40 text-white/50 rounded-xl min-w-[180px] pointer-events-none"
+            >
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+              </svg>
+              <div class="text-left">
+                <div class="text-xs opacity-80">Get it on</div>
+                <div class="text-base font-bold leading-tight">Google Play</div>
+              </div>
+            </div>
+            <span class="absolute -top-2 -right-2 bg-astral-cosmic text-white text-xs font-bold px-2 py-0.5 rounded-full">
+              Coming Soon
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-astral-deep/40 backdrop-blur-sm py-8 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
+          <router-link to="/privacy" class="destina-footer-link text-white/60 hover:text-white transition-colors">
+            Privacy Policy
+          </router-link>
+          <span class="text-white/30">|</span>
+          <router-link to="/terms" class="destina-footer-link text-white/60 hover:text-white transition-colors">
+            Terms of Service
+          </router-link>
+          <span class="text-white/30">|</span>
+          <router-link to="/cookies" class="destina-footer-link text-white/60 hover:text-white transition-colors">
+            Cookie Policy
+          </router-link>
+          <span class="text-white/30">|</span>
+          <router-link to="/dmca" class="destina-footer-link text-white/60 hover:text-white transition-colors">
+            DMCA
+          </router-link>
+          <span class="text-white/30">|</span>
+          <router-link to="/aup" class="destina-footer-link text-white/60 hover:text-white transition-colors">
+            Acceptable Use
+          </router-link>
+        </div>
+        <div class="text-center mt-6 text-white/40 text-xs">
+          &copy; 2025 Pomkatsu. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Contact Form Modal -->
+    <ContactForm
+      v-if="showContactForm"
+      @close="showContactForm = false"
+    />
+
+    <!-- Lightbox -->
+    <Teleport to="body">
+      <div
+        v-if="lightboxOpen"
+        class="fixed inset-0 z-[100] flex items-center justify-center"
+        @click.self="closeLightbox"
+      >
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/90" @click="closeLightbox"></div>
+
+        <!-- Close button -->
+        <button
+          @click="closeLightbox"
+          class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Close lightbox"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Previous arrow -->
+        <button
+          v-if="lightboxImages.length > 1"
+          @click="lightboxPrev"
+          class="absolute left-3 sm:left-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Previous image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <!-- Image -->
+        <img
+          :src="lightboxImages[lightboxIndex]?.src"
+          :alt="lightboxImages[lightboxIndex]?.name || lightboxImages[lightboxIndex]?.alt || ''"
+          class="relative z-[1] max-h-[85vh] max-w-[90vw] object-contain rounded-xl"
+        />
+
+        <!-- Next arrow -->
+        <button
+          v-if="lightboxImages.length > 1"
+          @click="lightboxNext"
+          class="absolute right-3 sm:right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Next image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <!-- Counter -->
+        <div v-if="lightboxImages.length > 1" class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 text-sm">
+          {{ lightboxIndex + 1 }} / {{ lightboxImages.length }}
+        </div>
+      </div>
+    </Teleport>
+  </div>
+</template>
+
+<style scoped>
+/* Floating animation for avatar */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Feature cards stagger */
+.feature-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Carousel */
+.carousel-track {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.carousel-inner {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll 45s linear infinite;
+}
+
+.carousel-item {
+  width: 220px;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .carousel-item {
+    width: 260px;
+  }
+  .carousel-inner {
+    gap: 1.25rem;
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.carousel-track:hover .carousel-inner {
+  animation-play-state: paused;
+}
+
+/* Footer link underline animation */
+.destina-footer-link {
+  position: relative;
+}
+.destina-footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+.destina-footer-link:hover::after {
+  width: 100%;
+}
+</style>
