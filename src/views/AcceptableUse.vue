@@ -85,6 +85,8 @@ import TableOfContents from '../components/TableOfContents.vue'
           <li>Creating deepfakes or synthetic media for deception</li>
           <li>Bypassing AI safety measures or content filters</li>
           <li>Mass-producing AI content for SEO manipulation</li>
+          <li>Representing AI-generated identifications (of plants, seeds, fungi, food, or any other subject) as verified professional, botanical, medical, veterinary, or scientific identifications</li>
+          <li>Using AI identification features to mislead others about species authenticity, edibility, safety, or provenance in commercial, educational, or safety-critical contexts</li>
         </ul>
 
         <!-- Section 3: Prohibited Activities -->

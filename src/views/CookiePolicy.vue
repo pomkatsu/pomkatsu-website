@@ -18,17 +18,26 @@ import TableOfContents from '../components/TableOfContents.vue'
           </div>
           <div class="date-info">
             <div><strong>Effective Date:</strong> August 10, 2025</div>
-            <div><strong>Last Updated:</strong> August 10, 2025</div>
+            <div><strong>Last Updated:</strong> April 9, 2026</div>
+            <div><strong>Version:</strong> 1.1</div>
           </div>
         </div>
 
         <!-- Section 1: Introduction -->
         <h2 id="introduction">1. Introduction</h2>
         <p>
-          This Cookie Policy explains how Pomkatsu LLC ("we," "our," "us") uses cookies and similar tracking 
-          technologies on our website and web-based services. This policy is part of our 
-          <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>.
+          This Cookie Policy explains how Pomkatsu LLC ("we," "our," "us") uses cookies and similar tracking
+          technologies on our marketing websites (including <a href="https://pomkatsu.com" class="legal-link">pomkatsu.com</a>
+          and our individual app landing pages such as <a href="https://seedbook.com" class="legal-link">seedbook.com</a>).
+          This policy is part of our <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>.
         </p>
+        <div class="info-box">
+          <p>
+            <strong>Short version:</strong> Our marketing websites are simple, mostly-static landing pages. They do
+            not use advertising cookies, cross-site tracking, or fingerprinting. We do not set any cookies that require
+            your consent under GDPR or similar laws.
+          </p>
+        </div>
 
         <!-- Section 2: What Are Cookies? -->
         <h2 id="what-are-cookies">2. What Are Cookies?</h2>
@@ -37,167 +46,41 @@ import TableOfContents from '../components/TableOfContents.vue'
           remember your preferences and improve your user experience.
         </p>
 
-        <!-- Section 3: Types of Cookies We Use -->
-        <h2 id="types-of-cookies">3. Types of Cookies We Use</h2>
+        <!-- Section 3: What We Actually Use -->
+        <h2 id="types-of-cookies">3. What Pomkatsu Actually Uses</h2>
 
-        <h3>Essential Cookies (Strictly Necessary)</h3>
-        <p>These cookies are required for our services to function properly.</p>
-        
-        <div class="table-wrapper">
-          <table class="cookie-table">
-            <thead>
-              <tr>
-                <th>Cookie Name</th>
-                <th>Purpose</th>
-                <th>Duration</th>
-                <th>Provider</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>session_id</td>
-                <td>Maintains user session</td>
-                <td>Session</td>
-                <td>Pomkatsu</td>
-              </tr>
-              <tr>
-                <td>auth_token</td>
-                <td>Authentication status</td>
-                <td>7 days</td>
-                <td>Pomkatsu</td>
-              </tr>
-              <tr>
-                <td>security_token</td>
-                <td>CSRF protection</td>
-                <td>Session</td>
-                <td>Pomkatsu</td>
-              </tr>
-              <tr>
-                <td>cookie_consent</td>
-                <td>Stores consent preferences</td>
-                <td>1 year</td>
-                <td>Pomkatsu</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <p>
+          Our marketing websites are static Vue single-page applications served from a CDN. As of the effective date
+          of this policy:
+        </p>
 
-        <h3>Functional Cookies</h3>
-        <p>These cookies enable personalized features.</p>
-        
-        <div class="table-wrapper">
-          <table class="cookie-table">
-            <thead>
-              <tr>
-                <th>Cookie Name</th>
-                <th>Purpose</th>
-                <th>Duration</th>
-                <th>Provider</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>language_pref</td>
-                <td>Language preference</td>
-                <td>1 year</td>
-                <td>Pomkatsu</td>
-              </tr>
-              <tr>
-                <td>theme_setting</td>
-                <td>Dark/light mode</td>
-                <td>1 year</td>
-                <td>Pomkatsu</td>
-              </tr>
-              <tr>
-                <td>timezone</td>
-                <td>User timezone</td>
-                <td>30 days</td>
-                <td>Pomkatsu</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Analytics Cookies</h3>
-        <p>These help us understand how users interact with our services.</p>
-        
-        <div class="table-wrapper">
-          <table class="cookie-table">
-            <thead>
-              <tr>
-                <th>Cookie Name</th>
-                <th>Purpose</th>
-                <th>Duration</th>
-                <th>Provider</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>_ga</td>
-                <td>Google Analytics tracking</td>
-                <td>2 years</td>
-                <td>Google</td>
-              </tr>
-              <tr>
-                <td>_gid</td>
-                <td>Google Analytics session</td>
-                <td>24 hours</td>
-                <td>Google</td>
-              </tr>
-              <tr>
-                <td>_gat</td>
-                <td>Rate limiting</td>
-                <td>1 minute</td>
-                <td>Google</td>
-              </tr>
-              <tr>
-                <td>firebase_analytics</td>
-                <td>Firebase Analytics</td>
-                <td>2 years</td>
-                <td>Google</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Performance Cookies</h3>
-        <p>These help us monitor and improve service performance.</p>
-        
-        <div class="table-wrapper">
-          <table class="cookie-table">
-            <thead>
-              <tr>
-                <th>Cookie Name</th>
-                <th>Purpose</th>
-                <th>Duration</th>
-                <th>Provider</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>performance_metrics</td>
-                <td>Load time tracking</td>
-                <td>Session</td>
-                <td>Pomkatsu</td>
-              </tr>
-              <tr>
-                <td>error_tracking</td>
-                <td>Error monitoring</td>
-                <td>7 days</td>
-                <td>Pomkatsu</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Section 4: Third-Party Cookies -->
-        <h2 id="third-party-cookies">4. Third-Party Cookies</h2>
-        <p>Our services may include third-party cookies from:</p>
         <ul class="styled-list">
-          <li><strong>Google Analytics</strong>: Website analytics</li>
-          <li><strong>Firebase</strong>: App analytics and performance</li>
-          <li><strong>Stripe</strong>: Payment processing (only on payment pages)</li>
-          <li><strong>CloudFlare</strong>: Security and performance</li>
+          <li><strong>No advertising cookies.</strong> We do not run ads and we do not integrate with any ad network.</li>
+          <li><strong>No cross-site tracking.</strong> We do not set third-party tracking cookies, pixels, or beacons.</li>
+          <li><strong>No fingerprinting.</strong> We do not use canvas fingerprinting or other device-fingerprinting techniques.</li>
+          <li><strong>No persistent analytics cookies by default.</strong> Our marketing sites do not currently embed Google Analytics, Firebase Analytics, PostHog, or similar client-side analytics SDKs. If this changes, this page will be updated to disclose them before they are activated.</li>
+          <li><strong>Possible first-party local storage.</strong> Your browser may cache static assets (fonts, images, JavaScript bundles) to speed up page loads. This is normal browser caching and not used for tracking.</li>
+          <li><strong>Possible CDN and hosting provider cookies.</strong> Our hosting/CDN provider (Netlify) may set strictly-necessary cookies for load-balancing, session affinity, or DDoS protection. These are essential to deliver the site and cannot be turned off without breaking the site.</li>
+        </ul>
+
+        <h3>Inside the Mobile Apps</h3>
+        <p>
+          Our mobile apps (including SeedBook, EasyTranslate AI, Astral, Destina, and FoodTally) are native apps and
+          do not set web cookies. They do send product analytics events to PostHog as described in our
+          <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>. Analytics event data sent from the
+          apps contains only opaque user identifiers and does not include your name, email, journal contents, photos,
+          or other personal content.
+        </p>
+
+        <h3>If We Ever Add Analytics</h3>
+        <p>
+          If we decide in the future to add client-side web analytics to our marketing websites, we will:
+        </p>
+        <ul class="styled-list">
+          <li>Update this Cookie Policy to disclose the specific provider and data collected</li>
+          <li>Add a consent banner for visitors in jurisdictions that require one (EU/EEA/UK)</li>
+          <li>Respect Global Privacy Control (GPC) signals</li>
+          <li>Respect the Do Not Track (DNT) header where legally required</li>
         </ul>
 
         <!-- Section 5: Your Cookie Choices -->
@@ -240,17 +123,17 @@ import TableOfContents from '../components/TableOfContents.vue'
 
         <!-- Section 7: Mobile App Tracking -->
         <h2 id="mobile-tracking">7. Mobile App Tracking</h2>
-        <p>Our mobile apps use similar technologies:</p>
+        <p>Our mobile apps use device-local technologies:</p>
         <ul class="styled-list">
-          <li><strong>Device identifiers</strong>: For analytics and performance</li>
-          <li><strong>Local storage</strong>: For offline functionality</li>
-          <li><strong>Firebase Analytics</strong>: For usage patterns</li>
+          <li><strong>Device identifiers</strong>: Opaque, app-specific identifiers used for analytics and crash reporting (not advertising identifiers)</li>
+          <li><strong>Local storage</strong>: For offline functionality, cached data, and user preferences stored on-device</li>
+          <li><strong>PostHog analytics</strong>: Anonymized product analytics events (no PII, no content of your journal, catalog, or photos) &mdash; disclosed in the Privacy Policy</li>
         </ul>
 
         <p>You can control mobile tracking through your device settings:</p>
         <ul class="styled-list">
-          <li><strong>iOS</strong>: Settings > Privacy > Tracking</li>
-          <li><strong>Android</strong>: Settings > Privacy > Ads</li>
+          <li><strong>iOS</strong>: Settings &rarr; Privacy &amp; Security &rarr; Tracking. You can also reset your advertising identifier in Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising.</li>
+          <li><strong>Android</strong>: Settings &rarr; Privacy &rarr; Ads. You can reset your advertising ID or opt out of personalized ads entirely.</li>
         </ul>
 
         <!-- Section 8: Do Not Track (DNT) -->

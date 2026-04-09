@@ -26,6 +26,21 @@ const domainConfigs = {
     favicon: '/app-logos/easytranslate/easytranslateai.webp',
     bgColor: '#ffffff',
   },
+  'seedbook.com': {
+    appId: 'seedbook',
+    name: 'SeedBook',
+    homeComponent: () => import('../views/apps/SeedBook.vue'),
+    navLogo: 'SeedBook',
+    themeColor: '#1B4332',
+    favicon: '/app-logos/seedbook/favicon.png',
+    bgColor: '#FAFAF5',
+    layoutVariant: 'seedbook',
+    // Per-app content for the /delete-account page
+    deleteAccount: {
+      dataDescription: 'seed catalog entries, harvest logs, garden plans, planting schedules, uploaded plant and seed packet photos, and scan history',
+      subscriptionName: 'SeedBook Plus',
+    },
+  },
   // 'foodtally.app': {
   //   appId: 'foodtally',
   //   name: 'FoodTally',
@@ -37,8 +52,9 @@ const domainConfigs = {
 
 export function getDomainConfig() {
   const host = window.location.hostname.replace(/^www\./, '')
-  // In local dev, treat localhost as astralapp.love
-  if (host === 'localhost') return domainConfigs['destina.love']
+  // In local dev, treat localhost as seedbook.com (most recent app under active development).
+  // Change this when working on a different app's landing page locally.
+  if (host === 'localhost') return domainConfigs['seedbook.com']
   return domainConfigs[host] || null
 }
 

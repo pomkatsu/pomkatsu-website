@@ -51,6 +51,18 @@ export default {
           'gold': '#EFDB5E',
           'destructive': '#E84393',
         },
+        'seedbook': {
+          'forest': '#1B4332',       // forest-700 — primary text/structure
+          'forest-dark': '#0F2A1F',  // darker band for CTA footer
+          'forest-light': '#2D6A4F', // forest-600
+          'clay': '#A05C42',         // clay-600 — CTA accent
+          'clay-light': '#C17A5C',   // clay-500 hover
+          'sage': '#52796F',         // sage-600 — secondary
+          'parch': '#FAFAF5',        // parch-50 — page bg
+          'parch-warm': '#F5F1E8',   // section alt bg
+          'parch-border': '#E8EDE8', // parch-200 — hairline
+          'parch-text': '#1A1A16',   // parch-900 — deep text
+        },
         'legal': {
           'text': '#5A3E26',
           'heading': '#46301C',
@@ -63,6 +75,8 @@ export default {
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+        'display': ['Fraunces', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        'mono': ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       }
     },
   },

@@ -18,13 +18,14 @@ import TableOfContents from '../components/TableOfContents.vue'
           </div>
           <div class="date-info">
             <div><strong>Effective Date:</strong> August 10, 2025</div>
-            <div><strong>Last Updated:</strong> August 10, 2025</div>
+            <div><strong>Last Updated:</strong> April 9, 2026</div>
+            <div><strong>Version:</strong> 1.1</div>
           </div>
         </div>
 
         <!-- Important Notice -->
         <div class="critical-warning">
-          <h4>⚠️ IMPORTANT - READ CAREFULLY</h4>
+          <h4>IMPORTANT &mdash; READ CAREFULLY</h4>
           <p>
             This End User License Agreement ("EULA") is a legal agreement between you ("User," "you") and 
             Pomkatsu LLC ("Company," "we," "our," "us") for all mobile applications published by Pomkatsu LLC 
@@ -89,20 +90,35 @@ import TableOfContents from '../components/TableOfContents.vue'
         <h2 id="ai-content">4. AI-Generated Content Terms</h2>
 
         <h3>AI Output License</h3>
-        <p>You own the rights to content you create using our AI features, subject to:</p>
+        <p>You own the rights to content you create using our AI features (including translations, identifications, diagnoses, recommendations, and generated text or imagery), subject to:</p>
         <ul class="styled-list">
           <li>Input content ownership (you must have rights to input material)</li>
           <li>Third-party rights (AI output may not be unique)</li>
-          <li>Our right to improve our services using anonymous usage data</li>
+          <li>Our right to use anonymized, aggregated usage data to improve our services</li>
         </ul>
 
         <h3>AI Limitations</h3>
         <div class="info-box">
           <ul>
-            <li>AI-generated content may contain errors or biases</li>
-            <li>No warranty of accuracy, completeness, or fitness for purpose</li>
-            <li>You are responsible for reviewing and verifying AI outputs</li>
-            <li>Not suitable for legal, medical, or professional advice</li>
+            <li>AI-generated content may contain errors, hallucinations, or biases</li>
+            <li>No warranty of accuracy, completeness, or fitness for any particular purpose</li>
+            <li>You are responsible for reviewing and verifying all AI outputs before acting on them</li>
+            <li>AI features are not a substitute for professional advice of any kind</li>
+          </ul>
+        </div>
+
+        <h3>AI Identification &amp; Diagnostic Features Disclaimer</h3>
+        <div class="critical-warning">
+          <h4>SAFETY DISCLAIMER</h4>
+          <p class="warning-text">
+            AI IDENTIFICATION AND DIAGNOSTIC FEATURES &mdash; INCLUDING SEED IDENTIFICATION, PLANT IDENTIFICATION,
+            PLANT HEALTH DIAGNOSIS, PEST AND DISEASE DETECTION, FOOD RECOGNITION, AND PRODUCT RECOGNITION &mdash;
+            ARE PROVIDED FOR INFORMATIONAL AND HOBBYIST PURPOSES ONLY.
+          </p>
+          <ul>
+            <li>IDENTIFICATIONS MAY BE WRONG. DO NOT CONSUME, PLANT, APPLY, OR OTHERWISE ACT UPON ANY AI IDENTIFICATION WITHOUT INDEPENDENT VERIFICATION FROM A QUALIFIED PROFESSIONAL OR AUTHORITATIVE REFERENCE.</li>
+            <li>NEVER RELY ON AI OUTPUT TO DETERMINE WHETHER A PLANT, SEED, FUNGUS, BERRY, OR OTHER ITEM IS SAFE, EDIBLE, MEDICINAL, OR NON-TOXIC.</li>
+            <li>POMKATSU LLC DISCLAIMS ALL LIABILITY FOR ANY CROP LOSS, PROPERTY DAMAGE, ILLNESS, ALLERGIC REACTION, POISONING, INJURY, OR DEATH RESULTING FROM RELIANCE ON AI OUTPUTS. YOU ASSUME ALL RISK.</li>
           </ul>
         </div>
 
@@ -112,6 +128,7 @@ import TableOfContents from '../components/TableOfContents.vue'
           <li>Automated mass content generation for spam</li>
           <li>Creating misleading or deceptive content</li>
           <li>Bypassing safety filters or limitations</li>
+          <li>Representing AI identifications as verified professional or scientific identifications</li>
         </ul>
 
         <!-- Section 5: User Content and Data -->
@@ -119,10 +136,10 @@ import TableOfContents from '../components/TableOfContents.vue'
 
         <h3>Your Content</h3>
         <ul class="styled-list">
-          <li>You retain ownership of content you upload or create</li>
-          <li>You grant us a license to process your content as described in our 
-            <router-link to="/privacy" class="legal-link">Privacy Policy</router-link></li>
-          <li>You are responsible for ensuring you have rights to all uploaded content</li>
+          <li>You retain full ownership of all content you upload, create, or generate through the Software, including photos, documents, journal and catalog entries, harvest logs, garden plans, translations, food logs, scan results, and any other user content.</li>
+          <li>You grant Pomkatsu LLC a limited, non-exclusive, royalty-free, worldwide license to store, process, display, transmit, and analyze your content solely for the purpose of providing the Software and Services to you. This license exists only as long as your content is present in the Software and terminates when you delete your content or your account, except where retention is required by law.</li>
+          <li>You are responsible for ensuring you have the necessary rights to all content you upload and that your content does not violate any laws or third-party rights.</li>
+          <li>You may export your content in standard formats at any time from within the Software.</li>
         </ul>
 
         <h3>Data Collection</h3>
@@ -152,16 +169,31 @@ import TableOfContents from '../components/TableOfContents.vue'
 
         <h3>Payment</h3>
         <ul class="styled-list">
-          <li>Subscriptions are processed through app stores (Apple App Store, Google Play)</li>
-          <li>Prices are subject to change with notice</li>
-          <li>All sales are final unless required by law</li>
+          <li>Subscriptions are billed and processed by Apple (App Store / StoreKit) on iOS and Google (Play Billing) on Android. We never see your full payment card details.</li>
+          <li>RevenueCat is used to verify subscription entitlements and restore purchases across your devices.</li>
+          <li>Prices are subject to change with advance notice where required by law.</li>
+          <li>All sales are final unless required otherwise by law or by the applicable app store's refund policy.</li>
         </ul>
 
         <h3>Auto-Renewal</h3>
-        <p>Subscriptions automatically renew unless cancelled before the renewal date.</p>
+        <p>
+          Subscriptions automatically renew at the then-current price unless cancelled at least 24 hours before the end
+          of the current billing period. The renewal charge is made by Apple or Google directly.
+        </p>
 
         <h3>Cancellation</h3>
-        <p>You may cancel subscriptions through your app store account settings.</p>
+        <p>
+          You may cancel your subscription at any time through your device's subscription settings
+          (Settings &rarr; [Your Name] &rarr; Subscriptions on iOS; Play Store &rarr; Subscriptions on Android).
+          Deleting the app does not cancel your subscription. Cancellation takes effect at the end of the current
+          billing period &mdash; you retain access until then.
+        </p>
+
+        <h3>Free Trials</h3>
+        <p>
+          Any free trial automatically converts to a paid subscription at the end of the trial period unless you cancel
+          before the trial ends.
+        </p>
 
         <!-- Section 8: Warranty Disclaimer -->
         <h2 id="warranty">8. Warranty Disclaimer</h2>

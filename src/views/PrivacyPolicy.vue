@@ -18,8 +18,8 @@ import TableOfContents from '../components/TableOfContents.vue'
           </div>
           <div class="date-info">
             <div><strong>Effective Date:</strong> August 10, 2025</div>
-            <div><strong>Last Updated:</strong> August 10, 2025</div>
-            <div><strong>Version:</strong> 1.0</div>
+            <div><strong>Last Updated:</strong> April 9, 2026</div>
+            <div><strong>Version:</strong> 1.1</div>
           </div>
         </div>
 
@@ -58,9 +58,10 @@ import TableOfContents from '../components/TableOfContents.vue'
         <h4>Personal Information You Provide:</h4>
         <ul class="styled-list">
           <li><strong>Account Information</strong>: Name, email address, username, password</li>
-          <li><strong>Profile Information</strong>: Avatar, preferences, language settings</li>
+          <li><strong>Profile Information</strong>: Avatar, preferences, language settings, app-specific preferences (such as growing zone or theme)</li>
           <li><strong>Contact Information</strong>: When you contact support@pomkatsu.com</li>
-          <li><strong>User Content</strong>: Documents you upload for translation, translations created</li>
+          <li><strong>User Content</strong>: Content you create, upload, or generate within our apps, which may include documents, photos, scan results, catalog entries, harvest and journal logs, garden plans, translations, food logs, and other app-specific content</li>
+          <li><strong>Camera &amp; Photo Library Content</strong>: When you use features that require photo capture or selection (for example, scanning seed packets, product labels, or documents; identifying plants; or attaching a photo to a log entry). Photos are processed only for the feature you invoked.</li>
           <li><strong>Payment Information</strong>: Processed by third-party payment processors (we do not store credit card details)</li>
           <li><strong>Communications</strong>: Messages, feedback, and correspondence with us</li>
         </ul>
@@ -68,9 +69,9 @@ import TableOfContents from '../components/TableOfContents.vue'
         <h4>Information Collected Automatically:</h4>
         <ul class="styled-list">
           <li><strong>Device Information</strong>: Device type, operating system, unique device identifiers, mobile network information, device model, screen resolution</li>
-          <li><strong>Usage Data</strong>: Features used, actions taken, time and date of activities, app performance data, translation history</li>
+          <li><strong>Usage Data</strong>: Features used, actions taken, time and date of activities, app performance data, and app-specific history (such as translation history, scan history, or log entries)</li>
           <li><strong>Log Data</strong>: IP address, browser type, pages visited, time spent, crash reports, error logs</li>
-          <li><strong>Location Information</strong>: Approximate location (country/region) based on IP address; precise location only with your explicit permission</li>
+          <li><strong>Location Information</strong>: Approximate location (country/region) for all apps; coarse location at the zip code or postal code level for features that require regional context such as gardening zones and frost dates. Precise location is never collected without your explicit, feature-specific permission.</li>
           <li><strong>Analytics Data</strong>: App usage patterns, feature engagement, performance metrics</li>
         </ul>
 
@@ -83,9 +84,9 @@ import TableOfContents from '../components/TableOfContents.vue'
 
         <h3>Sensitive Personal Information</h3>
         <p>
-          We do not intentionally collect sensitive personal information. However, documents you upload for translation 
-          may contain sensitive information. You are responsible for any sensitive data within your uploaded content. 
-          We recommend not uploading documents containing:
+          We do not intentionally collect sensitive personal information. However, content you upload or create in our
+          apps (including documents, photos, scans, and journal entries) may contain sensitive information. You are
+          responsible for any sensitive data within your uploaded content. We recommend not uploading content containing:
         </p>
         <div class="warning-box">
           <ul>
@@ -152,17 +153,18 @@ import TableOfContents from '../components/TableOfContents.vue'
           <li>Enforce our Terms of Service</li>
         </ul>
 
-        <!-- Section 5: Document and File Handling -->
-        <h2 id="document-handling">Document and File Handling</h2>
+        <!-- Section 5: User Content and File Handling -->
+        <h2 id="document-handling">User Content and File Handling</h2>
 
-        <h3>Document Storage and Processing</h3>
+        <h3>Content Storage and Processing</h3>
         <div class="info-box">
           <ul>
-            <li><strong>Temporary Processing</strong>: Documents uploaded for translation are processed through our Services and stored temporarily on Firebase cloud storage</li>
-            <li><strong>Storage Duration</strong>: Documents are automatically deleted from our servers after 30 days unless you choose to save them to your account</li>
-            <li><strong>Private by Default</strong>: All uploaded documents and translations are private by default and accessible only to you through your authenticated account</li>
-            <li><strong>Encryption</strong>: Documents are encrypted in transit using TLS/SSL and at rest using Firebase's encryption standards</li>
-            <li><strong>Processing</strong>: Documents may be processed through third-party translation services. These services process your documents solely for translation purposes and do not retain copies</li>
+            <li><strong>Storage</strong>: Content you create in our apps (including photos, documents, journal entries, catalog entries, harvest logs, and scan results) is stored in managed cloud infrastructure operated on our behalf &mdash; see the list of sub-processors in the "Sharing Your Information" section below.</li>
+            <li><strong>Retention of Transient Uploads</strong>: Content that is only uploaded for transient processing (for example, documents for translation, or photos submitted for a one-off AI identification) is automatically deleted from our servers within 30 days unless you choose to save it to your account.</li>
+            <li><strong>Retention of Saved Content</strong>: Content that you intentionally save to your account (your catalog, your journal, your logs) is retained until you delete it or delete your account.</li>
+            <li><strong>Private by Default</strong>: All uploaded content is private by default and accessible only to you through your authenticated account. Row-level access controls enforce this server-side.</li>
+            <li><strong>Encryption</strong>: Content is encrypted in transit using TLS/SSL and at rest using the encryption standards provided by our cloud storage providers.</li>
+            <li><strong>Third-Party AI Processing</strong>: Some features (including translation, plant identification, seed identification, plant health diagnosis, and image analysis) send content to third-party AI providers for processing. These providers process your content solely to generate the result you requested and, where contractually required, do not retain copies or use your content to train their models.</li>
           </ul>
         </div>
 
@@ -189,16 +191,28 @@ import TableOfContents from '../components/TableOfContents.vue'
         <!-- Section 6: Sharing Your Information -->
         <h2 id="sharing-information">Sharing Your Information</h2>
 
-        <h3>Third-Party Service Providers</h3>
-        <p>We share data with service providers who assist us in operating our Services:</p>
+        <h3>Third-Party Sub-Processors</h3>
+        <p>
+          We share the minimum data necessary with the following service providers to operate our Services. Each is bound
+          by data-protection terms that restrict how they may use your information.
+        </p>
         <ul class="styled-list">
-          <li><strong>Cloud Storage</strong>: Firebase/Google Cloud Platform for document storage</li>
-          <li><strong>Translation Services</strong>: Third-party translation APIs for document processing</li>
-          <li><strong>Payment Processors</strong>: Stripe, PayPal, Apple Pay, Google Pay for payment processing</li>
-          <li><strong>Analytics</strong>: Google Analytics, Firebase Analytics for usage insights</li>
-          <li><strong>Communication</strong>: Email service providers for transactional emails</li>
-          <li><strong>Customer Support</strong>: Support ticketing systems</li>
+          <li><strong>Supabase</strong> (Supabase Inc., United States) &mdash; PostgreSQL database, authentication, and object storage. Primary backend infrastructure for most of our apps. Data is encrypted in transit and at rest and protected by row-level security policies.</li>
+          <li><strong>Google Cloud Platform / Firebase</strong> (Google LLC, United States) &mdash; Cloud storage and backend services used by certain apps; where applicable, subject to Google's Data Processing and Security Terms.</li>
+          <li><strong>Anthropic</strong> (Anthropic PBC, United States) &mdash; The Claude API is used for AI features such as document analysis, translation quality, plant identification, seed identification, plant health diagnosis, and other image or text analysis. Anthropic processes inputs solely to return the requested result and, under our API agreement, does not use your content to train their models.</li>
+          <li><strong>Apple App Store (StoreKit)</strong> (Apple Inc., United States) &mdash; In-app purchase, subscription billing, and receipt validation on iOS.</li>
+          <li><strong>Google Play Billing</strong> (Google LLC, United States) &mdash; In-app purchase, subscription billing, and receipt validation on Android.</li>
+          <li><strong>RevenueCat</strong> (RevenueCat, Inc., United States) &mdash; Subscription management, entitlement verification, and cross-platform purchase restoration. RevenueCat receives only pseudonymous user identifiers and purchase metadata.</li>
+          <li><strong>Stripe / PayPal</strong> (Stripe, Inc. and PayPal, Inc., United States) &mdash; Payment processing for any web-based purchases. We never see or store your full payment card details.</li>
+          <li><strong>PostHog</strong> (PostHog Inc., United States) &mdash; Product analytics, feature flags, and user-journey analysis. User identifiers sent to PostHog are opaque UUIDs; we do not transmit names, email addresses, or content of your journal entries to PostHog.</li>
+          <li><strong>Google Analytics</strong> (Google LLC, United States) &mdash; Used on our marketing websites (not inside our mobile apps) to measure aggregate website traffic.</li>
+          <li><strong>Email delivery providers</strong> &mdash; For transactional emails such as password resets, purchase receipts, and account notifications.</li>
+          <li><strong>Customer support tools</strong> &mdash; Support is handled via email at <a href="mailto:support@pomkatsu.com" class="legal-link">support@pomkatsu.com</a>. We do not currently operate a third-party ticketing system.</li>
         </ul>
+        <p>
+          We reserve the right to add or replace sub-processors as our infrastructure evolves. Material changes will be
+          reflected in updates to this Privacy Policy. A current list of sub-processors will always appear here.
+        </p>
 
         <h3>Business Transfers</h3>
         <p>
@@ -227,8 +241,9 @@ import TableOfContents from '../components/TableOfContents.vue'
         <div class="highlight-box">
           <ul>
             <li>We do NOT sell your personal information to third parties</li>
-            <li>We do NOT share your documents with other users without your permission</li>
-            <li>We do NOT use your documents for training AI models or other purposes beyond providing translation services</li>
+            <li>We do NOT share your content with other users without your explicit permission</li>
+            <li>We do NOT use your content to train AI models &mdash; not ours, and our API agreements prohibit our AI sub-processors from doing so with data we send them</li>
+            <li>We do NOT display third-party advertising inside our apps</li>
           </ul>
         </div>
 
@@ -260,7 +275,7 @@ import TableOfContents from '../components/TableOfContents.vue'
         <ul class="styled-list">
           <li><strong>Encryption</strong>: All data is encrypted in transit (TLS/SSL) and at rest</li>
           <li><strong>Access Controls</strong>: Strict authentication and authorization mechanisms</li>
-          <li><strong>Firebase Security Rules</strong>: Documents are protected by Firebase security rules that ensure private access by default</li>
+          <li><strong>Platform Security Controls</strong>: Your content is protected by platform-native security features including Supabase Row-Level Security (RLS), Firebase Security Rules where applicable, and cloud-provider IAM policies to ensure private-by-default access</li>
           <li><strong>Regular Security Reviews</strong>: We regularly review and update our security practices</li>
           <li><strong>Incident Response</strong>: We maintain incident response procedures to address potential security breaches</li>
         </ul>
@@ -505,10 +520,17 @@ import TableOfContents from '../components/TableOfContents.vue'
           </div>
         </div>
 
+        <!-- Revision History -->
+        <h2 id="revision-history">Revision History</h2>
+        <ul class="styled-list">
+          <li><strong>Version 1.1 &mdash; April 9, 2026:</strong> Updated third-party sub-processor list to name each provider specifically (Supabase, Anthropic, RevenueCat, PostHog, Stripe, Apple/Google billing). Added camera and photo library disclosure. Clarified location data collection to distinguish approximate vs. coarse vs. precise. Generalized document-handling language to cover all user content types across all apps in the Pomkatsu portfolio. Clarified that we do not use user content to train AI models and that our AI sub-processors are contractually prohibited from doing so.</li>
+          <li><strong>Version 1.0 &mdash; August 10, 2025:</strong> Initial publication.</li>
+        </ul>
+
         <!-- Footer -->
         <div class="legal-footer">
           <p><em>This Privacy Policy applies to all mobile applications and services provided by Pomkatsu LLC.</em></p>
-          <p><em>Copyright © 2025 Pomkatsu LLC. All rights reserved.</em></p>
+          <p><em>Copyright © 2025&ndash;2026 Pomkatsu LLC. All rights reserved.</em></p>
         </div>
       </div>
     </div>

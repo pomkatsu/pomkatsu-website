@@ -92,6 +92,11 @@ function buildRoutes() {
       path: '/apps/foodtally',
       name: 'FoodTally',
       component: () => import('../views/apps/FoodTally.vue')
+    },
+    {
+      path: '/apps/seedbook',
+      name: 'SeedBook',
+      component: () => import('../views/apps/SeedBook.vue')
     }
   ]
 }

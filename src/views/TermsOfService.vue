@@ -18,8 +18,8 @@ import TableOfContents from '../components/TableOfContents.vue'
           </div>
           <div class="date-info">
             <div><strong>Effective Date:</strong> August 10, 2025</div>
-            <div><strong>Last Updated:</strong> August 10, 2025</div>
-            <div><strong>Version:</strong> 1.0</div>
+            <div><strong>Last Updated:</strong> April 9, 2026</div>
+            <div><strong>Version:</strong> 1.1</div>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ import TableOfContents from '../components/TableOfContents.vue'
         <ul class="styled-list">
           <li>Download and install our Apps on devices you own or control</li>
           <li>Access and use the Services for personal, non-commercial purposes</li>
-          <li>Create and manage documents for translation</li>
+          <li>Create, manage, and export your own content within the app (including journal entries, catalog entries, photos, harvest logs, garden plans, documents, translations, and other user-generated content as supported by each app)</li>
         </ul>
 
         <h3>License Restrictions</h3>
@@ -116,14 +116,15 @@ import TableOfContents from '../components/TableOfContents.vue'
           </ul>
         </div>
 
-        <!-- Section 5: User Content and Document Handling -->
-        <h2 id="user-content">5. User Content and Document Handling</h2>
+        <!-- Section 5: User Content -->
+        <h2 id="user-content">5. User Content</h2>
 
         <h3>Your Content</h3>
         <ul class="styled-list">
-          <li>You retain ownership of content you create and share through our Services ("User Content"), including all documents you upload for translation</li>
-          <li>You are solely responsible for your User Content and the consequences of uploading, sharing, or publishing it</li>
-          <li>You represent that you have all necessary rights to your User Content and that it does not violate any laws or third-party rights</li>
+          <li>You retain full ownership of all content you create, upload, or generate through our Services ("User Content"). This includes &mdash; but is not limited to &mdash; catalog entries, journal and harvest logs, garden plans, photos of plants and seed packets, documents uploaded for translation, food logs, scan results, and any other app-specific content.</li>
+          <li>You are solely responsible for your User Content and the consequences of uploading, sharing, or publishing it.</li>
+          <li>You represent and warrant that you have all necessary rights to your User Content and that it does not violate any laws or third-party rights.</li>
+          <li>By using our Services you grant Pomkatsu LLC a limited, non-exclusive, royalty-free license to store, process, display, and transmit your User Content solely for the purpose of providing the Services to you. This license terminates when you delete the content or your account, except to the extent we are required to retain copies by law.</li>
         </ul>
 
         <h3>AI-Generated Content</h3>
@@ -181,7 +182,7 @@ import TableOfContents from '../components/TableOfContents.vue'
 
         <h3>Sensitive Information Warning</h3>
         <div class="critical-warning">
-          <h4>⚠️ YOU SHOULD NOT UPLOAD DOCUMENTS CONTAINING:</h4>
+          <h4>YOU SHOULD NOT UPLOAD CONTENT CONTAINING:</h4>
           <ul>
             <li>Social Security numbers or government ID numbers (unless necessary)</li>
             <li>Credit card or banking information</li>
@@ -190,16 +191,19 @@ import TableOfContents from '../components/TableOfContents.vue'
             <li>Trade secrets or confidential business information (unless you own it)</li>
           </ul>
           <p class="warning-text">
-            IF YOU CHOOSE TO UPLOAD SUCH INFORMATION, YOU DO SO AT YOUR OWN RISK AND WE DISCLAIM ALL LIABILITY 
+            IF YOU CHOOSE TO UPLOAD SUCH INFORMATION, YOU DO SO AT YOUR OWN RISK AND WE DISCLAIM ALL LIABILITY
             FOR ANY RESULTING DAMAGES.
           </p>
         </div>
 
         <h3>License to Us</h3>
         <p>
-          By uploading documents for translation or using AI features, you grant us a limited, non-exclusive, 
-          royalty-free license to process, store, and analyze your content solely for the purpose of providing 
-          and improving our Services. This license terminates when you delete your content or account.
+          By uploading, creating, or generating content through our Services (including documents for translation,
+          photos for scanning or identification, catalog and journal entries, and any other user-generated content),
+          you grant us a limited, non-exclusive, royalty-free license to process, store, and analyze your content solely
+          for the purpose of providing the Services to you. This license terminates when you delete your content or your
+          account, except to the extent we are required to retain copies by law or the retention windows disclosed in our
+          <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>.
         </p>
 
         <h3>Content Standards</h3>
@@ -241,11 +245,12 @@ import TableOfContents from '../components/TableOfContents.vue'
 
         <h3>Subscriptions</h3>
         <ul class="styled-list">
-          <li>Subscription fees are billed in advance on a recurring basis (monthly or annually)</li>
-          <li>Your subscription automatically renews unless cancelled before the renewal date</li>
-          <li>You may cancel your subscription at any time through your app store account settings</li>
-          <li>Cancellation takes effect at the end of the current billing period</li>
-          <li>No partial refunds for unused subscription time</li>
+          <li><strong>Auto-renewal:</strong> Subscription fees are billed in advance on a recurring basis (monthly or annually). Your subscription automatically renews at the then-current price unless you cancel before the renewal date.</li>
+          <li><strong>Billing platform:</strong> Subscriptions are billed and managed by Apple (App Store) on iOS and Google (Play Billing) on Android. Pomkatsu LLC never sees your full payment details.</li>
+          <li><strong>Subscription management tool:</strong> We use RevenueCat to verify subscription entitlements and restore purchases across your devices. RevenueCat acts as a data sub-processor as disclosed in our Privacy Policy.</li>
+          <li><strong>How to cancel:</strong> You may cancel your subscription at any time through your device's subscription settings (Settings &rarr; [Your Name] &rarr; Subscriptions on iOS; Play Store &rarr; Subscriptions on Android). Deleting the app does <em>not</em> cancel your subscription.</li>
+          <li><strong>When cancellation takes effect:</strong> Cancellation takes effect at the end of the current billing period. You retain access until then.</li>
+          <li><strong>No partial refunds:</strong> We do not provide partial refunds for unused subscription time; refund eligibility is determined by Apple or Google under their respective refund policies.</li>
         </ul>
 
         <h3>Free Trials and Promotions</h3>
@@ -284,9 +289,9 @@ import TableOfContents from '../components/TableOfContents.vue'
           <h4>Key Privacy Points:</h4>
           <ul>
             <li>We collect and process personal data as described in our Privacy Policy</li>
-            <li>Documents are encrypted and stored securely on Firebase</li>
+            <li>Your content is encrypted in transit and at rest and stored in managed cloud infrastructure (see the sub-processor list in our Privacy Policy)</li>
             <li>You control sharing through public links at your own risk</li>
-            <li>We do not sell your personal information</li>
+            <li>We do not sell your personal information and we do not use your content to train AI models</li>
             <li>You have rights regarding your data as outlined in our Privacy Policy</li>
           </ul>
         </div>
@@ -305,15 +310,19 @@ import TableOfContents from '../components/TableOfContents.vue'
         </ul>
 
         <p>
-          Your use of third-party services is governed by their respective terms and policies. Third-party 
-          services integrated into our Apps may include:
+          Your use of third-party services is governed by their respective terms and policies. The sub-processors
+          integrated into our Apps are enumerated in our <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>
+          and currently include:
         </p>
         <ul class="styled-list">
-          <li>Translation APIs and services</li>
-          <li>Cloud storage providers (Firebase/Google Cloud)</li>
-          <li>Analytics services</li>
-          <li>Payment processors</li>
-          <li>Authentication providers</li>
+          <li>Supabase (Postgres database, authentication, object storage)</li>
+          <li>Google Cloud Platform / Firebase (used by certain apps)</li>
+          <li>Anthropic Claude API (AI identification, translation, plant health, document analysis)</li>
+          <li>Apple StoreKit, Google Play Billing, RevenueCat (subscription billing and management)</li>
+          <li>Stripe / PayPal (web payment processing)</li>
+          <li>PostHog (product analytics)</li>
+          <li>Google Analytics (marketing website only)</li>
+          <li>Email delivery providers (transactional email)</li>
         </ul>
 
         <!-- Section 10: Disclaimers and Warranties -->
@@ -353,6 +362,40 @@ import TableOfContents from '../components/TableOfContents.vue'
             <li>WE ARE NOT CERTIFIED TRANSLATORS</li>
           </ul>
         </div>
+
+        <h3>AI Identification &amp; Diagnostic Features Disclaimer</h3>
+        <div class="critical-warning">
+          <h4>READ THIS BEFORE USING ANY AI IDENTIFICATION FEATURE</h4>
+          <p class="warning-text">
+            AI-POWERED IDENTIFICATION AND DIAGNOSTIC FEATURES &mdash; INCLUDING BUT NOT LIMITED TO SEED IDENTIFICATION,
+            PLANT IDENTIFICATION, PLANT HEALTH DIAGNOSIS, PEST AND DISEASE DETECTION, PRODUCT RECOGNITION, FOOD
+            RECOGNITION, AND ANY OTHER AI-ASSISTED RECOGNITION FEATURE &mdash; ARE PROVIDED FOR INFORMATIONAL AND
+            HOBBYIST PURPOSES ONLY.
+          </p>
+          <ul>
+            <li>IDENTIFICATIONS AND DIAGNOSES MAY BE INCORRECT, INCOMPLETE, OR MISLEADING</li>
+            <li>AI OUTPUTS ARE NOT A SUBSTITUTE FOR PROFESSIONAL HORTICULTURAL, AGRICULTURAL, MEDICAL, VETERINARY, DIETARY, OR OTHER EXPERT ADVICE</li>
+            <li>DO NOT CONSUME, INGEST, PLANT, APPLY, OR OTHERWISE ACT UPON AI-GENERATED IDENTIFICATIONS WITHOUT INDEPENDENT VERIFICATION FROM A QUALIFIED HUMAN EXPERT OR AUTHORITATIVE REFERENCE</li>
+            <li>NEVER RELY ON AI IDENTIFICATION TO DETERMINE WHETHER A PLANT, SEED, MUSHROOM, BERRY, OR OTHER ITEM IS SAFE, EDIBLE, MEDICINAL, NON-TOXIC, NON-ALLERGENIC, OR LEGAL TO PLANT OR POSSESS</li>
+            <li>IF YOU HAVE ANY DOUBT ABOUT THE IDENTITY OR SAFETY OF ANYTHING IDENTIFIED BY OUR AI FEATURES, DO NOT USE THE ITEM AND CONSULT A PROFESSIONAL</li>
+          </ul>
+          <p class="warning-text">
+            TO THE MAXIMUM EXTENT PERMITTED BY LAW, POMKATSU LLC DISCLAIMS ALL LIABILITY FOR ANY CROP LOSS, PLANT OR
+            GARDEN DAMAGE, PROPERTY DAMAGE, ECONOMIC LOSS, ILLNESS, ALLERGIC REACTION, POISONING, INJURY, DEATH, OR
+            OTHER HARM &mdash; INCLUDING TO THIRD PARTIES, CHILDREN, OR ANIMALS &mdash; RESULTING FROM YOUR RELIANCE
+            ON OR USE OF ANY AI IDENTIFICATION, DIAGNOSIS, RECOMMENDATION, OR OTHER AI-GENERATED OUTPUT PROVIDED BY
+            OUR SERVICES. YOU ASSUME ALL RISK.
+          </p>
+        </div>
+
+        <h3>No Professional Advice</h3>
+        <p>
+          Our apps are hobbyist and informational tools. They do not provide agricultural, horticultural, medical,
+          veterinary, dietary, nutritional, legal, financial, or other professional advice. Nothing displayed in our
+          apps should be interpreted as such advice or as a recommendation to take or refrain from any action that
+          could affect your health, finances, property, or safety. Always consult a qualified professional before
+          making decisions based on information from our Services.
+        </p>
 
         <h3>Security Disclaimer</h3>
         <div class="disclaimer-box">
@@ -585,10 +628,17 @@ import TableOfContents from '../components/TableOfContents.vue'
           </div>
         </div>
 
+        <!-- Revision History -->
+        <h2 id="revision-history">Revision History</h2>
+        <ul class="styled-list">
+          <li><strong>Version 1.1 &mdash; April 9, 2026:</strong> Added explicit AI identification and diagnostic disclaimer covering plant, seed, mushroom, and food recognition features. Added "No Professional Advice" clause. Generalized document-handling language to cover all user content types. Named sub-processors explicitly (Supabase, Anthropic, RevenueCat, PostHog, Stripe, Apple/Google billing). Clarified subscription auto-renewal language and cancellation path.</li>
+          <li><strong>Version 1.0 &mdash; August 10, 2025:</strong> Initial publication.</li>
+        </ul>
+
         <!-- Footer -->
         <div class="legal-footer">
           <p><em>These Terms of Service apply to all mobile applications and services provided by Pomkatsu LLC.</em></p>
-          <p><em>Copyright © 2025 Pomkatsu LLC. All rights reserved.</em></p>
+          <p><em>Copyright © 2025&ndash;2026 Pomkatsu LLC. All rights reserved.</em></p>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const props = defineProps({
   variant: {
     type: String,
     default: 'default',
-    validator: (v) => ['default', 'mono', 'easytranslate'].includes(v),
+    validator: (v) => ['default', 'mono', 'easytranslate', 'seedbook'].includes(v),
   },
 })
 
@@ -16,12 +16,14 @@ const scrolled = ref(false)
 
 const isMono = computed(() => props.variant === 'mono')
 const isEasyTranslate = computed(() => props.variant === 'easytranslate')
+const isSeedbook = computed(() => props.variant === 'seedbook')
 
 const domainConfig = getDomainConfig()
 const navLogo = computed(() => domainConfig?.navLogo || 'Pomkatsu')
 
 const navClass = computed(() => {
   if (scrolled.value) {
+    if (isSeedbook.value) return 'bg-seedbook-parch/85 backdrop-blur-md border-seedbook-parch-border'
     if (isEasyTranslate.value) return 'bg-white/80 backdrop-blur-md border-et-border'
     if (isMono.value) return 'bg-white/80 backdrop-blur-md border-gray-200'
     return 'bg-secondary/80 backdrop-blur-md border-secondary-dark'
@@ -52,7 +54,7 @@ const closeContactForm = () => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col" :class="isEasyTranslate ? 'bg-white' : isMono ? 'bg-white' : 'bg-secondary'">
+  <div class="min-h-screen flex flex-col" :class="isSeedbook ? 'bg-seedbook-parch font-sans' : isEasyTranslate ? 'bg-white' : isMono ? 'bg-white' : 'bg-secondary'">
     <!-- Navigation -->
     <nav
       class="fixed w-full z-40 border-b transition-[background-color,border-color,backdrop-filter] duration-300"
@@ -63,8 +65,8 @@ const closeContactForm = () => {
           <div class="flex items-center">
             <router-link
               to="/"
-              class="text-2xl font-bold transition-colors duration-200"
-              :class="isEasyTranslate ? 'text-et-text hover:text-et-purple' : isMono ? 'text-gray-900 hover:text-gray-600' : 'text-primary hover:text-primary-light'"
+              class="transition-colors duration-200"
+              :class="isSeedbook ? 'font-display text-2xl font-semibold text-seedbook-forest hover:text-seedbook-clay tracking-tight' : isEasyTranslate ? 'text-2xl font-bold text-et-text hover:text-et-purple' : isMono ? 'text-2xl font-bold text-gray-900 hover:text-gray-600' : 'text-2xl font-bold text-primary hover:text-primary-light'"
             >
               {{ navLogo }}
             </router-link>
@@ -72,7 +74,7 @@ const closeContactForm = () => {
           <button
             @click="openContactForm"
             class="px-6 py-2 rounded-lg transition-colors duration-200"
-            :class="isEasyTranslate ? 'bg-et-purple text-white hover:bg-et-purple-dark' : isMono ? 'bg-gray-900 text-white hover:bg-gray-700' : 'bg-primary text-secondary hover:bg-primary-light'"
+            :class="isSeedbook ? 'bg-seedbook-clay text-seedbook-parch hover:bg-seedbook-clay-light text-sm font-medium tracking-wide' : isEasyTranslate ? 'bg-et-purple text-white hover:bg-et-purple-dark' : isMono ? 'bg-gray-900 text-white hover:bg-gray-700' : 'bg-primary text-secondary hover:bg-primary-light'"
           >
             Contact Us
           </button>
@@ -87,62 +89,62 @@ const closeContactForm = () => {
 
     <!-- Footer with Legal Links -->
     <footer
-      class="py-8"
-      :class="isEasyTranslate ? 'bg-et-text text-zinc-300' : isMono ? 'bg-gray-900 text-gray-300' : 'bg-primary-dark text-secondary-light'"
+      class="py-10"
+      :class="isSeedbook ? 'bg-seedbook-forest-dark text-seedbook-parch/70' : isEasyTranslate ? 'bg-et-text text-zinc-300' : isMono ? 'bg-gray-900 text-gray-300' : 'bg-primary-dark text-secondary-light'"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
           <router-link
             to="/privacy"
             class="footer-link transition-colors"
-            :class="isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
+            :class="isSeedbook ? 'hover:text-seedbook-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
           >
             Privacy Policy
           </router-link>
-          <span :class="isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
+          <span :class="isSeedbook ? 'text-seedbook-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
           <router-link
             to="/terms"
             class="footer-link transition-colors"
-            :class="isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
+            :class="isSeedbook ? 'hover:text-seedbook-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
           >
             Terms of Service
           </router-link>
-          <span :class="isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
+          <span :class="isSeedbook ? 'text-seedbook-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
           <router-link
             to="/cookies"
             class="footer-link transition-colors"
-            :class="isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
+            :class="isSeedbook ? 'hover:text-seedbook-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
           >
             Cookie Policy
           </router-link>
-          <span :class="isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
+          <span :class="isSeedbook ? 'text-seedbook-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
           <router-link
             to="/dmca"
             class="footer-link transition-colors"
-            :class="isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
+            :class="isSeedbook ? 'hover:text-seedbook-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
           >
             DMCA
           </router-link>
-          <span :class="isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
+          <span :class="isSeedbook ? 'text-seedbook-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
           <router-link
             to="/aup"
             class="footer-link transition-colors"
-            :class="isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
+            :class="isSeedbook ? 'hover:text-seedbook-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
           >
             Acceptable Use
           </router-link>
-          <span :class="isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
+          <span :class="isSeedbook ? 'text-seedbook-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
           <router-link
             to="/eula"
             class="footer-link transition-colors"
-            :class="isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
+            :class="isSeedbook ? 'hover:text-seedbook-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
           >
             EULA
           </router-link>
         </div>
         <div
           class="text-center mt-6 text-xs"
-          :class="isEasyTranslate ? 'text-zinc-500' : isMono ? 'text-gray-500' : 'text-secondary/70'"
+          :class="isSeedbook ? 'text-seedbook-parch/50 font-mono tracking-wider uppercase' : isEasyTranslate ? 'text-zinc-500' : isMono ? 'text-gray-500' : 'text-secondary/70'"
         >
           &copy; 2025 Pomkatsu. All rights reserved.
         </div>

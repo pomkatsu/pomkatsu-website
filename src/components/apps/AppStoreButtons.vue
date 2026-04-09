@@ -19,7 +19,7 @@ defineProps({
   variant: {
     type: String,
     default: 'default',
-    validator: (v) => ['default', 'mono', 'easytranslate'].includes(v),
+    validator: (v) => ['default', 'mono', 'easytranslate', 'seedbook'].includes(v),
   },
 })
 </script>
@@ -33,7 +33,7 @@ defineProps({
       target="_blank"
       rel="noopener noreferrer"
       class="store-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-200 font-semibold group"
-      :class="variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
+      :class="variant === 'seedbook' ? 'bg-seedbook-forest text-seedbook-parch hover:bg-seedbook-forest-light' : variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
     >
       <!-- Apple Logo SVG -->
       <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -49,7 +49,7 @@ defineProps({
     <div v-if="showPlayStore" class="relative">
       <div
         class="inline-flex items-center gap-3 px-6 py-3 rounded-xl min-w-[160px] pointer-events-none"
-        :class="variant === 'easytranslate' ? 'bg-et-text/40 text-white/50' : 'bg-primary/40 text-secondary/50'"
+        :class="variant === 'seedbook' ? 'bg-seedbook-forest/40 text-seedbook-parch/50' : variant === 'easytranslate' ? 'bg-et-text/40 text-white/50' : 'bg-primary/40 text-secondary/50'"
       >
         <!-- Google Play Logo SVG -->
         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -62,7 +62,7 @@ defineProps({
       </div>
       <span
         class="absolute -top-2 -right-2 text-xs font-bold px-2 py-0.5 rounded-full"
-        :class="variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
+        :class="variant === 'seedbook' ? 'bg-seedbook-clay text-seedbook-parch' : variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
       >
         Coming Soon
       </span>
