@@ -75,7 +75,7 @@ export default {
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
-        'display': ['Fraunces', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        'display': ['Newsreader', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
         'mono': ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       }
     },

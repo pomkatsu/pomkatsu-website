@@ -591,7 +591,6 @@ html {
 /* Optical kerning on all display serif text */
 .font-display {
   font-optical-sizing: auto;
-  font-feature-settings: 'ss01' on, 'ss02' on;
 }
 
 /* Section fade-in (gentle, no bounce) */
