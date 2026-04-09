@@ -28,7 +28,7 @@ import TableOfContents from '../components/TableOfContents.vue'
         <p>
           This Cookie Policy explains how Pomkatsu LLC ("we," "our," "us") uses cookies and similar tracking
           technologies on our marketing websites (including <a href="https://pomkatsu.com" class="legal-link">pomkatsu.com</a>
-          and our individual app landing pages such as <a href="https://seedbook.com" class="legal-link">seedbook.com</a>).
+          and our individual app landing pages such as <a href="https://myseedbook.com" class="legal-link">myseedbook.com</a>).
           This policy is part of our <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>.
         </p>
         <div class="info-box">

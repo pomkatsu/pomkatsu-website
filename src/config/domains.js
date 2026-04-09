@@ -26,7 +26,7 @@ const domainConfigs = {
     favicon: '/app-logos/easytranslate/easytranslateai.webp',
     bgColor: '#ffffff',
   },
-  'seedbook.com': {
+  'myseedbook.com': {
     appId: 'seedbook',
     name: 'SeedBook',
     homeComponent: () => import('../views/apps/SeedBook.vue'),
@@ -52,9 +52,9 @@ const domainConfigs = {
 
 export function getDomainConfig() {
   const host = window.location.hostname.replace(/^www\./, '')
-  // In local dev, treat localhost as seedbook.com (most recent app under active development).
+  // In local dev, treat localhost as myseedbook.com (most recent app under active development).
   // Change this when working on a different app's landing page locally.
-  if (host === 'localhost') return domainConfigs['seedbook.com']
+  if (host === 'localhost') return domainConfigs['myseedbook.com']
   return domainConfigs[host] || null
 }
 
