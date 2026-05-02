@@ -18,12 +18,12 @@ const appId = domainConfig?.appId || null
 
 // Pick the AppLayout variant for nav/footer theming
 const layoutVariant = computed(() => domainConfig?.layoutVariant || 'default')
-const isSeedbook = computed(() => appId === 'seedbook')
+const isMyseedstory = computed(() => appId === 'myseedstory')
 
 // CSS custom properties for legal page content theming — one source of truth
 const themeVars = computed(() => {
-  // SeedBook: warm parch background, forest green text, clay accents
-  if (isSeedbook.value) {
+  // MySeedStory: warm parch background, forest green text, clay accents
+  if (isMyseedstory.value) {
     return {
       '--legal-text': '#1B4332',
       '--legal-text-secondary': 'rgba(27, 67, 50, 0.78)',
@@ -124,7 +124,7 @@ onMounted(() => {
   <AppLayout :variant="layoutVariant">
     <div
       class="legal-root"
-      :class="{ 'legal-root--seedbook': isSeedbook }"
+      :class="{ 'legal-root--myseedstory': isMyseedstory }"
       :style="themeVars"
     >
       <!-- Content -->
@@ -133,22 +133,22 @@ onMounted(() => {
           <!-- Title block -->
           <div class="mb-10">
             <div
-              v-if="isSeedbook"
+              v-if="isMyseedstory"
               class="flex items-center gap-3 mb-6"
             >
-              <span class="h-px w-10 bg-seedbook-clay"></span>
-              <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-seedbook-clay">
+              <span class="h-px w-10 bg-myseedstory-clay"></span>
+              <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-myseedstory-clay">
                 legal · {{ title.toLowerCase() }}
               </span>
             </div>
 
             <h1
               :class="
-                isSeedbook
-                  ? 'font-display text-5xl sm:text-6xl font-semibold text-seedbook-forest tracking-tight leading-[0.98]'
+                isMyseedstory
+                  ? 'font-display text-5xl sm:text-6xl font-semibold text-myseedstory-forest tracking-tight leading-[0.98]'
                   : 'text-3xl md:text-4xl font-bold animate-fadeInUp'
               "
-              :style="!isSeedbook ? { color: 'var(--legal-text-strong)' } : {}"
+              :style="!isMyseedstory ? { color: 'var(--legal-text-strong)' } : {}"
             >
               {{ title }}
             </h1>
@@ -157,7 +157,7 @@ onMounted(() => {
           <div
             :class="[
               'prose prose-lg max-w-none animate-fadeInContent',
-              isSeedbook ? 'seedbook-prose' : '',
+              isMyseedstory ? 'myseedstory-prose' : '',
             ]"
             :style="{ color: 'var(--legal-text-secondary)' }"
           >
@@ -192,7 +192,7 @@ onMounted(() => {
   min-height: calc(100vh - 80px);
 }
 
-/* Fade animations for non-seedbook variants */
+/* Fade animations for non-myseedstory variants */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -224,8 +224,8 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* SeedBook-specific body font override on legal prose */
-.legal-root--seedbook .seedbook-prose {
+/* MySeedStory-specific body font override on legal prose */
+.legal-root--myseedstory .myseedstory-prose {
   font-family: 'Plus Jakarta Sans', Inter, system-ui, -apple-system, sans-serif;
 }
 

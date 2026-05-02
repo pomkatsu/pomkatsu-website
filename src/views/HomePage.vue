@@ -115,16 +115,18 @@ const closeContactForm = () => {
                   <p class="text-sm text-primary-light leading-snug">AI-powered calorie tracking with voice, text, and photo</p>
                 </div>
               </router-link>
-              <router-link
-                to="/apps/seedbook"
+              <a
+                href="https://myseedstory.co"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
               >
-                <img src="/app-logos/seedbook/seedbook-icon.png" alt="SeedBook Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
+                <img src="/app-logos/myseedstory/myseedstory-icon.png" alt="MySeedStory Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
                 <div>
-                  <p class="text-lg font-bold text-primary">SeedBook</p>
+                  <p class="text-lg font-bold text-primary">MySeedStory</p>
                   <p class="text-sm text-primary-light leading-snug">A field guide for the seeds you save</p>
                 </div>
-              </router-link>
+              </a>
             </div>
           </div>
 

@@ -5,12 +5,12 @@ import AppLayout from '../../components/apps/AppLayout.vue'
 import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
 
 // Screenshots — placeholders until we capture real app screenshots via Maestro.
-// To update: drop real screenshots at /public/app-logos/seedbook/screenshot-*.webp
+// To update: drop real screenshots at /public/app-logos/myseedstory/screenshot-*.webp
 const screenshots = [
-  { src: '/app-logos/seedbook/screenshot-home.webp', alt: 'Home screen', label: 'Home · at a glance' },
-  { src: '/app-logos/seedbook/screenshot-catalog.webp', alt: 'Seed catalog', label: 'Catalog · every variety you grow' },
-  { src: '/app-logos/seedbook/screenshot-harvest.webp', alt: 'Harvest journal', label: 'Harvest · log and weigh' },
-  { src: '/app-logos/seedbook/screenshot-garden.webp', alt: 'Garden planner', label: 'Planner · beds and plots' },
+  { src: '/app-logos/myseedstory/screenshot-home.webp', alt: 'Home screen', label: 'Home · at a glance' },
+  { src: '/app-logos/myseedstory/screenshot-catalog.webp', alt: 'Seed catalog', label: 'Catalog · every variety you grow' },
+  { src: '/app-logos/myseedstory/screenshot-harvest.webp', alt: 'Harvest journal', label: 'Harvest · log and weigh' },
+  { src: '/app-logos/myseedstory/screenshot-garden.webp', alt: 'Garden planner', label: 'Planner · beds and plots' },
 ]
 
 // Lightbox state
@@ -50,20 +50,20 @@ onUnmounted(() => {
 })
 
 useSeoMeta({
-  title: 'SeedBook — A field guide for the seeds you save',
+  title: 'MySeedStory — A field guide for the seeds you save',
   description:
     'Track your seeds, harvests, and garden plans in one place. Scan packets, log yields, and plan your growing season. Built for home gardeners who keep notebooks.',
-  ogTitle: 'SeedBook — A field guide for the seeds you save',
+  ogTitle: 'MySeedStory — A field guide for the seeds you save',
   ogDescription:
     'Scan seed packets, log harvests, and plan beds by frost date. A botanical journal for home gardeners.',
-  ogImage: '/app-logos/seedbook/og-image.png',
+  ogImage: '/app-logos/myseedstory/og-image.png',
   ogType: 'website',
   twitterCard: 'summary_large_image',
 })
 
 useHead({
   link: [
-    { rel: 'icon', type: 'image/png', href: '/app-logos/seedbook/favicon.png' },
+    { rel: 'icon', type: 'image/png', href: '/app-logos/myseedstory/favicon.png' },
   ],
   meta: [
     { name: 'theme-color', content: '#1B4332' },
@@ -74,7 +74,7 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'SoftwareApplication',
-        name: 'SeedBook',
+        name: 'MySeedStory',
         operatingSystem: 'iOS, Android',
         applicationCategory: 'LifestyleApplication',
         genre: 'Gardening',
@@ -137,13 +137,13 @@ const features = [
 </script>
 
 <template>
-  <AppLayout variant="seedbook">
+  <AppLayout variant="myseedstory">
     <!-- Hero -->
-    <section class="relative overflow-hidden bg-seedbook-parch">
+    <section class="relative overflow-hidden bg-myseedstory-parch">
       <!-- Clean parchment bg; no pattern. Decoration comes from typography and the hero photo. -->
       <!-- Two large corner ornaments (SVG) for a vintage field-guide feel without competing with text -->
       <svg
-        class="absolute top-6 right-6 w-20 h-20 text-seedbook-sage/15 pointer-events-none hidden lg:block"
+        class="absolute top-6 right-6 w-20 h-20 text-myseedstory-sage/15 pointer-events-none hidden lg:block"
         viewBox="0 0 100 100"
         fill="none"
         stroke="currentColor"
@@ -154,7 +154,7 @@ const features = [
         <path d="M50 2 L50 98 M2 50 L98 50" stroke-dasharray="2 4" />
       </svg>
       <svg
-        class="absolute bottom-10 left-10 w-16 h-16 text-seedbook-clay/15 pointer-events-none hidden lg:block"
+        class="absolute bottom-10 left-10 w-16 h-16 text-myseedstory-clay/15 pointer-events-none hidden lg:block"
         viewBox="0 0 100 100"
         fill="none"
         stroke="currentColor"
@@ -170,8 +170,8 @@ const features = [
           <div class="order-2 lg:order-1">
             <!-- Metadata line -->
             <div class="flex items-center gap-3 mb-8">
-              <span class="h-px w-10 bg-seedbook-clay"></span>
-              <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-seedbook-clay">
+              <span class="h-px w-10 bg-myseedstory-clay"></span>
+              <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-myseedstory-clay">
                 est. 2026 · botanical journal
               </span>
             </div>
@@ -179,25 +179,25 @@ const features = [
             <!-- Logo mark + brand -->
             <div class="flex items-center gap-4 mb-10">
               <img
-                src="/app-logos/seedbook/seedbook-icon.png"
-                alt="SeedBook"
-                class="w-16 h-16 rounded-2xl shadow-sm ring-1 ring-seedbook-parch-border"
+                src="/app-logos/myseedstory/myseedstory-icon.png"
+                alt="MySeedStory"
+                class="w-16 h-16 rounded-2xl shadow-sm ring-1 ring-myseedstory-parch-border"
               />
-              <h2 class="font-display text-3xl font-semibold text-seedbook-forest tracking-tight">
-                SeedBook
+              <h2 class="font-display text-3xl font-semibold text-myseedstory-forest tracking-tight">
+                MySeedStory
               </h2>
             </div>
 
             <h1
-              class="font-display text-5xl sm:text-6xl lg:text-[5.25rem] font-semibold text-seedbook-forest leading-[0.98] tracking-tight mb-8"
+              class="font-display text-5xl sm:text-6xl lg:text-[5.25rem] font-semibold text-myseedstory-forest leading-[0.98] tracking-tight mb-8"
             >
               A field guide<br />
               for the seeds<br />
-              <span class="italic text-seedbook-clay">you save.</span>
+              <span class="italic text-myseedstory-clay">you save.</span>
             </h1>
 
             <p
-              class="text-lg sm:text-xl text-seedbook-forest/75 leading-relaxed mb-10 max-w-xl font-sans"
+              class="text-lg sm:text-xl text-myseedstory-forest/75 leading-relaxed mb-10 max-w-xl font-sans"
             >
               Scan seed packets, log every harvest, and plan your beds by frost date.
               A botanical journal for home gardeners who keep notebooks.
@@ -205,14 +205,14 @@ const features = [
 
             <div class="flex flex-col sm:flex-row gap-4 sm:items-stretch">
               <AppStoreButtons
-                app-store-url="https://apps.apple.com/us/app/seedbook/id0000000000"
+                app-store-url="https://apps.apple.com/us/app/myseedstory/id0000000000"
                 play-store-url="#"
-                variant="seedbook"
+                variant="myseedstory"
               />
             </div>
 
             <!-- Fine print -->
-            <p class="mt-6 font-mono text-[11px] tracking-wider uppercase text-seedbook-sage">
+            <p class="mt-6 font-mono text-[11px] tracking-wider uppercase text-myseedstory-sage">
               Free to try · 3-day trial on annual · no ads, ever
             </p>
           </div>
@@ -222,23 +222,23 @@ const features = [
             <div class="relative w-full max-w-md lg:max-w-lg">
               <!-- Decorative parch frame behind image -->
               <div
-                class="absolute -inset-4 lg:-inset-6 bg-seedbook-parch-warm rounded-sm rotate-[-1.2deg] border border-seedbook-parch-border shadow-[0_20px_60px_-20px_rgba(27,67,50,0.18)]"
+                class="absolute -inset-4 lg:-inset-6 bg-myseedstory-parch-warm rounded-sm rotate-[-1.2deg] border border-myseedstory-parch-border shadow-[0_20px_60px_-20px_rgba(27,67,50,0.18)]"
               ></div>
               <img
-                src="/app-logos/seedbook/hero-cover.jpg"
+                src="/app-logos/myseedstory/hero-cover.jpg"
                 alt="Seedlings in starter trays"
                 class="relative w-full h-auto object-cover rounded-sm grayscale-[0.08] contrast-[1.02]"
                 style="aspect-ratio: 4/5;"
               />
               <!-- Small metadata card overlay -->
               <div
-                class="hidden md:flex absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-seedbook-parch px-5 py-3 shadow-lg border border-seedbook-parch-border rounded-sm"
+                class="hidden md:flex absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-myseedstory-parch px-5 py-3 shadow-lg border border-myseedstory-parch-border rounded-sm"
               >
                 <div>
-                  <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-sage mb-1">
+                  <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-sage mb-1">
                     Plate No. 01
                   </div>
-                  <div class="font-display text-sm italic text-seedbook-forest">
+                  <div class="font-display text-sm italic text-myseedstory-forest">
                     Solanum lycopersicum
                   </div>
                 </div>
@@ -250,13 +250,13 @@ const features = [
     </section>
 
     <!-- Manifesto strip -->
-    <section class="border-y border-seedbook-parch-border bg-seedbook-parch-warm">
+    <section class="border-y border-myseedstory-parch-border bg-myseedstory-parch-warm">
       <div class="max-w-5xl mx-auto px-6 py-14 sm:py-16 text-center">
         <p
-          class="font-display text-2xl sm:text-3xl lg:text-[2.25rem] leading-snug text-seedbook-forest tracking-tight"
+          class="font-display text-2xl sm:text-3xl lg:text-[2.25rem] leading-snug text-myseedstory-forest tracking-tight"
         >
           Built for gardeners who keep notebooks.
-          <span class="text-seedbook-forest/60">Track what you plant, what you harvest, and what the weather did to it all.</span>
+          <span class="text-myseedstory-forest/60">Track what you plant, what you harvest, and what the weather did to it all.</span>
         </p>
       </div>
     </section>
@@ -266,32 +266,32 @@ const features = [
       <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         <!-- Section label -->
         <div class="flex items-baseline gap-4 mb-14">
-          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-seedbook-clay">
+          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-myseedstory-clay">
             § 01
           </span>
-          <h2 class="font-display text-4xl sm:text-5xl font-semibold text-seedbook-forest tracking-tight">
+          <h2 class="font-display text-4xl sm:text-5xl font-semibold text-myseedstory-forest tracking-tight">
             Everything you need. Nothing you don't.
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-seedbook-parch-border">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t border-myseedstory-parch-border">
           <div
             v-for="(f, i) in features"
             :key="i"
-            class="relative group p-8 sm:p-10 border-r border-b border-seedbook-parch-border"
+            class="relative group p-8 sm:p-10 border-r border-b border-myseedstory-parch-border"
           >
             <!-- Clay accent bar, slides out from left on hover -->
             <span
-              class="absolute left-0 top-8 bottom-8 w-[2px] bg-seedbook-clay scale-y-0 origin-center group-hover:scale-y-100 transition-transform duration-500 ease-out"
+              class="absolute left-0 top-8 bottom-8 w-[2px] bg-myseedstory-clay scale-y-0 origin-center group-hover:scale-y-100 transition-transform duration-500 ease-out"
             ></span>
 
             <!-- Latin metadata -->
-            <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-clay mb-4">
+            <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay mb-4">
               {{ f.latin }}
             </div>
 
             <!-- Icon (inline SVG per feature to avoid adding a dep) -->
-            <div class="mb-6 text-seedbook-forest">
+            <div class="mb-6 text-myseedstory-forest">
               <!-- catalog -->
               <svg v-if="f.icon === 'catalog'" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
@@ -319,10 +319,10 @@ const features = [
               </svg>
             </div>
 
-            <h3 class="font-display text-2xl font-semibold text-seedbook-forest mb-3 tracking-tight">
+            <h3 class="font-display text-2xl font-semibold text-myseedstory-forest mb-3 tracking-tight">
               {{ f.title }}
             </h3>
-            <p class="text-[15px] leading-relaxed text-seedbook-forest/70">
+            <p class="text-[15px] leading-relaxed text-myseedstory-forest/70">
               {{ f.body }}
             </p>
           </div>
@@ -331,14 +331,14 @@ const features = [
     </section>
 
     <!-- Screenshots gallery -->
-    <section class="relative py-20 md:py-28 bg-seedbook-parch-warm border-y border-seedbook-parch-border overflow-hidden">
+    <section class="relative py-20 md:py-28 bg-myseedstory-parch-warm border-y border-myseedstory-parch-border overflow-hidden">
 
       <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         <div class="flex items-baseline gap-4 mb-14">
-          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-seedbook-clay">
+          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-myseedstory-clay">
             § 02
           </span>
-          <h2 class="font-display text-4xl sm:text-5xl font-semibold text-seedbook-forest tracking-tight">
+          <h2 class="font-display text-4xl sm:text-5xl font-semibold text-myseedstory-forest tracking-tight">
             Plates from the field.
           </h2>
         </div>
@@ -348,22 +348,22 @@ const features = [
             v-for="(shot, i) in screenshots"
             :key="i"
             type="button"
-            class="group relative text-left focus:outline-none focus:ring-2 focus:ring-seedbook-clay focus:ring-offset-4 focus:ring-offset-seedbook-parch-warm rounded-sm"
+            class="group relative text-left focus:outline-none focus:ring-2 focus:ring-myseedstory-clay focus:ring-offset-4 focus:ring-offset-myseedstory-parch-warm rounded-sm"
             @click="openLightbox(i)"
           >
             <div
-              class="relative aspect-[9/19] overflow-hidden bg-seedbook-parch border border-seedbook-parch-border transition-transform duration-500 group-hover:scale-[1.015] flex items-center justify-center"
+              class="relative aspect-[9/19] overflow-hidden bg-myseedstory-parch border border-myseedstory-parch-border transition-transform duration-500 group-hover:scale-[1.015] flex items-center justify-center"
             >
               <!-- Placeholder content shown when screenshot image is missing -->
               <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <svg class="w-10 h-10 text-seedbook-sage/30 mb-3" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                <svg class="w-10 h-10 text-myseedstory-sage/30 mb-3" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
                   <rect x="6" y="2" width="12" height="20" rx="2" />
                   <path d="M10 18h4" />
                 </svg>
-                <div class="font-mono text-[9px] tracking-[0.18em] uppercase text-seedbook-sage/60 mb-2">
+                <div class="font-mono text-[9px] tracking-[0.18em] uppercase text-myseedstory-sage/60 mb-2">
                   Screenshot
                 </div>
-                <div class="font-display text-sm italic text-seedbook-forest/60">
+                <div class="font-display text-sm italic text-myseedstory-forest/60">
                   {{ shot.label.split('·')[0].trim() }}
                 </div>
               </div>
@@ -375,10 +375,10 @@ const features = [
               />
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-3">
-              <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-clay">
+              <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay">
                 Plate {{ String(i + 1).padStart(2, '0') }}
               </div>
-              <div class="font-display text-sm text-seedbook-forest italic text-right">
+              <div class="font-display text-sm text-myseedstory-forest italic text-right">
                 {{ shot.label }}
               </div>
             </div>
@@ -391,138 +391,138 @@ const features = [
     <section class="py-20 md:py-28">
       <div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
         <div class="flex items-baseline gap-4 mb-14">
-          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-seedbook-clay">
+          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-myseedstory-clay">
             § 03
           </span>
-          <h2 class="font-display text-4xl sm:text-5xl font-semibold text-seedbook-forest tracking-tight">
+          <h2 class="font-display text-4xl sm:text-5xl font-semibold text-myseedstory-forest tracking-tight">
             One price. Everything.
           </h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           <!-- Monthly -->
-          <div class="relative p-10 border border-seedbook-parch-border bg-seedbook-parch">
-            <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-sage mb-6">
+          <div class="relative p-10 border border-myseedstory-parch-border bg-myseedstory-parch">
+            <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-sage mb-6">
               Monthly
             </div>
             <div class="mb-6">
-              <span class="font-display text-6xl font-semibold text-seedbook-forest tracking-tight">$19.99</span>
-              <span class="font-mono text-sm text-seedbook-forest/60 ml-2">/ month</span>
+              <span class="font-display text-6xl font-semibold text-myseedstory-forest tracking-tight">$19.99</span>
+              <span class="font-mono text-sm text-myseedstory-forest/60 ml-2">/ month</span>
             </div>
-            <p class="text-[15px] text-seedbook-forest/70 leading-relaxed mb-8">
+            <p class="text-[15px] text-myseedstory-forest/70 leading-relaxed mb-8">
               Full access, billed monthly. Cancel anytime.
             </p>
-            <ul class="space-y-3 text-[14px] text-seedbook-forest/80">
+            <ul class="space-y-3 text-[14px] text-myseedstory-forest/80">
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 Unlimited seed catalog
               </li>
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 Unlimited harvest entries
               </li>
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 AI seed scanning & plant health
               </li>
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 All future features
               </li>
             </ul>
           </div>
 
           <!-- Annual -->
-          <div class="relative p-10 border-2 border-seedbook-clay bg-seedbook-parch">
-            <div class="absolute -top-3 left-10 bg-seedbook-parch px-3">
-              <span class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-clay">
+          <div class="relative p-10 border-2 border-myseedstory-clay bg-myseedstory-parch">
+            <div class="absolute -top-3 left-10 bg-myseedstory-parch px-3">
+              <span class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay">
                 Recommended · save 25%
               </span>
             </div>
-            <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-sage mb-6">
+            <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-sage mb-6">
               Annual
             </div>
             <div class="mb-6">
-              <span class="font-display text-6xl font-semibold text-seedbook-forest tracking-tight">$179.99</span>
-              <span class="font-mono text-sm text-seedbook-forest/60 ml-2">/ year</span>
+              <span class="font-display text-6xl font-semibold text-myseedstory-forest tracking-tight">$179.99</span>
+              <span class="font-mono text-sm text-myseedstory-forest/60 ml-2">/ year</span>
             </div>
-            <p class="text-[15px] text-seedbook-forest/70 leading-relaxed mb-8">
+            <p class="text-[15px] text-myseedstory-forest/70 leading-relaxed mb-8">
               Works out to about $15 a month. 3-day free trial on first sign-up.
             </p>
-            <ul class="space-y-3 text-[14px] text-seedbook-forest/80">
+            <ul class="space-y-3 text-[14px] text-myseedstory-forest/80">
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 Everything in Monthly
               </li>
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 3-day free trial
               </li>
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 Two months free
               </li>
               <li class="flex gap-3">
-                <span class="text-seedbook-clay font-mono">·</span>
+                <span class="text-myseedstory-clay font-mono">·</span>
                 Priority support
               </li>
             </ul>
           </div>
         </div>
 
-        <p class="mt-8 font-mono text-[11px] tracking-wider uppercase text-seedbook-sage text-center">
+        <p class="mt-8 font-mono text-[11px] tracking-wider uppercase text-myseedstory-sage text-center">
           Restore purchases from within the app · Family Sharing supported
         </p>
       </div>
     </section>
 
     <!-- Trust strip -->
-    <section class="border-t border-seedbook-parch-border">
+    <section class="border-t border-myseedstory-parch-border">
       <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 text-center">
         <div>
-          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-clay mb-2">
+          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay mb-2">
             Your data
           </div>
-          <div class="font-display text-xl text-seedbook-forest italic">Exportable, anytime.</div>
+          <div class="font-display text-xl text-myseedstory-forest italic">Exportable, anytime.</div>
         </div>
-        <div class="md:border-x md:border-seedbook-parch-border md:px-6">
-          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-clay mb-2">
+        <div class="md:border-x md:border-myseedstory-parch-border md:px-6">
+          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay mb-2">
             Monetization
           </div>
-          <div class="font-display text-xl text-seedbook-forest italic">No ads, no resale.</div>
+          <div class="font-display text-xl text-myseedstory-forest italic">No ads, no resale.</div>
         </div>
         <div>
-          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-seedbook-clay mb-2">
+          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay mb-2">
             Built by
           </div>
-          <div class="font-display text-xl text-seedbook-forest italic">One independent maker.</div>
+          <div class="font-display text-xl text-myseedstory-forest italic">One independent maker.</div>
         </div>
       </div>
     </section>
 
     <!-- CTA footer band -->
-    <section class="relative bg-seedbook-forest-dark overflow-hidden">
+    <section class="relative bg-myseedstory-forest-dark overflow-hidden">
       <div class="relative max-w-5xl mx-auto px-6 py-24 md:py-32 text-center">
         <div class="flex items-center justify-center gap-3 mb-8">
-          <span class="h-px w-10 bg-seedbook-clay-light"></span>
-          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-seedbook-clay-light">
+          <span class="h-px w-10 bg-myseedstory-clay-light"></span>
+          <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-myseedstory-clay-light">
             § fin
           </span>
-          <span class="h-px w-10 bg-seedbook-clay-light"></span>
+          <span class="h-px w-10 bg-myseedstory-clay-light"></span>
         </div>
         <h2
-          class="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold text-seedbook-parch tracking-tight leading-[1.05] mb-10"
+          class="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold text-myseedstory-parch tracking-tight leading-[1.05] mb-10"
         >
           Catalog<br class="sm:hidden" /> your garden.
         </h2>
-        <p class="text-lg text-seedbook-parch/70 mb-12 max-w-xl mx-auto">
+        <p class="text-lg text-myseedstory-parch/70 mb-12 max-w-xl mx-auto">
           The notebook you'll actually keep.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center sm:items-stretch">
           <AppStoreButtons
-            app-store-url="https://apps.apple.com/us/app/seedbook/id0000000000"
+            app-store-url="https://apps.apple.com/us/app/myseedstory/id0000000000"
             play-store-url="#"
-            variant="seedbook"
+            variant="myseedstory"
           />
         </div>
       </div>
@@ -535,11 +535,11 @@ const features = [
         class="fixed inset-0 z-[100] flex items-center justify-center"
         @click.self="closeLightbox"
       >
-        <div class="absolute inset-0 bg-seedbook-forest-dark/95" @click="closeLightbox"></div>
+        <div class="absolute inset-0 bg-myseedstory-forest-dark/95" @click="closeLightbox"></div>
 
         <button
           @click="closeLightbox"
-          class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-seedbook-parch/10 hover:bg-seedbook-parch/20 text-seedbook-parch transition-colors"
+          class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-myseedstory-parch/10 hover:bg-myseedstory-parch/20 text-myseedstory-parch transition-colors"
           aria-label="Close lightbox"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -549,7 +549,7 @@ const features = [
 
         <button
           @click="lightboxPrev"
-          class="absolute left-3 sm:left-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-seedbook-parch/10 hover:bg-seedbook-parch/20 text-seedbook-parch transition-colors"
+          class="absolute left-3 sm:left-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-myseedstory-parch/10 hover:bg-myseedstory-parch/20 text-myseedstory-parch transition-colors"
           aria-label="Previous image"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -566,7 +566,7 @@ const features = [
 
         <button
           @click="lightboxNext"
-          class="absolute right-3 sm:right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-seedbook-parch/10 hover:bg-seedbook-parch/20 text-seedbook-parch transition-colors"
+          class="absolute right-3 sm:right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-myseedstory-parch/10 hover:bg-myseedstory-parch/20 text-myseedstory-parch transition-colors"
           aria-label="Next image"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -574,7 +574,7 @@ const features = [
           </svg>
         </button>
 
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 font-mono text-[11px] tracking-wider uppercase text-seedbook-parch/70">
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 font-mono text-[11px] tracking-wider uppercase text-myseedstory-parch/70">
           Plate {{ String(lightboxIndex + 1).padStart(2, '0') }} / {{ String(screenshots.length).padStart(2, '0') }}
         </div>
       </div>

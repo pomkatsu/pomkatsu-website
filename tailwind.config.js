@@ -51,7 +51,7 @@ export default {
           'gold': '#EFDB5E',
           'destructive': '#E84393',
         },
-        'seedbook': {
+        'myseedstory': {
           'forest': '#1B4332',       // forest-700 — primary text/structure
           'forest-dark': '#0F2A1F',  // darker band for CTA footer
           'forest-light': '#2D6A4F', // forest-600

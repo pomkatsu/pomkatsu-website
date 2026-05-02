@@ -8,10 +8,10 @@ Sitemap: https://astralapp.love/sitemap.xml`,
 Allow: /
 
 Sitemap: https://destina.love/sitemap.xml`,
-  'myseedbook.com': `User-agent: *
+  'myseedstory.co': `User-agent: *
 Allow: /
 
-Sitemap: https://myseedbook.com/sitemap.xml`,
+Sitemap: https://myseedstory.co/sitemap.xml`,
   // Future domains:
   // 'foodtally.app': `User-agent: *\nAllow: /\n\nSitemap: https://foodtally.app/sitemap.xml`,
 }

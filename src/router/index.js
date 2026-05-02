@@ -93,10 +93,20 @@ function buildRoutes() {
       name: 'FoodTally',
       component: () => import('../views/apps/FoodTally.vue')
     },
+    // MySeedStory has its own domain (myseedstory.co) — redirect old URL
     {
       path: '/apps/seedbook',
-      name: 'SeedBook',
-      component: () => import('../views/apps/SeedBook.vue')
+      beforeEnter() {
+        window.location.href = 'https://myseedstory.co'
+      },
+      component: () => import('../views/HomePage.vue')
+    },
+    {
+      path: '/apps/myseedstory',
+      beforeEnter() {
+        window.location.href = 'https://myseedstory.co'
+      },
+      component: () => import('../views/HomePage.vue')
     }
   ]
 }

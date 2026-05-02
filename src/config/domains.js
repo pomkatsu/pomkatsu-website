@@ -26,19 +26,19 @@ const domainConfigs = {
     favicon: '/app-logos/easytranslate/easytranslateai.webp',
     bgColor: '#ffffff',
   },
-  'myseedbook.com': {
-    appId: 'seedbook',
-    name: 'SeedBook',
-    homeComponent: () => import('../views/apps/SeedBook.vue'),
-    navLogo: 'SeedBook',
+  'myseedstory.co': {
+    appId: 'myseedstory',
+    name: 'MySeedStory',
+    homeComponent: () => import('../views/apps/MySeedStory.vue'),
+    navLogo: 'MySeedStory',
     themeColor: '#1B4332',
-    favicon: '/app-logos/seedbook/favicon.png',
+    favicon: '/app-logos/myseedstory/favicon.png',
     bgColor: '#FAFAF5',
-    layoutVariant: 'seedbook',
+    layoutVariant: 'myseedstory',
     // Per-app content for the /delete-account page
     deleteAccount: {
       dataDescription: 'seed catalog entries, harvest logs, garden plans, planting schedules, uploaded plant and seed packet photos, and scan history',
-      subscriptionName: 'SeedBook Plus',
+      subscriptionName: 'MySeedStory Plus',
     },
   },
   // 'foodtally.app': {
@@ -52,9 +52,9 @@ const domainConfigs = {
 
 export function getDomainConfig() {
   const host = window.location.hostname.replace(/^www\./, '')
-  // In local dev, treat localhost as myseedbook.com (most recent app under active development).
+  // In local dev, treat localhost as myseedstory.co (most recent app under active development).
   // Change this when working on a different app's landing page locally.
-  if (host === 'localhost') return domainConfigs['myseedbook.com']
+  if (host === 'localhost') return domainConfigs['myseedstory.co']
   return domainConfigs[host] || null
 }
 

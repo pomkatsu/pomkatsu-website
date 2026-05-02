@@ -23,13 +23,13 @@ const domainMeta = {
     themeColor: '#330963',
     canonical: 'https://destina.love/',
   },
-  'myseedbook.com': {
-    title: 'SeedBook — A field guide for the seeds you save',
+  'myseedstory.co': {
+    title: 'MySeedStory — A field guide for the seeds you save',
     description:
       'Scan seed packets, log every harvest, and plan your beds by frost date. A botanical journal for home gardeners who keep notebooks.',
-    ogImage: 'https://myseedbook.com/app-logos/seedbook/og-image.png',
+    ogImage: 'https://myseedstory.co/app-logos/myseedstory/og-image.png',
     themeColor: '#1B4332',
-    canonical: 'https://myseedbook.com/',
+    canonical: 'https://myseedstory.co/',
   },
   // Future domains:
   // 'foodtally.app': { ... },

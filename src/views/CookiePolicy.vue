@@ -28,7 +28,7 @@ import TableOfContents from '../components/TableOfContents.vue'
         <p>
           This Cookie Policy explains how Pomkatsu LLC ("we," "our," "us") uses cookies and similar tracking
           technologies on our marketing websites (including <a href="https://pomkatsu.com" class="legal-link">pomkatsu.com</a>
-          and our individual app landing pages such as <a href="https://myseedbook.com" class="legal-link">myseedbook.com</a>).
+          and our individual app landing pages such as <a href="https://myseedstory.co" class="legal-link">myseedstory.co</a>).
           This policy is part of our <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>.
         </p>
         <div class="info-box">
@@ -65,7 +65,7 @@ import TableOfContents from '../components/TableOfContents.vue'
 
         <h3>Inside the Mobile Apps</h3>
         <p>
-          Our mobile apps (including SeedBook, EasyTranslate AI, Astral, Destina, and FoodTally) are native apps and
+          Our mobile apps (including MySeedStory, EasyTranslate AI, Astral, Destina, and FoodTally) are native apps and
           do not set web cookies. They do send product analytics events to PostHog as described in our
           <router-link to="/privacy" class="legal-link">Privacy Policy</router-link>. Analytics event data sent from the
           apps contains only opaque user identifiers and does not include your name, email, journal contents, photos,
