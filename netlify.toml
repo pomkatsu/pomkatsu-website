@@ -3,6 +3,10 @@
   publish = "dist"
 
 [[edge_functions]]
+  function = "myseedbook-holding"
+  path = "/*"
+
+[[edge_functions]]
   function = "inject-meta"
   path = "/*"
 
