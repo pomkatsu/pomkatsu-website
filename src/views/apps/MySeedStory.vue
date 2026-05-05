@@ -213,7 +213,7 @@ const features = [
 
             <!-- Fine print -->
             <p class="mt-6 font-mono text-[11px] tracking-wider uppercase text-myseedstory-sage">
-              Free to try · 3-day trial on annual · no ads, ever
+              Free to try · 3-day trial on annual
             </p>
           </div>
 
@@ -460,7 +460,7 @@ const features = [
               </li>
               <li class="flex gap-3">
                 <span class="text-myseedstory-clay font-mono">·</span>
-                Two months free
+                Three months free
               </li>
               <li class="flex gap-3">
                 <span class="text-myseedstory-clay font-mono">·</span>
@@ -471,32 +471,8 @@ const features = [
         </div>
 
         <p class="mt-8 font-mono text-[11px] tracking-wider uppercase text-myseedstory-sage text-center">
-          Restore purchases from within the app · Family Sharing supported
+          Restore purchases from within the app
         </p>
-      </div>
-    </section>
-
-    <!-- Trust strip -->
-    <section class="border-t border-myseedstory-parch-border">
-      <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 text-center">
-        <div>
-          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay mb-2">
-            Your data
-          </div>
-          <div class="font-display text-xl text-myseedstory-forest italic">Exportable, anytime.</div>
-        </div>
-        <div class="md:border-x md:border-myseedstory-parch-border md:px-6">
-          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay mb-2">
-            Monetization
-          </div>
-          <div class="font-display text-xl text-myseedstory-forest italic">No ads, no resale.</div>
-        </div>
-        <div>
-          <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay mb-2">
-            Built by
-          </div>
-          <div class="font-display text-xl text-myseedstory-forest italic">One independent maker.</div>
-        </div>
       </div>
     </section>
 
