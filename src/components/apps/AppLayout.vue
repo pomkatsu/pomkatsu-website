@@ -9,6 +9,16 @@ const props = defineProps({
     default: 'default',
     validator: (v) => ['default', 'mono', 'easytranslate', 'myseedstory'].includes(v),
   },
+  // Per-page routing for the contact form. Pass these from the page that
+  // mounts AppLayout. Defaults route to the pomkatsu catch-all.
+  contactFormName: {
+    type: String,
+    default: 'contact-pomkatsu',
+  },
+  contactRecipient: {
+    type: String,
+    default: 'support@pomkatsu.com',
+  },
 })
 
 const showContactForm = ref(false)
@@ -155,6 +165,8 @@ const closeContactForm = () => {
     <ContactForm
       v-if="showContactForm"
       :variant="variant"
+      :form-name="contactFormName"
+      :recipient="contactRecipient"
       @close="closeContactForm"
     />
   </div>
