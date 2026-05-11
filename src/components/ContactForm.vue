@@ -7,6 +7,19 @@ const props = defineProps({
     default: 'default',
     validator: (v) => ['default', 'mono', 'astral', 'easytranslate'].includes(v),
   },
+  // Routing key for Netlify Forms. Notification recipients are configured
+  // per form-name in the Netlify dashboard. Each page should pass its own.
+  formName: {
+    type: String,
+    default: 'contact-pomkatsu',
+  },
+  // Informational only — surfaced as a hidden field so the requested
+  // recipient appears on the submission notification. Actual delivery
+  // is controlled per form-name in Netlify > Forms > Settings.
+  recipient: {
+    type: String,
+    default: 'support@pomkatsu.com',
+  },
 })
 
 const emit = defineEmits(['close'])
@@ -24,37 +37,44 @@ const formData = ref({
 
 const isSubmitting = ref(false)
 const showSuccess = ref(false)
+const submitError = ref('')
+
+function encode(data) {
+  return Object.keys(data)
+    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
+    .join('&')
+}
 
 const handleSubmit = async () => {
   isSubmitting.value = true
+  submitError.value = ''
 
-  // In a real app, you would send this to your backend
-  // For now, we'll log the form data with the support email
-  console.log('Form submission to support@pomkatsu.com:', {
-    to: 'support@pomkatsu.com',
-    from: formData.value.email,
-    name: formData.value.name,
-    company: formData.value.company,
-    message: formData.value.message
-  })
-
-  // Simulate form submission
-  setTimeout(() => {
-    isSubmitting.value = false
+  try {
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': props.formName,
+        recipient: props.recipient,
+        'bot-field': '',
+        name: formData.value.name,
+        email: formData.value.email,
+        company: formData.value.company,
+        message: formData.value.message,
+      }),
+    })
+    if (!res.ok) throw new Error(`Netlify Forms responded ${res.status}`)
     showSuccess.value = true
-
-    // Reset form after 2 seconds and close
     setTimeout(() => {
-      formData.value = {
-        name: '',
-        email: '',
-        company: '',
-        message: ''
-      }
+      formData.value = { name: '', email: '', company: '', message: '' }
       showSuccess.value = false
       emit('close')
     }, 2000)
-  }, 1500)
+  } catch (err) {
+    submitError.value = 'Could not send right now. Please email ' + props.recipient + ' instead.'
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
 const closeModal = () => {
@@ -105,6 +125,15 @@ const closeModal = () => {
                 Get in Touch
               </h3>
 
+              <!-- Error Message -->
+              <div
+                v-if="submitError"
+                class="mb-6 p-4 border rounded-lg text-sm"
+                :class="isAstral ? 'bg-red-900/20 border-red-500/40 text-red-200' : isEasyTranslate ? 'bg-red-50 border-red-200 text-red-700' : isMono ? 'bg-red-50 border-red-200 text-red-700' : 'bg-red-50 border-red-200 text-red-700'"
+              >
+                {{ submitError }}
+              </div>
+
               <!-- Success Message -->
               <div
                 v-if="showSuccess"
@@ -120,7 +149,19 @@ const closeModal = () => {
               </div>
 
               <!-- Form -->
-              <form @submit.prevent="handleSubmit" v-if="!showSuccess">
+              <form
+                v-if="!showSuccess"
+                :name="formName"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                @submit.prevent="handleSubmit"
+              >
+                <input type="hidden" name="form-name" :value="formName" />
+                <input type="hidden" name="recipient" :value="recipient" />
+                <p class="hidden">
+                  <label>Don't fill this out: <input name="bot-field" /></label>
+                </p>
                 <div class="space-y-4">
                   <!-- Name -->
                   <div>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form detection — do not link</title>
+  </head>
+  <body>
+    <!--
+      Netlify Forms detects form names from static HTML at build time. Since
+      this site is a Vue SPA, the actual <form> elements rendered by Vue do
+      not appear in the build output. This file declares each form-name so
+      Netlify recognizes submissions made by the in-app AJAX submission.
+
+      One <form> per page that mounts <ContactForm>. The fields here must
+      match the AJAX payload in src/components/ContactForm.vue.
+
+      Configure notification recipients per form-name in:
+      Netlify > Site > Forms > Settings & usage > Form notifications.
+    -->
+
+    <form name="contact-pomkatsu" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+      <input type="text" name="recipient" />
+      <input type="text" name="bot-field" />
+    </form>
+
+    <form name="contact-myseedstory" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+      <input type="text" name="recipient" />
+      <input type="text" name="bot-field" />
+    </form>
+
+    <form name="contact-astral" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+      <input type="text" name="recipient" />
+      <input type="text" name="bot-field" />
+    </form>
+
+    <form name="contact-destina" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+      <input type="text" name="recipient" />
+      <input type="text" name="bot-field" />
+    </form>
+
+    <form name="contact-easytranslate" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+      <input type="text" name="recipient" />
+      <input type="text" name="bot-field" />
+    </form>
+
+    <form name="contact-foodtally" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+      <input type="text" name="recipient" />
+      <input type="text" name="bot-field" />
+    </form>
+  </body>
+</html>

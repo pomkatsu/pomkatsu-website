@@ -136,7 +136,11 @@ const features = [
 </script>
 
 <template>
-  <AppLayout variant="myseedstory">
+  <AppLayout
+    variant="myseedstory"
+    contact-form-name="contact-myseedstory"
+    contact-recipient="myseedstoryapp@gmail.com"
+  >
     <!-- Hero -->
     <section class="relative overflow-hidden bg-myseedstory-parch">
       <!-- Clean parchment bg; no pattern. Decoration comes from typography and the hero photo. -->
