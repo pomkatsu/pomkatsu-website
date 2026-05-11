@@ -4,13 +4,12 @@ import { useHead, useSeoMeta } from '@unhead/vue'
 import AppLayout from '../../components/apps/AppLayout.vue'
 import AppStoreButtons from '../../components/apps/AppStoreButtons.vue'
 
-// Screenshots — placeholders until we capture real app screenshots via Maestro.
-// To update: drop real screenshots at /public/app-logos/myseedstory/screenshot-*.webp
+// Screenshots — captured from MySeedStory iOS, ordered: seeds, calendar, journal, tasks.
 const screenshots = [
-  { src: '/app-logos/myseedstory/screenshot-home.webp', alt: 'Home screen', label: 'Home · at a glance' },
-  { src: '/app-logos/myseedstory/screenshot-catalog.webp', alt: 'Seed catalog', label: 'Catalog · every variety you grow' },
-  { src: '/app-logos/myseedstory/screenshot-harvest.webp', alt: 'Harvest journal', label: 'Harvest · log and weigh' },
-  { src: '/app-logos/myseedstory/screenshot-garden.webp', alt: 'Garden planner', label: 'Planner · beds and plots' },
+  { src: '/app-logos/myseedstory/screenshot-seeds.webp', alt: 'My Seeds collection', label: 'My Seeds · your collection' },
+  { src: '/app-logos/myseedstory/screenshot-calendar.webp', alt: 'Calendar view', label: 'Calendar · the season at a glance' },
+  { src: '/app-logos/myseedstory/screenshot-journal.webp', alt: 'Journal view', label: 'Journal · entries and photos' },
+  { src: '/app-logos/myseedstory/screenshot-tasks.webp', alt: 'Tasks page', label: 'Tasks · today and upcoming' },
 ]
 
 // Lightbox state
@@ -550,8 +549,13 @@ const features = [
           </svg>
         </button>
 
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 font-mono text-[11px] tracking-wider uppercase text-myseedstory-parch/70">
-          Plate {{ String(lightboxIndex + 1).padStart(2, '0') }} / {{ String(screenshots.length).padStart(2, '0') }}
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 px-4">
+          <div class="font-display text-base sm:text-lg italic text-myseedstory-parch text-center">
+            {{ screenshots[lightboxIndex].label }}
+          </div>
+          <div class="font-mono text-[11px] tracking-wider uppercase text-myseedstory-parch/60">
+            Plate {{ String(lightboxIndex + 1).padStart(2, '0') }} / {{ String(screenshots.length).padStart(2, '0') }}
+          </div>
         </div>
       </div>
     </Teleport>
