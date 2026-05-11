@@ -216,29 +216,33 @@ const features = [
             </p>
           </div>
 
-          <!-- Right: hero composition -->
+          <!-- Right: iPhone mockup with calendar -->
           <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div class="relative w-full max-w-md lg:max-w-lg">
-              <!-- Decorative parch frame behind image -->
+            <div class="relative w-[220px] sm:w-[260px] lg:w-[300px]">
+              <!-- iPhone bezel -->
               <div
-                class="absolute -inset-4 lg:-inset-6 bg-myseedstory-parch-warm rounded-sm rotate-[-1.2deg] border border-myseedstory-parch-border shadow-[0_20px_60px_-20px_rgba(27,67,50,0.18)]"
-              ></div>
-              <img
-                src="/app-logos/myseedstory/hero-cover.jpg"
-                alt="Seedlings in starter trays"
-                class="relative w-full h-auto object-cover rounded-sm grayscale-[0.08] contrast-[1.02]"
-                style="aspect-ratio: 4/5;"
-              />
+                class="relative bg-myseedstory-forest-dark rounded-[2.25rem] sm:rounded-[2.75rem] lg:rounded-[3rem] p-[6px] sm:p-[7px] shadow-[0_30px_80px_-25px_rgba(27,67,50,0.45)]"
+              >
+                <!-- Inner screen -->
+                <div class="bg-black rounded-[1.85rem] sm:rounded-[2.35rem] lg:rounded-[2.6rem] overflow-hidden">
+                  <img
+                    src="/app-logos/myseedstory/screenshot-calendar.webp"
+                    alt="MySeedStory calendar view"
+                    class="block w-full h-auto"
+                    style="aspect-ratio: 720/1558;"
+                  />
+                </div>
+              </div>
               <!-- Small metadata card overlay -->
               <div
-                class="hidden md:flex absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-myseedstory-parch px-5 py-3 shadow-lg border border-myseedstory-parch-border rounded-sm"
+                class="hidden md:flex absolute -bottom-4 -left-8 lg:-bottom-6 lg:-left-10 bg-myseedstory-parch px-5 py-3 shadow-lg border border-myseedstory-parch-border rounded-sm"
               >
                 <div>
                   <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-sage mb-1">
                     Plate No. 01
                   </div>
                   <div class="font-display text-sm italic text-myseedstory-forest">
-                    Solanum lycopersicum
+                    Anno horti
                   </div>
                 </div>
               </div>
@@ -351,27 +355,17 @@ const features = [
             @click="openLightbox(i)"
           >
             <div
-              class="relative aspect-[9/19] overflow-hidden bg-myseedstory-parch border border-myseedstory-parch-border transition-transform duration-500 group-hover:scale-[1.015] flex items-center justify-center"
+              class="relative bg-myseedstory-forest-dark rounded-[1.75rem] sm:rounded-[2rem] p-[5px] sm:p-[6px] shadow-[0_15px_45px_-15px_rgba(27,67,50,0.35)] transition-transform duration-500 group-hover:scale-[1.015]"
             >
-              <!-- Placeholder content shown when screenshot image is missing -->
-              <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <svg class="w-10 h-10 text-myseedstory-sage/30 mb-3" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
-                  <rect x="6" y="2" width="12" height="20" rx="2" />
-                  <path d="M10 18h4" />
-                </svg>
-                <div class="font-mono text-[9px] tracking-[0.18em] uppercase text-myseedstory-sage/60 mb-2">
-                  Screenshot
-                </div>
-                <div class="font-display text-sm italic text-myseedstory-forest/60">
-                  {{ shot.label.split('·')[0].trim() }}
-                </div>
+              <div class="bg-black rounded-[1.4rem] sm:rounded-[1.65rem] overflow-hidden">
+                <img
+                  :src="shot.src"
+                  :alt="shot.alt"
+                  class="block w-full h-auto"
+                  style="aspect-ratio: 720/1558;"
+                  @error="$event.target.style.visibility='hidden'"
+                />
               </div>
-              <img
-                :src="shot.src"
-                :alt="shot.alt"
-                class="relative w-full h-full object-cover"
-                @error="$event.target.style.visibility='hidden'"
-              />
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-3">
               <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay">
