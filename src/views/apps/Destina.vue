@@ -69,7 +69,7 @@ const soulmateCards = [
   { src: '/app-logos/astral/soulmate_cards/cyberpunk_male_1.webp', style: 'Cyberpunk' },
   { src: '/app-logos/astral/soulmate_cards/realistic_female_1.webp', style: 'Realistic' },
   { src: '/app-logos/astral/soulmate_cards/ethereal_male_1.webp', style: 'Ethereal' },
-  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_1.webp', style: 'Cyberpunk' },
+  { src: '/app-logos/astral/soulmate_cards/cyberpunk_female_2.webp', style: 'Cyberpunk' },
   { src: '/app-logos/astral/soulmate_cards/anime_male_1.webp', style: 'Anime' },
   { src: '/app-logos/astral/soulmate_cards/sketch_female_1.webp', style: 'Sketch' },
   { src: '/app-logos/astral/soulmate_cards/vintage_male_1.webp', style: 'Vintage' },
