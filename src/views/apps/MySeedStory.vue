@@ -208,7 +208,7 @@ const features = [
 
             <div class="flex flex-col sm:flex-row gap-4 sm:items-stretch">
               <AppStoreButtons
-                app-store-url="https://apps.apple.com/us/app/myseedstory/id0000000000"
+                app-store-url="https://apps.apple.com/us/app/myseedstory-ai-garden-planner/id6761077153"
                 play-store-url="#"
                 variant="myseedstory"
               />
@@ -493,7 +493,7 @@ const features = [
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center sm:items-stretch">
           <AppStoreButtons
-            app-store-url="https://apps.apple.com/us/app/myseedstory/id0000000000"
+            app-store-url="https://apps.apple.com/us/app/myseedstory-ai-garden-planner/id6761077153"
             play-store-url="#"
             variant="myseedstory"
           />
