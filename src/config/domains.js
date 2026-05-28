@@ -33,6 +33,8 @@ const domainConfigs = {
     navLogo: 'MySeedStory',
     themeColor: '#1B4332',
     favicon: '/app-logos/myseedstory/favicon.png',
+    appleTouchIcon: '/app-logos/myseedstory/apple-touch-icon.png',
+    manifest: '/app-logos/myseedstory/site.webmanifest',
     bgColor: '#FAFAF5',
     layoutVariant: 'myseedstory',
     // Per-app content for the /delete-account page

@@ -1,0 +1,38 @@
+{
+  "name": "MySeedStory",
+  "short_name": "MySeedStory",
+  "description": "A field guide for the seeds you save. Scan seed packets, log harvests, and plan beds by frost date.",
+  "dir": "auto",
+  "lang": "en-US",
+  "display": "standalone",
+  "orientation": "any",
+  "start_url": "/?homescreen=1",
+  "background_color": "#FAFAF5",
+  "theme_color": "#1B4332",
+  "icons": [
+    {
+      "src": "/app-logos/myseedstory/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-logos/myseedstory/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-logos/myseedstory/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/app-logos/myseedstory/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

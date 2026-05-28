@@ -182,7 +182,7 @@ const features = [
             <!-- Logo mark + brand -->
             <div class="flex items-center gap-4 mb-10">
               <img
-                src="/app-logos/myseedstory/myseedstory-icon.png"
+                src="/app-logos/myseedstory/myseedstory-icon.webp"
                 alt="MySeedStory"
                 class="w-16 h-16 rounded-2xl shadow-sm ring-1 ring-myseedstory-parch-border"
               />
