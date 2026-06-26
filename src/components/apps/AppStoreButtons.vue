@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { computed } from 'vue'
+
+const props = defineProps({
   appStoreUrl: {
     type: String,
     default: '#'
@@ -22,6 +24,9 @@ defineProps({
     validator: (v) => ['default', 'mono', 'easytranslate', 'myseedstory'].includes(v),
   },
 })
+
+// A real Play Store listing renders a live button; '#'/empty keeps "Coming Soon".
+const playStoreLive = computed(() => props.playStoreUrl && props.playStoreUrl !== '#')
 </script>
 
 <template>
@@ -45,28 +50,47 @@ defineProps({
       </div>
     </a>
 
-    <!-- Google Play Store Button (Coming Soon) -->
-    <div v-if="showPlayStore" class="relative">
-      <div
-        class="inline-flex items-center gap-3 px-6 py-3 rounded-xl min-w-[160px] pointer-events-none"
-        :class="variant === 'myseedstory' ? 'bg-myseedstory-forest/40 text-myseedstory-parch/50' : variant === 'easytranslate' ? 'bg-et-text/40 text-white/50' : 'bg-primary/40 text-secondary/50'"
+    <!-- Google Play Store Button — live link once a listing exists, otherwise "Coming Soon" -->
+    <template v-if="showPlayStore">
+      <a
+        v-if="playStoreLive"
+        :href="playStoreUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="store-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-200 font-semibold group"
+        :class="variant === 'myseedstory' ? 'bg-myseedstory-forest text-myseedstory-parch hover:bg-myseedstory-forest-light' : variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
       >
         <!-- Google Play Logo SVG -->
         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
         </svg>
         <div class="text-left">
-          <div class="text-xs opacity-80">Get it on</div>
+          <div class="text-xs opacity-90">Get it on</div>
           <div class="text-base font-bold leading-tight">Google Play</div>
         </div>
+      </a>
+      <div v-else class="relative">
+        <div
+          class="inline-flex items-center gap-3 px-6 py-3 rounded-xl min-w-[160px] pointer-events-none"
+          :class="variant === 'myseedstory' ? 'bg-myseedstory-forest/40 text-myseedstory-parch/50' : variant === 'easytranslate' ? 'bg-et-text/40 text-white/50' : 'bg-primary/40 text-secondary/50'"
+        >
+          <!-- Google Play Logo SVG -->
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-xs opacity-80">Get it on</div>
+            <div class="text-base font-bold leading-tight">Google Play</div>
+          </div>
+        </div>
+        <span
+          class="absolute -top-2 -right-2 text-xs font-bold px-2 py-0.5 rounded-full"
+          :class="variant === 'myseedstory' ? 'bg-myseedstory-clay text-myseedstory-parch' : variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
+        >
+          Coming Soon
+        </span>
       </div>
-      <span
-        class="absolute -top-2 -right-2 text-xs font-bold px-2 py-0.5 rounded-full"
-        :class="variant === 'myseedstory' ? 'bg-myseedstory-clay text-myseedstory-parch' : variant === 'easytranslate' ? 'bg-et-text text-white' : 'bg-primary text-secondary'"
-      >
-        Coming Soon
-      </span>
-    </div>
+    </template>
   </div>
 </template>
 
