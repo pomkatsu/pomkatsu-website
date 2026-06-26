@@ -81,7 +81,7 @@ useHead({
           'Digital garden journal for home gardeners. Track seeds, harvests, plant health, and frost-aware planting schedules.',
         offers: {
           '@type': 'Offer',
-          price: '19.99',
+          price: '5.99',
           priceCurrency: 'USD',
         },
         author: {
@@ -216,7 +216,7 @@ const features = [
 
             <!-- Fine print -->
             <p class="mt-6 font-mono text-[11px] tracking-wider uppercase text-myseedstory-sage">
-              Free to try · 3-day trial on annual
+              Free to try · 7-day weekly or 14-day annual trial
             </p>
           </div>
 
@@ -397,17 +397,17 @@ const features = [
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          <!-- Monthly -->
+          <!-- Weekly -->
           <div class="relative p-10 border border-myseedstory-parch-border bg-myseedstory-parch">
             <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-sage mb-6">
-              Monthly
+              Weekly
             </div>
             <div class="mb-6">
-              <span class="font-display text-6xl font-semibold text-myseedstory-forest tracking-tight">$19.99</span>
-              <span class="font-mono text-sm text-myseedstory-forest/60 ml-2">/ month</span>
+              <span class="font-display text-6xl font-semibold text-myseedstory-forest tracking-tight">$5.99</span>
+              <span class="font-mono text-sm text-myseedstory-forest/60 ml-2">/ week</span>
             </div>
             <p class="text-[15px] text-myseedstory-forest/70 leading-relaxed mb-8">
-              Full access, billed monthly. Cancel anytime.
+              Full access, billed weekly. 7-day free trial — cancel anytime.
             </p>
             <ul class="space-y-3 text-[14px] text-myseedstory-forest/80">
               <li class="flex gap-3">
@@ -433,7 +433,7 @@ const features = [
           <div class="relative p-10 border-2 border-myseedstory-clay bg-myseedstory-parch">
             <div class="absolute -top-3 left-10 bg-myseedstory-parch px-3">
               <span class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-clay">
-                Recommended · save 25%
+                Recommended · save 42%
               </span>
             </div>
             <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-myseedstory-sage mb-6">
@@ -444,20 +444,20 @@ const features = [
               <span class="font-mono text-sm text-myseedstory-forest/60 ml-2">/ year</span>
             </div>
             <p class="text-[15px] text-myseedstory-forest/70 leading-relaxed mb-8">
-              Works out to about $15 a month. 3-day free trial on first sign-up.
+              Works out to about $15 a month. 14-day free trial on first sign-up.
             </p>
             <ul class="space-y-3 text-[14px] text-myseedstory-forest/80">
               <li class="flex gap-3">
                 <span class="text-myseedstory-clay font-mono">·</span>
-                Everything in Monthly
+                Everything in Weekly
               </li>
               <li class="flex gap-3">
                 <span class="text-myseedstory-clay font-mono">·</span>
-                3-day free trial
+                14-day free trial
               </li>
               <li class="flex gap-3">
                 <span class="text-myseedstory-clay font-mono">·</span>
-                Three months free
+                Five months free
               </li>
               <li class="flex gap-3">
                 <span class="text-myseedstory-clay font-mono">·</span>
