@@ -218,12 +218,20 @@ onUnmounted(() => {
 }
 .seed-world .sw-copy__title {
   font-family: var(--sw-font-display);
-  font-size: clamp(2rem, 4.4vw, 3.5rem);
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
   font-weight: 700;
   line-height: 1.03;
+  /* Soft cream halo lifts the title off the busy video without a scrim box. */
+  text-shadow: 0 2px 28px rgba(245, 241, 232, 0.95), 0 0 60px rgba(245, 241, 232, 0.7);
 }
+.seed-world .sw-copy__eyebrow {
+  font-size: 0.95rem;
+  text-shadow: 0 1px 16px rgba(245, 241, 232, 0.9);
+}
+.seed-world .sw-copy { width: min(46vw, 560px); }
 @media (max-width: 860px) {
-  .seed-world .sw-copy__title { font-size: clamp(1.9rem, 7.5vw, 2.7rem); }
+  .seed-world .sw-copy__title { font-size: clamp(2.2rem, 8.5vw, 3.2rem); }
+  .seed-world .sw-copy { width: auto; }
 }
 .seed-world-sound {
   position: fixed;

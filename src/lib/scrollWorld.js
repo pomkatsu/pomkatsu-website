@@ -190,6 +190,9 @@ export function mountScrollWorld(container, config) {
   }
 
   function jumpTo(i) {
+    // Section 0 returns to the true top of the page, not the middle of its
+    // scroll band — "back to the start" should really be the start.
+    if (i === 0) { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); return; }
     const seg = SECTIONS[i]._seg;
     window.scrollTo({ top: seg.start + (seg.end - seg.start) * 0.5, behavior: reduce ? 'auto' : 'smooth' });
   }
