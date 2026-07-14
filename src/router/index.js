@@ -51,6 +51,18 @@ function buildRoutes() {
         component: domainConfig.homeComponent
       },
       ...legalRoutes,
+      // Scroll-world previews (dev): /world = standalone page, /world-hero =
+      // world as hero above the existing landing page. ?style=clay|paper|water
+      {
+        path: '/world',
+        name: 'SeedWorld',
+        component: () => import('../views/apps/SeedWorldPage.vue')
+      },
+      {
+        path: '/world-hero',
+        name: 'SeedWorldHero',
+        component: () => import('../views/apps/SeedWorldHeroPreview.vue')
+      },
       // Catch-all redirect to / for app domains
       { path: '/:pathMatch(.*)*', redirect: '/' }
     ]
