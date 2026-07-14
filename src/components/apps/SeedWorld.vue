@@ -218,19 +218,36 @@ onUnmounted(() => {
 }
 .seed-world .sw-copy__title {
   font-family: var(--sw-font-display);
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  font-size: clamp(3.2rem, 7.5vw, 7rem);
   font-weight: 700;
-  line-height: 1.03;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
   /* Soft cream halo lifts the title off the busy video without a scrim box. */
-  text-shadow: 0 2px 28px rgba(245, 241, 232, 0.95), 0 0 60px rgba(245, 241, 232, 0.7);
+  text-shadow:
+    0 2px 30px rgba(245, 241, 232, 0.98),
+    0 0 70px rgba(245, 241, 232, 0.85),
+    0 0 120px rgba(245, 241, 232, 0.6);
 }
 .seed-world .sw-copy__eyebrow {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
   text-shadow: 0 1px 16px rgba(245, 241, 232, 0.9);
 }
-.seed-world .sw-copy { width: min(46vw, 560px); }
+.seed-world .sw-copy { width: min(58vw, 860px); }
+/* Preflight zeroes button padding (unlayered beats the engine's @layer sw),
+   which jams the nav items together — restore the pill layout here. */
+.seed-world .sw-nav { gap: 6px; padding: 5px 6px; }
+.seed-world .sw-nav__item {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+.seed-world .sw-nav__item:hover { background: color-mix(in srgb, var(--sw-accent) 12%, transparent); }
+.seed-world .sw-nav__item.is-active { background: var(--sw-accent); color: #FFF8ED; }
 @media (max-width: 860px) {
-  .seed-world .sw-copy__title { font-size: clamp(2.2rem, 8.5vw, 3.2rem); }
+  .seed-world .sw-copy__title { font-size: clamp(2.6rem, 10vw, 3.8rem); }
   .seed-world .sw-copy { width: auto; }
 }
 .seed-world-sound {

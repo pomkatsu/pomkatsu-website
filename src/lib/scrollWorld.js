@@ -190,9 +190,16 @@ export function mountScrollWorld(container, config) {
   }
 
   function jumpTo(i) {
-    // Section 0 returns to the true top of the page, not the middle of its
-    // scroll band — "back to the start" should really be the start.
-    if (i === 0) { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); return; }
+    // Section 0 resets to the true start of the page, instantly. A smooth
+    // scroll from deep in the page would scrub every clip backward on the way
+    // up (and the lerp then plays dive_1 in reverse on arrival) — snapping
+    // reproduces exactly what a fresh load shows: frame 0 of the first dive.
+    if (i === 0) {
+      window.scrollTo(0, 0);
+      read();
+      SEGMENTS.forEach(s => { s.cur = s.target; });
+      return;
+    }
     const seg = SECTIONS[i]._seg;
     window.scrollTo({ top: seg.start + (seg.end - seg.start) * 0.5, behavior: reduce ? 'auto' : 'smooth' });
   }
@@ -323,12 +330,36 @@ export function mountScrollWorld(container, config) {
   on('resize', onResize);
   on('orientationchange', layout);
   on('load', layout);
+  // The world is a story that starts at the top: opt out of the browser's
+  // scroll restoration so a refresh mid-flight doesn't drop the visitor into
+  // the middle of a clip. Chrome commits its deferred restoration the moment
+  // layout() grows the track past the saved offset (even with the flag set
+  // mid-load), so pin the top for the first moments — until the visitor
+  // scrolls on purpose (wheel/touch/key; 'scroll' itself also fires from the
+  // restoration, so it can't be the signal).
+  const prevScrollRestoration = ('scrollRestoration' in history) ? history.scrollRestoration : null;
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  window.scrollTo(0, 0);
+  let userScrolled = false;
+  const markUserScroll = () => { userScrolled = true; };
+  ['wheel', 'touchstart', 'keydown'].forEach(ev => on(ev, markUserScroll, { passive: true, once: true }));
+  const mountT0 = performance.now();
+  (function guardStart() {
+    if (dead || userScrolled) return;
+    if (window.scrollY !== 0) {
+      window.scrollTo(0, 0);
+      read();
+      SEGMENTS.forEach(s => { s.cur = s.target; });
+    }
+    if (performance.now() - mountT0 < 600) requestAnimationFrame(guardStart);
+  })();
   layout();
   requestAnimationFrame(raf);
 
   return {
     destroy() {
       dead = true;
+      if (prevScrollRestoration) { try { history.scrollRestoration = prevScrollRestoration; } catch (e) {} }
       winListeners.forEach(([ev, fn, opts]) => window.removeEventListener(ev, fn, opts));
       SEGMENTS.forEach(s => { if (s.video) { try { URL.revokeObjectURL(s.video.src); } catch (e) {} } });
       container.classList.remove('sw-root');
