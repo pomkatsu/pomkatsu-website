@@ -63,6 +63,16 @@ function buildRoutes() {
         name: 'SeedWorldHero',
         component: () => import('../views/apps/SeedWorldHeroPreview.vue')
       },
+      // Published scroll-world slugs (myseedstory.co only): /mascot /clay
+      // /paper /water — each renders the standalone world in that art style,
+      // alongside (not replacing) the existing landing page at /.
+      ...(domainConfig.appId === 'myseedstory' ? [
+        {
+          path: '/:style(mascot|clay|paper|water)',
+          name: 'SeedWorldStyle',
+          component: () => import('../views/apps/SeedWorldPage.vue')
+        }
+      ] : []),
       // Catch-all redirect to / for app domains
       { path: '/:pathMatch(.*)*', redirect: '/' }
     ]
