@@ -82,6 +82,18 @@ const closeContactForm = () => {
             <h3 class="text-sm font-semibold text-primary-light/70 uppercase tracking-wider mb-3">Mobile Apps</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <a
+                href="https://myseedstory.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
+              >
+                <img src="/app-logos/myseedstory/myseedstory-icon.webp" alt="MySeedStory Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
+                <div>
+                  <p class="text-lg font-bold text-primary">MySeedStory</p>
+                  <p class="text-sm text-primary-light leading-snug">A field guide for the seeds you save</p>
+                </div>
+              </a>
+              <a
                 href="https://easytranslate.io"
                 target="_blank"
                 rel="noopener"
@@ -115,18 +127,6 @@ const closeContactForm = () => {
                   <p class="text-sm text-primary-light leading-snug">AI-powered calorie tracking with voice, text, and photo</p>
                 </div>
               </router-link>
-              <a
-                href="https://myseedstory.co"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
-              >
-                <img src="/app-logos/myseedstory/myseedstory-icon.webp" alt="MySeedStory Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
-                <div>
-                  <p class="text-lg font-bold text-primary">MySeedStory</p>
-                  <p class="text-sm text-primary-light leading-snug">A field guide for the seeds you save</p>
-                </div>
-              </a>
             </div>
           </div>
 
