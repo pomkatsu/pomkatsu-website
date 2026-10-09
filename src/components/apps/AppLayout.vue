@@ -19,6 +19,19 @@ const props = defineProps({
     type: String,
     default: 'support@pomkatsu.com',
   },
+  // Footer legal links. A product with its own documents (CertMatrix) passes
+  // its own set; every other page gets the shared Pomkatsu documents.
+  legalLinks: {
+    type: Array,
+    default: () => [
+      { to: '/privacy', label: 'Privacy Policy' },
+      { to: '/terms', label: 'Terms of Service' },
+      { to: '/cookies', label: 'Cookie Policy' },
+      { to: '/dmca', label: 'DMCA' },
+      { to: '/aup', label: 'Acceptable Use' },
+      { to: '/eula', label: 'EULA' },
+    ],
+  },
 })
 
 const showContactForm = ref(false)
@@ -104,53 +117,19 @@ const closeContactForm = () => {
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
-          <router-link
-            to="/privacy"
-            class="footer-link transition-colors"
-            :class="isMyseedstory ? 'hover:text-myseedstory-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
-          >
-            Privacy Policy
-          </router-link>
-          <span :class="isMyseedstory ? 'text-myseedstory-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
-          <router-link
-            to="/terms"
-            class="footer-link transition-colors"
-            :class="isMyseedstory ? 'hover:text-myseedstory-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
-          >
-            Terms of Service
-          </router-link>
-          <span :class="isMyseedstory ? 'text-myseedstory-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
-          <router-link
-            to="/cookies"
-            class="footer-link transition-colors"
-            :class="isMyseedstory ? 'hover:text-myseedstory-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
-          >
-            Cookie Policy
-          </router-link>
-          <span :class="isMyseedstory ? 'text-myseedstory-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
-          <router-link
-            to="/dmca"
-            class="footer-link transition-colors"
-            :class="isMyseedstory ? 'hover:text-myseedstory-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
-          >
-            DMCA
-          </router-link>
-          <span :class="isMyseedstory ? 'text-myseedstory-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
-          <router-link
-            to="/aup"
-            class="footer-link transition-colors"
-            :class="isMyseedstory ? 'hover:text-myseedstory-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
-          >
-            Acceptable Use
-          </router-link>
-          <span :class="isMyseedstory ? 'text-myseedstory-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'">|</span>
-          <router-link
-            to="/eula"
-            class="footer-link transition-colors"
-            :class="isMyseedstory ? 'hover:text-myseedstory-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
-          >
-            EULA
-          </router-link>
+          <template v-for="(link, index) in legalLinks" :key="link.to">
+            <span
+              v-if="index > 0"
+              :class="isMyseedstory ? 'text-myseedstory-parch/30' : isEasyTranslate ? 'text-zinc-600' : isMono ? 'text-gray-600' : 'text-secondary/50'"
+            >|</span>
+            <router-link
+              :to="link.to"
+              class="footer-link transition-colors"
+              :class="isMyseedstory ? 'hover:text-myseedstory-clay-light' : isEasyTranslate ? 'hover:text-white' : isMono ? 'hover:text-white' : 'hover:text-secondary'"
+            >
+              {{ link.label }}
+            </router-link>
+          </template>
         </div>
         <div
           class="text-center mt-6 text-xs"

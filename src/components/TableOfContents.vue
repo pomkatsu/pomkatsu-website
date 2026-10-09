@@ -2,6 +2,19 @@
 import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+// Where the sticky back button goes. Defaults to the site home; a product's
+// own documents (CertMatrix) point it at that product's page.
+defineProps({
+  backTo: {
+    type: String,
+    default: '/'
+  },
+  backLabel: {
+    type: String,
+    default: 'Back to Home'
+  }
+})
+
 const route = useRoute()
 const activeSection = ref('')
 const sections = ref([])
@@ -153,7 +166,7 @@ const scrollToSection = (id) => {
     <!-- Sticky Back to Home Button -->
     <router-link 
       v-if="showStickyBackButton"
-      to="/" 
+      :to="backTo"
       class="back-button-sticky"
     >
       <svg 
@@ -164,7 +177,7 @@ const scrollToSection = (id) => {
       >
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
-      <span>Back to Home</span>
+      <span>{{ backLabel }}</span>
     </router-link>
     
     <div class="toc-content">

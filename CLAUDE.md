@@ -146,6 +146,8 @@ When updating legal content:
 - Edit Vue component for styling/layout changes
 - Maintain consistency across all legal pages using established patterns
 
+**CertMatrix is the exception.** Its three documents (`/src/legal/certmatrix-*.md`: terms, privacy, DPA) are the single source: `/src/views/apps/certmatrix/CertMatrixLegal.vue` renders the markdown directly (`?raw` + `marked`) at `/apps/certmatrix/terms|privacy|dpa`. Edit the `.md` only. Keep the header lines (Effective Date, Last Updated, Version) in the existing format; the view parses them. The CertMatrix app records agreement to a dated version, so a material change also needs the `TERMS_VERSION` bump in the certvault repo (publish here first).
+
 ## Contact Information
 - Support email: support@pomkatsu.com
 - Company: Pomkatsu LLC (Texas)

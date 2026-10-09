@@ -8,6 +8,11 @@ const props = defineProps({
   title: {
     type: String,
     required: true
+  },
+  // Passed through to AppLayout's footer; omitted, the shared documents show.
+  legalLinks: {
+    type: Array,
+    default: undefined
   }
 })
 
@@ -121,7 +126,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppLayout :variant="layoutVariant">
+  <AppLayout :variant="layoutVariant" :legal-links="legalLinks">
     <div
       class="legal-root"
       :class="{ 'legal-root--myseedstory': isMyseedstory }"

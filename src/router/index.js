@@ -115,6 +115,31 @@ function buildRoutes() {
       name: 'FoodTally',
       component: () => import('../views/apps/FoodTally.vue')
     },
+    // CertMatrix (certmatrix.io) is B2B SaaS with its own documents, served
+    // here rather than through the shared legalRoutes.
+    {
+      path: '/apps/certmatrix',
+      name: 'CertMatrix',
+      component: () => import('../views/apps/CertMatrix.vue')
+    },
+    {
+      path: '/apps/certmatrix/terms',
+      name: 'CertMatrixTerms',
+      component: () => import('../views/apps/certmatrix/CertMatrixLegal.vue'),
+      props: { doc: 'terms' }
+    },
+    {
+      path: '/apps/certmatrix/privacy',
+      name: 'CertMatrixPrivacy',
+      component: () => import('../views/apps/certmatrix/CertMatrixLegal.vue'),
+      props: { doc: 'privacy' }
+    },
+    {
+      path: '/apps/certmatrix/dpa',
+      name: 'CertMatrixDpa',
+      component: () => import('../views/apps/certmatrix/CertMatrixLegal.vue'),
+      props: { doc: 'dpa' }
+    },
     // MySeedStory has its own domain (myseedstory.co) — redirect old URL
     {
       path: '/apps/seedbook',
