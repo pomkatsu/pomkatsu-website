@@ -78,7 +78,7 @@ function onBodyClick(event) {
 </script>
 
 <template>
-  <LegalLayout :title="current.title" :legal-links="certmatrixLegalLinks">
+  <LegalLayout :title="current.title" :legal-links="certmatrixLegalLinks" theme="certmatrix">
     <div class="legal-container">
       <TableOfContents back-to="/apps/certmatrix" back-label="Back to CertMatrix" />
 
@@ -102,8 +102,10 @@ function onBodyClick(event) {
 </template>
 
 <style scoped>
-/* Same look as the hand-written legal views (TermsOfService.vue); the body is
-   v-html, so its rules go through :deep(). */
+/* Same structure as the hand-written legal views (TermsOfService.vue), in
+   CertMatrix's own colors: LegalLayout's `certmatrix` theme sets the --legal-*
+   variables, and corners are square because CertMatrix's are. The body is v-html,
+   so its rules go through :deep(). */
 .legal-container {
   display: flex;
   gap: 2rem;
@@ -122,7 +124,7 @@ function onBodyClick(event) {
 .legal-header {
   background: transparent;
   border: 1px solid var(--legal-border);
-  border-radius: 12px;
+  border-radius: var(--legal-radius, 12px);
   padding: 2rem;
   margin-bottom: 2rem;
 }
@@ -138,7 +140,9 @@ function onBodyClick(event) {
   flex-wrap: wrap;
   gap: 1.5rem;
   color: var(--legal-text-secondary);
-  font-size: 0.875rem;
+  /* CertMatrix sets dates and counts in its mono face */
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
 }
 
 /* Typography */
@@ -200,7 +204,7 @@ function onBodyClick(event) {
 .legal-body :deep(blockquote) {
   background: var(--legal-bg-box);
   border-left: 4px solid var(--legal-border-accent);
-  border-radius: 8px;
+  border-radius: var(--legal-radius, 8px);
   padding: 1.5rem;
   margin: 1.5rem 0;
 }
@@ -227,13 +231,13 @@ function onBodyClick(event) {
 .legal-body :deep(hr) {
   margin-top: 4rem;
   border: 0;
-  border-top: 2px solid #E5E7EB;
+  border-top: 2px solid var(--legal-border);
 }
 
 .legal-body :deep(hr + p) {
   padding-top: 2rem;
   text-align: center;
-  color: #9CA3AF;
+  color: var(--legal-text-secondary);
   font-size: 0.875rem;
 }
 
