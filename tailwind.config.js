@@ -63,6 +63,16 @@ export default {
           'parch-border': '#E8EDE8', // parch-200 — hairline
           'parch-text': '#1A1A16',   // parch-900 — deep text
         },
+        // CertMatrix Carbon Light, copied from certvault apps/site/src/styles/site.css
+        'certmatrix': {
+          'wall': '#efece5',     // page background
+          'paper': '#e7e3da',    // frames and bands
+          'ink': '#15140f',      // text
+          'mut': '#55534a',      // secondary text
+          'rule': '#cbc5b6',     // borders
+          'acc': '#8136e3',      // the one accent
+          'acc-dark': '#6a25c9', // accent hover
+        },
         'legal': {
           'text': '#5A3E26',
           'heading': '#46301C',

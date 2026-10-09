@@ -2,6 +2,19 @@
 import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+// Where the sticky back button goes. Defaults to the site home; a product's
+// own documents (CertMatrix) point it at that product's page.
+defineProps({
+  backTo: {
+    type: String,
+    default: '/'
+  },
+  backLabel: {
+    type: String,
+    default: 'Back to Home'
+  }
+})
+
 const route = useRoute()
 const activeSection = ref('')
 const sections = ref([])
@@ -153,7 +166,7 @@ const scrollToSection = (id) => {
     <!-- Sticky Back to Home Button -->
     <router-link 
       v-if="showStickyBackButton"
-      to="/" 
+      :to="backTo"
       class="back-button-sticky"
     >
       <svg 
@@ -164,7 +177,7 @@ const scrollToSection = (id) => {
       >
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
-      <span>Back to Home</span>
+      <span>{{ backLabel }}</span>
     </router-link>
     
     <div class="toc-content">
@@ -214,7 +227,7 @@ const scrollToSection = (id) => {
   background: var(--legal-bg-surface-alpha);
   backdrop-filter: blur(8px);
   border: 1px solid var(--legal-border);
-  border-radius: 8px;
+  border-radius: var(--legal-radius, 8px);
   color: var(--legal-text);
   font-weight: 500;
   font-size: 0.875rem;
@@ -246,7 +259,7 @@ const scrollToSection = (id) => {
 .toc-content {
   background: var(--legal-bg-surface-alpha);
   backdrop-filter: blur(10px);
-  border-radius: 8px;
+  border-radius: var(--legal-radius, 8px);
   padding: 1.5rem;
   border: 1px solid var(--legal-border);
 }
@@ -279,7 +292,7 @@ const scrollToSection = (id) => {
   border-left: 2px solid transparent;
   transition: all 0.2s ease;
   background: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 var(--legal-radius, 4px) var(--legal-radius, 4px) 0;
   cursor: pointer;
   width: 100%;
 }
@@ -308,7 +321,7 @@ const scrollToSection = (id) => {
 .toc-link.active {
   color: var(--legal-text-strong);
   background-color: var(--legal-bg-surface-active);
-  border-left-color: var(--legal-text);
+  border-left-color: var(--legal-active-bar, var(--legal-text));
   font-weight: 500;
 }
 

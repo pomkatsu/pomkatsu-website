@@ -8,6 +8,18 @@ const props = defineProps({
   title: {
     type: String,
     required: true
+  },
+  // Passed through to AppLayout's footer; omitted, the shared documents show.
+  legalLinks: {
+    type: Array,
+    default: undefined
+  },
+  // A product served from pomkatsu.com with its own look. App domains get theirs
+  // from the domain config below; CertMatrix has no domain here, so it asks by name.
+  theme: {
+    type: String,
+    default: undefined,
+    validator: (v) => v === undefined || v === 'certmatrix'
   }
 })
 
@@ -17,11 +29,40 @@ const navLogo = domainConfig?.navLogo || 'Pomkatsu'
 const appId = domainConfig?.appId || null
 
 // Pick the AppLayout variant for nav/footer theming
-const layoutVariant = computed(() => domainConfig?.layoutVariant || 'default')
+const isCertmatrix = computed(() => props.theme === 'certmatrix')
+const layoutVariant = computed(() =>
+  isCertmatrix.value ? 'certmatrix' : domainConfig?.layoutVariant || 'default'
+)
 const isMyseedstory = computed(() => appId === 'myseedstory')
 
 // CSS custom properties for legal page content theming — one source of truth
 const themeVars = computed(() => {
+  // CertMatrix (Carbon Light, from certvault apps/site): warm wall, near-black ink,
+  // one purple accent, and square corners (its radius is 0 everywhere)
+  if (isCertmatrix.value) {
+    return {
+      '--legal-text': '#15140f',
+      '--legal-text-secondary': '#55534a',
+      '--legal-text-strong': '#15140f',
+      '--legal-bg-box': '#e7e3da',
+      '--legal-bg-surface': '#e7e3da',
+      '--legal-bg-surface-alpha': 'rgba(231, 227, 218, 0.7)',
+      '--legal-bg-surface-hover': '#e7e3da',
+      '--legal-bg-surface-active': 'rgba(129, 54, 227, 0.12)',
+      '--legal-border': '#cbc5b6',
+      '--legal-border-accent': '#8136e3',
+      '--legal-link': '#8136e3',
+      '--legal-link-hover': '#6a25c9',
+      '--legal-link-border': 'rgba(129, 54, 227, 0.5)',
+      '--legal-shadow': 'rgba(21, 20, 15, 0.06)',
+      '--legal-scrollbar': 'rgba(21, 20, 15, 0.3)',
+      '--legal-warning-bg': 'rgba(138, 31, 58, 0.1)',
+      '--legal-warning-text': '#15140f',
+      '--legal-warning-heading': '#8a1f3a',
+      '--legal-active-bar': '#8136e3',
+      '--legal-radius': '0px',
+    }
+  }
   // MySeedStory: warm parch background, forest green text, clay accents
   if (isMyseedstory.value) {
     return {
@@ -121,7 +162,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppLayout :variant="layoutVariant">
+  <AppLayout :variant="layoutVariant" :legal-links="legalLinks">
     <div
       class="legal-root"
       :class="{ 'legal-root--myseedstory': isMyseedstory }"
@@ -236,7 +277,7 @@ onMounted(() => {
   right: 2rem;
   z-index: 30;
   padding: 0.75rem;
-  border-radius: 9999px;
+  border-radius: var(--legal-radius, 9999px);
   background: var(--legal-border-accent);
   color: var(--legal-bg-surface);
   box-shadow: 0 8px 24px var(--legal-shadow);
