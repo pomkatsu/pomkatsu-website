@@ -158,8 +158,10 @@ const closeContactForm = () => {
                   <p class="text-sm text-primary-light leading-snug">Trading journal to track, analyze, and improve your trades</p>
                 </div>
               </a>
-              <router-link
-                to="/apps/certmatrix"
+              <a
+                href="https://certmatrix.io"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="flex items-center gap-5 rounded-2xl p-5 bg-secondary-dark/50 border border-primary/20 hover:border-primary/35 hover:bg-secondary-dark/80 transition-all duration-200 cursor-pointer"
               >
                 <img src="/app-logos/certmatrix/certmatrix-logo.png" alt="CertMatrix Logo" class="w-16 h-16 object-contain rounded-xl flex-shrink-0" />
@@ -167,7 +169,7 @@ const closeContactForm = () => {
                   <p class="text-lg font-bold text-primary">CertMatrix</p>
                   <p class="text-sm text-primary-light leading-snug">Certification tracking with reminders and audit exports for small teams</p>
                 </div>
-              </router-link>
+              </a>
             </div>
           </div>
         </div>

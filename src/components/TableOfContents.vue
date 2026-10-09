@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useRoute, RouterLink } from 'vue-router'
 
-// Where the sticky back button goes. Defaults to the site home; a product's
-// own documents (CertMatrix) point it at that product's page.
-defineProps({
+// Where the sticky back button goes. Defaults to the site home; a product with
+// its own site (CertMatrix) passes that site's full URL instead of a route.
+const props = defineProps({
   backTo: {
     type: String,
     default: '/'
@@ -14,6 +14,8 @@ defineProps({
     default: 'Back to Home'
   }
 })
+
+const backIsExternal = computed(() => /^https?:\/\//.test(props.backTo))
 
 const route = useRoute()
 const activeSection = ref('')
@@ -164,9 +166,10 @@ const scrollToSection = (id) => {
 <template>
   <aside class="toc-sidebar">
     <!-- Sticky Back to Home Button -->
-    <router-link 
+    <component
+      :is="backIsExternal ? 'a' : RouterLink"
       v-if="showStickyBackButton"
-      :to="backTo"
+      v-bind="backIsExternal ? { href: backTo } : { to: backTo }"
       class="back-button-sticky"
     >
       <svg 
@@ -178,7 +181,7 @@ const scrollToSection = (id) => {
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
       <span>{{ backLabel }}</span>
-    </router-link>
+    </component>
     
     <div class="toc-content">
       <h3 class="toc-title">Table of Contents</h3>

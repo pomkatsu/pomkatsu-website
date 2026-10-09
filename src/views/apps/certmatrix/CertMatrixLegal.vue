@@ -80,7 +80,7 @@ function onBodyClick(event) {
 <template>
   <LegalLayout :title="current.title" :legal-links="certmatrixLegalLinks" theme="certmatrix">
     <div class="legal-container">
-      <TableOfContents back-to="/apps/certmatrix" back-label="Back to CertMatrix" />
+      <TableOfContents back-to="https://certmatrix.io" back-label="Back to CertMatrix" />
 
       <div class="legal-content">
         <div class="legal-header">
