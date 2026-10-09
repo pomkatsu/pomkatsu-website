@@ -115,12 +115,15 @@ function buildRoutes() {
       name: 'FoodTally',
       component: () => import('../views/apps/FoodTally.vue')
     },
-    // CertMatrix (certmatrix.io) is B2B SaaS with its own documents, served
-    // here rather than through the shared legalRoutes.
+    // CertMatrix has its own domain (certmatrix.io) — redirect. Only its legal
+    // documents are served here: it is B2B SaaS and cannot use the shared
+    // legalRoutes, so they live under /apps/certmatrix/.
     {
       path: '/apps/certmatrix',
-      name: 'CertMatrix',
-      component: () => import('../views/apps/CertMatrix.vue')
+      beforeEnter() {
+        window.location.href = 'https://certmatrix.io'
+      },
+      component: () => import('../views/HomePage.vue')
     },
     {
       path: '/apps/certmatrix/terms',
