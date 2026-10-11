@@ -94,7 +94,7 @@ const closeContactForm = () => {
             <router-link
               to="/"
               class="transition-colors duration-200"
-              :class="isCertmatrix ? 'text-2xl font-bold text-certmatrix-ink hover:text-certmatrix-acc' : isMyseedstory ? 'font-display text-2xl font-semibold text-myseedstory-forest hover:text-myseedstory-clay tracking-tight' : isEasyTranslate ? 'text-2xl font-bold text-et-text hover:text-et-purple' : isMono ? 'text-2xl font-bold text-gray-900 hover:text-gray-600' : 'text-2xl font-bold text-primary hover:text-primary-light'"
+              :class="isCertmatrix ? 'text-2xl font-bold text-certmatrix-ink hover:text-certmatrix-acc' : isMyseedstory ? 'font-display text-2xl font-semibold text-myseedstory-forest hover:text-myseedstory-clay tracking-tight' : isEasyTranslate ? 'text-2xl font-bold text-et-text hover:text-et-purple' : isMono ? 'text-2xl font-bold text-gray-900 hover:text-gray-600' : 'font-brand text-2xl font-bold tracking-tight text-primary hover:text-primary-light'"
             >
               {{ navLogo }}
             </router-link>
@@ -102,7 +102,7 @@ const closeContactForm = () => {
           <button
             @click="openContactForm"
             class="px-6 py-2 transition-colors duration-200"
-            :class="[isCertmatrix ? 'rounded-none' : 'rounded-lg', isCertmatrix ? 'bg-certmatrix-acc text-white hover:bg-certmatrix-acc-dark' : isMyseedstory ? 'bg-myseedstory-clay text-myseedstory-parch hover:bg-myseedstory-clay-light text-sm font-medium tracking-wide' : isEasyTranslate ? 'bg-et-purple text-white hover:bg-et-purple-dark' : isMono ? 'bg-gray-900 text-white hover:bg-gray-700' : 'bg-primary text-secondary hover:bg-primary-light']"
+            :class="[isCertmatrix ? 'rounded-none' : 'rounded-lg', isCertmatrix ? 'bg-certmatrix-acc text-white hover:bg-certmatrix-acc-dark' : isMyseedstory ? 'bg-myseedstory-clay text-myseedstory-parch hover:bg-myseedstory-clay-light text-sm font-medium tracking-wide' : isEasyTranslate ? 'bg-et-purple text-white hover:bg-et-purple-dark' : isMono ? 'bg-gray-900 text-white hover:bg-gray-700' : 'bg-primary text-secondary hover:bg-primary-dark']"
           >
             Contact Us
           </button>

@@ -1,14 +1,14 @@
 {
   "name": "Pomkatsu",
   "short_name": "Pomkatsu",
-  "description": "Mobile App Development Company",
+  "description": "Products designed and built by Brandon Ore",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "any",
   "start_url": "/?homescreen=1",
-  "background_color": "#FCF1DC",
-  "theme_color": "#46301C",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "icons": [
     {
       "src": "/android-chrome-36x36.png",
