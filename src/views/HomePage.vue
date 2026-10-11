@@ -196,8 +196,8 @@ onUnmounted(() => {
             </div>
             <!-- The phones run off the bottom edge, except at lg where the column is too narrow for that and they sit whole -->
             <div class="lg:col-span-6 flex justify-center lg:justify-end items-end lg:items-center xl:items-end gap-4 lg:pb-14 xl:pb-0 overflow-hidden" aria-hidden="true">
-              <div class="phone w-[190px] sm:w-[240px] lg:w-[196px] xl:w-[240px] -mb-12 lg:mb-0 xl:-mb-12"><img src="/app-logos/myseedstory/screenshot-seeds.webp" alt="" loading="lazy" decoding="async" /></div>
-              <div class="phone w-[190px] sm:w-[240px] lg:w-[196px] xl:w-[240px] mt-14 -mb-28 lg:mb-0 xl:-mb-28"><img src="/app-logos/myseedstory/screenshot-calendar.webp" alt="" loading="lazy" decoding="async" /></div>
+              <div class="phone w-[190px] sm:w-[240px] lg:w-[196px] xl:w-[240px] -mb-12 lg:mb-0 xl:-mb-12"><img src="/app-logos/myseedstory/screenshot-seeds.webp" alt="" width="720" height="1558" loading="lazy" decoding="async" /></div>
+              <div class="phone w-[190px] sm:w-[240px] lg:w-[196px] xl:w-[240px] mt-14 -mb-28 lg:mb-0 xl:-mb-28"><img src="/app-logos/myseedstory/screenshot-calendar.webp" alt="" width="720" height="1558" loading="lazy" decoding="async" /></div>
             </div>
           </div>
           <div class="border-t border-myseedstory-forest/15 grid lg:grid-cols-12 gap-8 items-center px-6 sm:px-10 lg:px-14 py-10">
@@ -423,6 +423,7 @@ onUnmounted(() => {
 .phone img {
   display: block;
   width: 100%;
+  height: auto;
 }
 
 /* A shipped product: bright green with a soft halo */
