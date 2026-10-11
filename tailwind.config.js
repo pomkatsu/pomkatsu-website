@@ -7,16 +7,24 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Main site (homepage, legal pages): ink on white
         'primary': {
-          DEFAULT: '#46301C',
-          light: '#5A3E26',
-          dark: '#2E1F12',
+          DEFAULT: '#1D1E22', // headings and text
+          light: '#5C6068',   // secondary text
+          dark: '#0F1012',    // strongest text, hover on ink fills
         },
         'secondary': {
-          DEFAULT: '#FCF1DC',
-          light: '#FFF8ED',
-          dark: '#F5E5C8',
+          DEFAULT: '#FFFFFF', // page
+          light: '#F4F5F7',   // washes and hover fills
+          dark: '#E3E5E9',    // borders
         },
+        // The one accent, taken from the mascot's cutlet. A fill, never a text colour.
+        'katsu': {
+          DEFAULT: '#F5A623',
+          dark: '#E0920F',
+        },
+        'cream': '#FCF1DE', // the logo's own background, kept for the mascot's tile
+        'live': '#12D45F',  // status dot for a shipped product
         'pomkatsu': {
           50: '#fff1f2',
           100: '#ffe4e6',
@@ -39,6 +47,13 @@ export default {
           'text': '#18181b',
           'text-light': '#52525b',
           'border': '#e4e4e7',
+          'navy': '#000922', // app icon background
+        },
+        // BentoBook, from its quasar.variables.scss
+        'bentobook': {
+          'indigo': '#4f46e5',      // room behind the dashboard
+          'indigo-dark': '#3730a3', // frame edge
+          'night': '#28243d',       // the app's dark background
         },
         'astral': {
           'deep': '#330963',
@@ -74,10 +89,10 @@ export default {
           'acc-dark': '#6a25c9', // accent hover
         },
         'legal': {
-          'text': '#5A3E26',
-          'heading': '#46301C',
+          'text': '#474B53',
+          'heading': '#1D1E22',
           'muted': '#6B7280',
-          'border': '#F5E5C8',
+          'border': '#E3E5E9',
           'warning': '#be123c',
           'warning-light': '#fecdd3',
           'warning-dark': '#881337',
@@ -86,6 +101,7 @@ export default {
       fontFamily: {
         'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
         'display': ['Newsreader', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        'brand': ['"Bricolage Grotesque"', 'Inter', 'system-ui', 'sans-serif'],
         'mono': ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       }
     },

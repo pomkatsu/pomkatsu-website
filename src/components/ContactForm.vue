@@ -259,7 +259,7 @@ const closeModal = () => {
                     type="submit"
                     :disabled="isSubmitting"
                     class="px-4 py-2 text-sm font-medium border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
-                    :class="isAstral ? 'text-white bg-astral-cosmic hover:bg-astral-light focus:ring-astral-cosmic' : isEasyTranslate ? 'text-white bg-et-purple hover:bg-et-purple-dark focus:ring-et-purple' : isMono ? 'text-white bg-gray-900 hover:bg-gray-700 focus:ring-gray-500' : 'text-secondary bg-primary hover:bg-primary-light focus:ring-primary'"
+                    :class="isAstral ? 'text-white bg-astral-cosmic hover:bg-astral-light focus:ring-astral-cosmic' : isEasyTranslate ? 'text-white bg-et-purple hover:bg-et-purple-dark focus:ring-et-purple' : isMono ? 'text-white bg-gray-900 hover:bg-gray-700 focus:ring-gray-500' : 'text-secondary bg-primary hover:bg-primary-dark focus:ring-primary'"
                   >
                     <svg v-if="isSubmitting" class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
                       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

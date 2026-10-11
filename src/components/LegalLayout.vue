@@ -109,25 +109,25 @@ const themeVars = computed(() => {
       '--legal-warning-heading': '#fca5a5',
     }
   }
-  // Default (pomkatsu.com) — cream/brown
+  // Default (pomkatsu.com) — ink on white
   return {
-    '--legal-text': '#46301C',
-    '--legal-text-secondary': '#5A3E26',
-    '--legal-text-strong': '#2E1F12',
-    '--legal-bg-box': '#FFF8ED',
-    '--legal-bg-surface': '#FCF1DC',
-    '--legal-bg-surface-alpha': 'rgba(252, 241, 220, 0.5)',
-    '--legal-bg-surface-hover': 'rgba(252, 241, 220, 0.6)',
-    '--legal-bg-surface-active': '#F5E5C8',
-    '--legal-border': '#F5E5C8',
-    '--legal-border-accent': '#5A3E26',
-    '--legal-link': '#46301C',
-    '--legal-link-hover': '#2E1F12',
-    '--legal-link-border': '#5A3E26',
-    '--legal-shadow': 'rgba(70, 48, 28, 0.05)',
-    '--legal-scrollbar': '#5A3E26',
+    '--legal-text': '#1D1E22',
+    '--legal-text-secondary': '#474B53',
+    '--legal-text-strong': '#0F1012',
+    '--legal-bg-box': '#F4F5F7',
+    '--legal-bg-surface': '#FFFFFF',
+    '--legal-bg-surface-alpha': 'rgba(244, 245, 247, 0.7)',
+    '--legal-bg-surface-hover': '#F4F5F7',
+    '--legal-bg-surface-active': '#E3E5E9',
+    '--legal-border': '#E3E5E9',
+    '--legal-border-accent': '#1D1E22',
+    '--legal-link': '#1D1E22',
+    '--legal-link-hover': '#0F1012',
+    '--legal-link-border': '#5C6068',
+    '--legal-shadow': 'rgba(29, 30, 34, 0.06)',
+    '--legal-scrollbar': 'rgba(29, 30, 34, 0.3)',
     '--legal-warning-bg': '#fecdd3',
-    '--legal-warning-text': '#2E1F12',
+    '--legal-warning-text': '#0F1012',
     '--legal-warning-heading': '#881337',
   }
 })
