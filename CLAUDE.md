@@ -49,7 +49,7 @@ The main site (homepage and legal pages) is ink on white with one accent. Each a
 
 ### Typography
 - Font family: Inter (primary), system fonts as fallback
-- Homepage headings and the Pomkatsu wordmark: Bricolage Grotesque (`font-brand`), bold
+- Homepage headings and the Pomkatsu wordmark: Inter, extra bold. Bricolage Grotesque (`font-brand`) is still loaded for the app pages' nav
 - Headings: Bold weight, primary color
 - Body text: Regular weight, primary-light color (legal body text uses the darker `legal-text`)
 - Legal text: Enhanced line height (1.75) for readability
