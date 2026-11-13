@@ -2,8 +2,8 @@
 
 **Pomkatsu LLC**  
 **Effective Date: October 9, 2026**
-**Last Updated: October 9, 2026**
-**Version: 1.0**
+**Last Updated: November 13, 2026**
+**Version: 1.1**
 
 ## Introduction
 
@@ -41,6 +41,7 @@ We handle information in two different ways.
 
 - **An audit log of actions** taken in your organization. Each entry has the date, what was done, and the IP address and browser details of the device that did it
 - **A record that you agreed to our Terms:** the version, the date and time, your IP address and your browser details
+- **How you found us.** When you make an account we record the name of the website that linked you to certmatrix.io (for example capterra.com), the first page you saw, the date of your first visit and any campaign tags on the link. If you answer "How did you hear about us?", we keep your answer
 - **Server logs** of requests to our systems, kept by our hosting provider for a short rolling period
 - **Usage and error reports.** These are counts, timings and error types tied to a random account ID and organization ID. They do not include your email, names, documents or anything you type. We do not record your screen
 
@@ -50,7 +51,7 @@ When you subscribe, Lemon Squeezy tells us your customer ID, your subscription I
 
 ### Website Visitors
 
-The certmatrix.io website sets no cookies and loads nothing from other companies. Our hosting provider logs requests in the usual way.
+The certmatrix.io website sets no cookies and loads nothing from other companies. We count visits, video plays, template downloads and button clicks as daily totals. The counts hold no IP address and nothing that identifies you. Our hosting provider logs requests in the usual way.
 
 ## Information We Handle for Our Customers
 
@@ -145,7 +146,7 @@ To ask what we hold about you, or to have it deleted, email support@pomkatsu.com
 
 ## Cookies and Local Storage
 
-- **The website** sets no cookies. It remembers your light or dark choice in your browser's local storage
+- **The website** sets no cookies. It remembers your light or dark choice, and how you first arrived (for up to 90 days), in your browser's local storage
 - **The app** uses your browser's local storage to keep you signed in and to remember your settings, such as theme, text size and which organization you last opened. The app needs this to work
 - **Usage and error reports** may store a random identifier in your browser so that reports from the same account can be grouped
 - **No advertising cookies** and no tracking across other websites. Because we do not track you across sites, "Do Not Track" and Global Privacy Control signals do not change what we do
@@ -160,6 +161,7 @@ To ask what we hold about you, or to have it deleted, email support@pomkatsu.com
 - **The audit log:** kept after an organization is deleted. It holds IDs, dates, statuses, IP addresses, browser details and the organization's name. It does not hold team member names or documents. We keep it for security, to resolve disputes and to meet legal obligations
 - **Your sign-in email address:** until you ask us to delete it
 - **Your agreement to the Terms:** kept as a record of the agreement
+- **How you found us:** kept with your account until you ask us to delete it
 - **Backups:** our database provider keeps backup copies for a short period, then they expire. Deleted information can remain in a backup until then
 - **Server logs:** a short rolling period
 - **Business contacts:** until you opt out or ask us to delete your details. We keep the opt-out record
